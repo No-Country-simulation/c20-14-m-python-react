@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/c20-14-m-python-react.iml" filepath="$PROJECT_DIR$/.idea/c20-14-m-python-react.iml" />
+      <module fileurl="file://$PROJECT_DIR$/skillup-server/djangoProject/.idea/djangoProject.iml" filepath="$PROJECT_DIR$/skillup-server/djangoProject/.idea/djangoProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/skillup-server/skillup/.idea/skillup.iml" filepath="$PROJECT_DIR$/skillup-server/skillup/.idea/skillup.iml" />
+      <module fileurl="file://$PROJECT_DIR$/skillup-server/.idea/skillup-server.iml" filepath="$PROJECT_DIR$/skillup-server/.idea/skillup-server.iml" />
+    </modules>
+  </component>
+</project>
