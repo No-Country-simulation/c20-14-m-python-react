@@ -32,18 +32,28 @@ Nota: Si la version instalada es inferior a la requerida por este proyecto, proc
 
 #### 2.1 Configuración del entorno
 
-Deben cambiar el nombre del archivo **_.env-example_** a **_.env_**. luego de cambiar el nombre abren el archivo y ejecutan el codigo debajo para generar una clave segura:
+Después de clonar este repositorio, necesitarás generar una clave secreta para Django. Esta clave es esencial para la seguridad de la aplicación. Puedes generar una nueva clave secreta utilizando el shell de Django. Sigue estos pasos:
+
+Deben cambiar el nombre del archivo **_.env-example_** a **_.env_**. luego de cambiar el nombre abren el archivo y pegan la clave generada (instrucciones debajo).
+
+### 2.2 Abre el shell de Django
+
+Primero, asegúrate de que tu entorno virtual esté activado. Luego, ejecuta el siguiente comando en la terminal desde el directorio raíz del proyecto:
+
+```bash
+python manage.py shell
+```
+Dentro del shell interactivo de Django, ejecuta el siguiente código:
 
 ```
-1 from django.core.management.utils import get_random_secret_key 
-
-3 DJANGO_SECRET_KEY=get_random_secret_key()
+from django.core.management.utils import get_random_secret_key
+print(get_random_secret_key())
 ```
+El shell devolverá una cadena de caracteres aleatorios. Copia esta cadena y pegala en el .env como sigue:
 
-
-Una vez clonado el proyecto ejecutarlo en su editor o IDE de preferencia.
-
-#### 3. Configurar Editor o IDE con el interprete de Python y Creación de un entorno virtual para poder correr comandos desde la terminal.
+```
+DJANGO_SECRET_KEY=tu_clave_generada_aqui
+```
 
 #### 4. Instalación de Docker y Docker Desktop
 
