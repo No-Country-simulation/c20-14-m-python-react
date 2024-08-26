@@ -1,0 +1,8 @@
+# Creación de un virtualenv MacOS/Linux
+python3 -m venv nombre_del_entorno
+source nombre_del_entorno/bin/activate # Para activarlo
+
+# Windows
+python -m venv nombre_del_entorno
+nombre_del_entorno\Scripts\activate.bat # Para activarlo
+
