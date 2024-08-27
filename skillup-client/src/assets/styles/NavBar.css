@@ -1,0 +1,12 @@
+/* NavBar.css */
+.container {
+    height: 80px; /* Ajusta el alto del Navbar */
+    display: flex;
+    align-items: center; /* Centra verticalmente el contenido dentro del Navbar */
+  }
+  
+  .custom-navbar .navbar-brand,
+  .custom-navbar .navbar-nav {
+    height: 100%; /* Asegura que los elementos dentro del Navbar ocupen todo el alto */
+  }
+  
