@@ -1,0 +1,24 @@
+.link,
+.active {
+	padding: var(--p-sm);
+	border-radius: var(--r-sm);
+	display: flex;
+	justify-items: center;
+	align-items: center;
+	gap: var(--g-sm);
+	transition: color 0.3s ease;
+}
+
+.link:hover,
+.active:hover {
+	color: var(--c-green);
+}
+
+.icon {
+	width: 28px;
+	height: 28px;
+}
+
+.active {
+	color: var(--c-green);
+}
