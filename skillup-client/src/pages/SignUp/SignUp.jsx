@@ -10,7 +10,9 @@ export default function SignUp() {
       <InputText title="Password" placeholder="Value" />
       <LinkTo to="/">Forgot password?</LinkTo>
       <Btn>Sign up</Btn>
-      <LinkTo to="/">Sign in</LinkTo>
+      <span className={css.signin}>
+        Already have an account? <LinkTo to="/">Login</LinkTo>
+      </span>
     </form>
   );
 }

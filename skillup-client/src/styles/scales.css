@@ -1,0 +1,8 @@
+:root {
+  --xs: 2px; /* Extra Small */
+  --sm: 4px; /* Small */
+  --md: 8px; /* Medium */
+  --lg: 16px; /* Large */
+  --xl: 32px; /* Extra Large */
+  --xxl: 64px; /* 2x Extra Large */
+}
