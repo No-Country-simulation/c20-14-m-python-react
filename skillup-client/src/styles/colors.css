@@ -1,0 +1,14 @@
+:root {
+	--bg-main: #ffffff; /* Fondo Principal */
+	--bg-surf: #f2f2f2; /* Superficie */
+	--pri: #6200ee; /* Primario */
+	--sec: #018786; /* Secundario */
+	--t-main: #1c1c1e; /* Texto Principal */
+	--t-sec: #3a3a3c; /* Texto Secundario */
+	--hl: #ffb300; /* Resaltado */
+	--border: #d1d1d6; /* Borde */
+
+	--blue: #0066cc;
+	--red: #cd231d;
+	--green: #8c9900;
+}
