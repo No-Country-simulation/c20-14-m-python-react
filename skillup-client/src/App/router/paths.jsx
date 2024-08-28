@@ -1,4 +1,5 @@
 import Home from "../views/Home/Home.jsx";
+import Login from "../views/Login/Login.jsx";
 import SignUp from "../views/SignUp/SignUp.jsx";
 
 export const HOME = {
@@ -13,4 +14,11 @@ export const SIGN_UP = {
 	path: "/sign-up",
 	name: "Registro",
 	element: <SignUp />
+};
+
+export const LOGIN = {
+	id: crypto.randomUUID(),
+	path: "/login",
+	name: "Sign in",
+	element: <Login />
 };
