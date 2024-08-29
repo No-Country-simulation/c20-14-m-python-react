@@ -1,0 +1,24 @@
+.card {
+	height: 100%;
+}
+
+.cardContainer {
+	padding: 5rem 10rem;
+}
+
+.cardImg {
+	position: relative;
+}
+
+.cardBadge {
+	width: fit-content;
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+}
+
+@media screen and (max-width: 768px) {
+	.cardContainer {
+		padding: inherit;
+	}
+}
