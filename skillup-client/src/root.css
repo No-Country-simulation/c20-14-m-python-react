@@ -1,0 +1,17 @@
+@import "./styles/reset.css";
+@import "./styles/scroll.css";
+@import "./styles/scales.css";
+@import "./styles/colors.css";
+@import "./styles/shadow.css";
+@import "./styles/fonts.css";
+
+body {
+	background-color: var(--bg-main);
+	color: var(--t-sec);
+}
+
+#root {
+	min-height: 100vh;
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+}

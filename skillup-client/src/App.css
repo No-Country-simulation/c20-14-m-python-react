@@ -1,6 +1,6 @@
 /* Establecer márgenes y padding a 0 para todos los elementos */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box; /* Asegura que el padding y el borde se incluyan en el ancho y alto de los elementos */
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box; /* Asegura que el padding y el borde se incluyan en el ancho y alto de los elementos */
 }

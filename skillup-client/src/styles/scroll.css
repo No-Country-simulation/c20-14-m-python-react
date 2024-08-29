@@ -1,0 +1,33 @@
+:root {
+	scrollbar-gutter: stable;
+}
+
+body::-webkit-scrollbar {
+	-webkit-appearance: none;
+}
+
+body::-webkit-scrollbar:vertical {
+	width: 6px;
+	background-color: var(--bg-main);
+}
+
+body::-webkit-scrollbar-thumb {
+	background-color: var(--red);
+	width: 100%;
+	border-radius: 25px;
+}
+
+body::-webkit-scrollbar-button:increment {
+	display: none;
+}
+body::-webkit-scrollbar-button {
+	display: none;
+}
+
+body::-webkit-scrollbar:horizontal {
+	height: 10px;
+}
+
+body::-webkit-scrollbar-track {
+	border-radius: 10px;
+}
