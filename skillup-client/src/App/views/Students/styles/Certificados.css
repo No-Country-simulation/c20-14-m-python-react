@@ -1,0 +1,8 @@
+.certificadoImg {
+	width: 100%;
+}
+
+.certificadoBloque {
+	display: flex;
+	gap: 20px;
+}
