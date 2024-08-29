@@ -1,12 +1,14 @@
+/* eslint-disable prettier/prettier */
 import { Outlet } from "react-router-dom";
 import Footer from "../components/Footer/Footer.jsx";
+import NavBar from "../components/Nav/NavBar.jsx";
 
 export default function App() {
 	return (
 		<>
-			<header>Navbar</header>
-			<main>
-				<Outlet />
+<NavBar />		
+	<main>
+<Outlet />
 			</main>
 			<Footer />
 		</>
