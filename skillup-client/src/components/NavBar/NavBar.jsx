@@ -1,8 +1,8 @@
-/* eslint-disable prettier/prettier */
 import { Navbar, Nav, Container } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
-import logo3 from "../Nav/Logo3.svg";
-import "../Nav/NavBar.css";
+import logo3 from "./Logo3.svg";
+import "./NavBar.css";
+
 function NavBar() {
 	return (
 		<Navbar bg="light" variant="ligth" expand="lg">
@@ -52,13 +52,11 @@ function NavBar() {
 						</Nav.Link>
 						<Nav.Link href="#Sign_In">
 							<Button variant="secondary" size="md">
-								{" "}
 								Sign In
 							</Button>
 						</Nav.Link>
 						<Nav.Link href="#Register">
 							<Button variant="dark" size="md">
-								{" "}
 								Register
 							</Button>
 						</Nav.Link>

@@ -1,0 +1,24 @@
+/* NavBar.css */
+.container {
+	height: 80px; /* Ajusta el alto del Navbar */
+	display: flex;
+	align-items: center; /* Centra verticalmente el contenido dentro del Navbar */
+}
+
+.custom-navbar .navbar-brand,
+.custom-navbar .navbar-nav {
+	height: 100%; /* Asegura que los elementos dentro del Navbar ocupen todo el alto */
+}
+
+@media (max-width: 992px) {
+	/* Aplica en pantallas menores a 992px (lg) */
+	.navbar-nav {
+		flex-direction: column; /* Asegura la disposición vertical */
+		align-items: center; /* Centra horizontalmente los elementos */
+		gap: "5px";
+	}
+	.navbar-nav .nav-link,
+	.navbar-nav .btn {
+		margin-bottom: 0; /* Remove bottom margin for items in mobile view */
+	}
+}
