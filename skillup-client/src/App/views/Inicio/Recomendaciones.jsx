@@ -8,11 +8,7 @@ const Recomendaciones = () => {
 	);
 
 	return (
-<<<<<<< HEAD
 		<Container fluid className="cardContainer" id="Recomendaciones">
-=======
-		<Container fluid className="cardContainer">
->>>>>>> 9f16bb33af0826cce33bd834cbb4dd81722e7e99
 			<Row>
 				<Col>
 					<h2 className={css.heroText_ppal}>Recomendaciones</h2>
