@@ -10,19 +10,16 @@ import docker from "./img/docker.webp";
 import reactTP from "./img/react+TP.webp";
 import typescript from "./img/TS.webp";
 
-const CardsImg =  {    
-        html,
-        js,
-        next,
-        sql,
-        cSharp,
-        django,
-        docker,
-        reactTP,
-        typescript
+const CardsImg = {
+	html,
+	js,
+	next,
+	sql,
+	cSharp,
+	django,
+	docker,
+	reactTP,
+	typescript
+};
 
-    }
-    
-
-
-export default CardsImg
+export default CardsImg;
