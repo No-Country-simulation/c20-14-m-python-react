@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import logo3 from "./logo3.svg";
 
 function Footer() {
