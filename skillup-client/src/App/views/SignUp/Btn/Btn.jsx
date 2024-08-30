@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import css from "./css.module.css";
 import Err from "./Err/Err";
 import Spinner from "./Spinner/Spinner";

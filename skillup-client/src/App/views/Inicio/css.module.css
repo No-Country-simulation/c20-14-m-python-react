@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+.greenText {
+	color: #16f8b6;
+}
+
+.pinkText {
+	color: #f926ae;
+}
+
+.violetText {
+	color: #a679ff;
+}
+
+.heroText_ppal {
+	font-family: "Poppins", system-ui;
+	font-weight: 800;
+	font-style: normal;
+    text-align: center;
+    margin: 25px;
+}
+
+.heroText{
+    margin: 25px 0;
+}
+
+.heroGrid{
+    display: grid;
+    width: 95vw;
+    gap: 20px;
+}
+.gridElement{  
+    font-weight: 500;
+    font-family: "Poppins", system-ui;
+    font-size: 0.9rem;    
+}             
+.gridElement:nth-child(1){
+    grid-column: 2/4;
+    grid-row: 1/2;
+   color: #16f8b6;
+   background-color: #0c1036;   
+    text-align: center;
+    display: grid;
+    place-items: center;
+    padding: 1rem 0.5rem;
+}
+.gridElement:nth-child(2){
+    grid-column: 4/6;
+    grid-row: 1/2;
+    color: #a679ff;
+    background-color: #0c1036;   
+    text-align: center;
+    display: grid;
+    place-items: center;
+    padding: 1rem 0.5rem;   
+}
+
+.gridElement:nth-child(3){
+    grid-column: 6/8;
+    grid-row: 1/2;
+    color: #f926ae;
+    background-color: #0c1036;   
+    text-align: center;
+    display: grid;
+    place-items: center;
+    padding: 1rem 0.5rem;
+   
+}
+/* imagen grupo */
+.gridElement:nth-child(4){
+    grid-column: 2/8;
+    grid-row: 2/4;
+    border-radius: 15px;    
+}
+/* imagen mujer */
+.gridElement:nth-child(5){
+    grid-column: 3/5;
+    grid-row: 4/5;  
+    border-radius: 15px;
+}  
+/* imagen profesor */
+.gridElement:nth-child(6){
+    grid-column: 5/7;
+    grid-row: 4/5;  
+}
+
+
+.cardCol{
+    padding: 0 30px;
+}
+
+
+
+
+
+
+
+
+

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import Btn from "./Btn/Btn.jsx";
 import css from "./css.module.css";
 import InputText from "./InputText/InputText.jsx";
