@@ -30,7 +30,6 @@ const CursosDisponibles = () => {
 									{card.hours} horas
 								</Badge>
 							</div>
-
 							<Card.Body>
 								<Card.Title>{card.course}</Card.Title>
 								<Card.Text>{card.title}</Card.Text>

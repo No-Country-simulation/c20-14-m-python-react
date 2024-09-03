@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { createBrowserRouter } from "react-router-dom";
 import { SIGN_UP } from "./children.jsx";
 import App from "../App.jsx";

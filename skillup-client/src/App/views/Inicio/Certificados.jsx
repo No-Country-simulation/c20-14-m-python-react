@@ -8,7 +8,6 @@ const Certificados = () => {
 				<Row>
 					<h2 className={css.heroText_ppal}>Certificados</h2>
 				</Row>
-
 				<Row>
 					<Col xs={12} md={6} lg={4} className="mx-auto">
 						<img

@@ -2,7 +2,7 @@
 import { Container, Col, Row, Card, Badge } from "react-bootstrap";
 
 /* import Badge from 'react-bootstrap/Badge'; */
-import CardsData from "./CardsData"
+import CardsData from "./CardsData";
 
 const Cards = () => {
 	return (

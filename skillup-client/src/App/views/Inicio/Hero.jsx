@@ -12,9 +12,11 @@ const Hero = () => {
 		<>
 			<Container fluid>
 				<Row>
+
 					<Col className={css.heroText} xs={12} md={6} lg={4}>
 						<h1 className={css.heroText_ppal}>
 							Encuentra
+
 							<span className={css.greenText}> cursos y carreras </span>
 							de
 							<span className={css.pinkText}> alta especializacion </span>
@@ -31,6 +33,7 @@ const Hero = () => {
 
 						<p className={css.gridElement}>
 							5500 <br />
+
 							HORAS
 						</p>
 
@@ -58,6 +61,7 @@ const Hero = () => {
 								alt="imagen de aquiles gonzales profesor"
 							/>
 						</div>
+
 					</Col>
 				</Row>
 			</Container>

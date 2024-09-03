@@ -5,6 +5,7 @@ import CursosDisponibles from "./CursosDisponibles";
 import Dashboard from "./Dashboard";
 import Certificados from "./Certificados";
 import imgBg from "./img/background-code.jpg";
+
 import css from "./css.module.css";
 
 const Inicio = () => {
@@ -14,6 +15,7 @@ const Inicio = () => {
 			<Recomendaciones />
 			<CursosDisponibles />
 			<img className={css.center} src={imgBg} alt="imagen de fondo codigo" />
+
 			<Dashboard />
 			<Certificados />
 		</>
