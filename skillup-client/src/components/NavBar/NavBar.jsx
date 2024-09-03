@@ -13,7 +13,7 @@ function NavBar() {
 		return (
 			<Navbar bg="light" variant="light" expand="lg">
 				<Container>
-					<Navbar.Brand as={Link} to={INICIO}>
+					<Navbar.Brand as={Link} to={INICIO.path}>
 						<img
 							src={logo3}
 							width="100"
@@ -64,7 +64,7 @@ function NavBar() {
 	return (
 		<Navbar bg="light" variant="light" expand="lg">
 			<Container>
-				<Navbar.Brand as={Link} to={INICIO.name}>
+				<Navbar.Brand as={Link} to={INICIO.path}>
 					<img
 						src={logo3}
 						width="100"
