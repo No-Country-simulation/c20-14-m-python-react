@@ -97,7 +97,7 @@ function NavBar() {
 								Sign In
 							</Button>
 						</Nav.Link>
-						<Nav.Link as={Link} to={SIGN_UP.name}>
+						<Nav.Link as={Link} to={SIGN_UP.path}>
 							<Button variant="dark" size="md">
 								Register
 							</Button>
