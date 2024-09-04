@@ -51,7 +51,7 @@ class Profile(SoftDeleteModel):
     def as_dict(self):
         return {
             'id': self.id,
-            'user': self.user,
+            'user_id': self.user_id,
             'profile_picture': self.profile_picture,
             'role': self.role,
         }
@@ -109,7 +109,7 @@ class Course(SoftDeleteModel):
             'date_created': self.date_created,
             'price': self.price,
             'slug': self.slug,
-            'instructor': self.instructor,
+            'instructor': self.instructor_id,
         }
 
 
@@ -142,8 +142,8 @@ class Enrollment(SoftDeleteModel):
         return {
             'id': self.id,
             'enrollment_date': self.enrollment_date,
-            'user': self.user,
-            'course': self.course,
+            'user': self.user_id,
+            'course': self.course_id,
         }
 
 
@@ -160,7 +160,7 @@ class Progress(SoftDeleteModel):
             'id': self.id,
             'progress_percentage': self.progress_percentage,
             'updated_at': self.updated_at,
-            'enrollment': self.updated_at,
+            'enrollment': self.enrollment_id,
         }
 
 
@@ -182,7 +182,7 @@ class Certificate(SoftDeleteModel):
             'id': self.id,
             'code': self.code,
             'url': self.url,
-            'enrollment': self.enrollment,
+            'enrollment': self.enrollment_id,
         }
 
 
@@ -201,5 +201,5 @@ class Rating(SoftDeleteModel):
             'value': self.value,
             'comment': self.comment,
             'created_at': self.created_at,
-            'enrollment': self.enrollment,
+            'enrollment': self.enrollment_id,
         }
