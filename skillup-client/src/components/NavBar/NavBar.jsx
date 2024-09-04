@@ -75,7 +75,6 @@ function NavBar() {
 				</Navbar.Brand>
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse id="basic-navbar-nav">
-					<Nav className="mx-auto"></Nav>
 					<Nav className="ms-auto">
 						<Nav.Link href="#Recomendaciones">
 							<Button variant="light" size="md">
@@ -88,20 +87,22 @@ function NavBar() {
 							</Button>
 						</Nav.Link>
 						<Nav.Link href="#Contact">
-							<Button variant="light" size="md" className="me-2">
-								Contact
+							<Button variant="light" size="md">
+								Contacto
 							</Button>
 						</Nav.Link>
-						<Nav.Link href="#Sign_In">
-							<Button variant="secondary" size="md">
-								Sign In
-							</Button>
-						</Nav.Link>
-						<Nav.Link as={Link} to={SIGN_UP.name}>
-							<Button variant="dark" size="md">
-								Register
-							</Button>
-						</Nav.Link>
+						<div className="d-flex ms-3 align-items-center">
+							<Nav.Link href="#Sign_In" className="p-0">
+								<Button variant="secondary" size="sm" className="me-2 p-1">
+									Sign In
+								</Button>
+							</Nav.Link>
+							<Nav.Link as={Link} to={SIGN_UP.path} className="p-0">
+								<Button variant="dark" size="sm" className="me-2 p-1">
+									Registro
+								</Button>
+							</Nav.Link>
+						</div>
 					</Nav>
 				</Navbar.Collapse>
 			</Container>
