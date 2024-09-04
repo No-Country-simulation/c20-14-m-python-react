@@ -5,12 +5,14 @@ import Recomendaciones from "./Recomendaciones";
 import CursosDisponibles from "./CursosDisp";
 import imgBg from "./img/background-code.jpg";
 import Certificados from "./Certificados";
+import CursosCompletados from "./CursosCompletados/CursosCompletados";
 function Students() {
 	return (
 		<>
 			<Recomendaciones />
 			<CursosDisponibles />
 			<img className="centerBlock" src={imgBg} alt="imagen de fondo codigo" />
+			<CursosCompletados />
 			<Certificados />
 		</>
 	);
