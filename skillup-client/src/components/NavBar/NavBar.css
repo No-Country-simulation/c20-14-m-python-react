@@ -9,6 +9,11 @@
 .custom-navbar .navbar-nav {
 	height: 100%; /* Asegura que los elementos dentro del Navbar ocupen todo el alto */
 }
+.navbar-collapse {
+    background-color: #f8f9fa; /* Fondo para todo el menú cuando está desplegado en móvil */
+    padding: 1rem; /* Opcional: Espaciado interno */
+	z-index: 1050; 
+}
 
 @media (max-width: 992px) {
 	/* Aplica en pantallas menores a 992px (lg) */
