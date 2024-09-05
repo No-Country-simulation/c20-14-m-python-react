@@ -17,9 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from api.views import activate
+from .auth import register_view, login_view, refresh_token_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
     path('activate/<uidb64>/<token>', activate, name='activate'),
+    path('login/', login_view, name='login'),
+    path('refresh-token/', refresh_token_view, name='refresh-token'),
+    path('register/', register_view, name='register'),
 ]
+
