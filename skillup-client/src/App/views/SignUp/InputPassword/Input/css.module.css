@@ -9,6 +9,7 @@
 	padding: var(--md) var(--lg);
 	min-height: 32px;
 	outline: transparent;
+	padding-right: calc(var(--lg) + 20px); /*20px size svg de estado*/
 }
 
 .input:focus {
@@ -17,21 +18,8 @@
 
 .input::placeholder {
 	color: #959595;
-	font-size: 0.9em;
 }
 
 .input__err {
 	border: 1px solid var(--red);
-}
-
-.input__state {
-	padding-right: calc(var(--md) + 20px);
-}
-.primary {
-	background-color: transparent;
-	color: currentColor;
-}
-
-.secondary {
-	color: black;
 }
