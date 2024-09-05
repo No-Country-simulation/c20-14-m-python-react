@@ -75,12 +75,13 @@ class Category(SoftDeleteModel):
 class Course(SoftDeleteModel):
     title = models.CharField(max_length=255, null=False, blank=False)
     description = models.TextField()
-    category = models.ForeignKey(Category, on_delete=models.DO_NOTHING, related_name='courses')
+    category = models.ManyToManyField('Category', on_delete=models.DO_NOTHING, related_name='courses')
     duration = models.PositiveIntegerField()
     date_created = models.DateTimeField(auto_now_add=True)
     price = models.DecimalField(max_digits=8, decimal_places=2)
     slug = models.SlugField(unique=True, blank=True, editable=False)
     instructor = models.ForeignKey('Profile', on_delete=models.DO_NOTHING, related_name='courses_taught')
+    cover_image = models.ImageField(upload_to='cover_images/', blank=True)
 
     def __str__(self):
         return self.title
@@ -104,7 +105,7 @@ class Course(SoftDeleteModel):
             'id': self.id,
             'title': self.title,
             'description': self.description,
-            'category': self.category,
+            'category': self.category.name,
             'duration': self.duration,
             'date_created': self.date_created,
             'price': self.price,
