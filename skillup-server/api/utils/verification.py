@@ -6,7 +6,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 from .tokens import account_activation_token
 
-def verificationEmail(request, user, to_email):
+def verificationEmail(request, user):
     domain = get_current_site(request).domain
     uid = urlsafe_base64_encode(force_bytes(user.pk))
     token = account_activation_token.make_token(user)
@@ -18,7 +18,7 @@ def verificationEmail(request, user, to_email):
         mail_subject,
         message,
         settings.EMAIL_HOST_USER,
-        [to_email],
+        [user.email],
         fail_silently=False
     )
 
