@@ -8,16 +8,20 @@ export default function SignUp() {
 	return (
 		<div className={css.signup}>
 			<form className={css.form} onSubmit={e => e.preventDefault()}>
-				<InputText className={css.email} title="Email" placeholder="Value" />
+				<InputText
+					className={css.email}
+					title="Correo"
+					placeholder="ejemplo@gmail.com"
+				/>
 				<InputPassword
 					className={css.password}
-					title="Password"
-					placeholder="Value"
+					title="Contraseña"
+					placeholder="$up3rC0ntr@S3ñ@"
 				/>
-				<LinkTo to="/">Forgot password?</LinkTo>
-				<Btn>Sign up</Btn>
+				<LinkTo to="/">¿Olvidaste tu contraseña?</LinkTo>
+				<Btn>Registrarse</Btn>
 				<span className={css.login}>
-					Already have an account? <LinkTo to="/">Login</LinkTo>
+					¿Ya tiene una cuenta? <LinkTo to="/">Login</LinkTo>
 				</span>
 			</form>
 		</div>

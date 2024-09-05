@@ -4,6 +4,8 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	padding-top: var(--xl);
+	padding-bottom: var(--xl);
 }
 
 .form {
