@@ -16,7 +16,7 @@ export default function SignUp() {
 				<InputPassword
 					className={css.password}
 					title="Contraseña"
-					placeholder="$up3rC0ntr@S3ñ@"
+					placeholder=""
 				/>
 				<LinkTo to="/">¿Olvidaste tu contraseña?</LinkTo>
 				<Btn>Registrarse</Btn>
