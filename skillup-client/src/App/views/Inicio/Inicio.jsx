@@ -2,7 +2,7 @@
 import Hero from "./Hero";
 import Recomendaciones from "./Recomendaciones";
 import CursosDisponibles from "./CursosDisponibles";
-import Dashboard from "./Dashboard";
+// import Dashboard from "./Dashboard";
 
 import imgBg from "./img/background-code.jpg";
 
@@ -15,9 +15,6 @@ const Inicio = () => {
 			<Recomendaciones />
 			<CursosDisponibles />
 			<img className={css.center} src={imgBg} alt="imagen de fondo codigo" />
-
-			<Dashboard />
-		
 		</>
 	);
 };
