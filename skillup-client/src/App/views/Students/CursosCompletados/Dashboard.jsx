@@ -10,13 +10,13 @@ import {
 import DataEjemplo from "./DataEjemplo";
 import "../styles/CursosCompletados.css";
 
-function CursosCompletados() {
+function Dashboard() {
 	if (DataEjemplo.length === 0) {
 		return (
-			<Container fluid className="cardContainer ">
+			<Container fluid className="cardContainer" id="Dashboard">
 				<Row>
 					<Col>
-						<h2>Cursos Completados</h2>
+						<h2>Dashboard</h2>
 					</Col>
 				</Row>
 				<Row>
@@ -101,4 +101,4 @@ function CursosCompletados() {
 	);
 }
 
-export default CursosCompletados;
+export default Dashboard;
