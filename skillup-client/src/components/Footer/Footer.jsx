@@ -3,7 +3,7 @@ import logo3 from "./logo3.svg";
 function Footer() {
 	return (
 		<div>
-			<footer className="border-top">
+			<footer className="border-top" id="Contact">
 				<div className="d-flex flex-column flex-sm-row justify-content-between align-items-center m-2">
 					<div>
 						<a href="">
