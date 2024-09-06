@@ -61,6 +61,45 @@ function NavBar() {
 		);
 	}
 
+	if (pathname === "/registro") {
+		return (
+			<Navbar bg="light" variant="light" expand="lg">
+				<Container>
+					<Navbar.Brand as={Link} to={INICIO.path}>
+						<img
+							src={logo3}
+							width="100"
+							height="100"
+							className="d-inline-block align-top"
+							alt="logo"
+						/>
+					</Navbar.Brand>
+					<Navbar.Toggle aria-controls="basic-navbar-nav" />
+					<Navbar.Collapse id="basic-navbar-nav">
+						<Nav className="mx-auto"></Nav>
+						<Nav className="ms-auto">
+							<Nav.Link href="#Recomendaciones">
+								<Button variant="light" size="md">
+									Recomendaciones
+								</Button>
+							</Nav.Link>
+							<Nav.Link href="#CursosDisponibles">
+								<Button variant="light" size="md">
+									Cursos Disponibles
+								</Button>
+							</Nav.Link>
+							<Nav.Link href="#Contact">
+								<Button variant="light" size="md">
+									Contacto
+								</Button>
+							</Nav.Link>
+						</Nav>
+					</Navbar.Collapse>
+				</Container>
+			</Navbar>
+		);
+	}
+
 	return (
 		<Navbar bg="light" variant="light" expand="lg">
 			<Container>
