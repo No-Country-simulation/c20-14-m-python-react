@@ -40,7 +40,7 @@ function Dashboard() {
 	}
 
 	return (
-		<Container fluid className="cardContainer">
+		<Container fluid className="cardContainer" id="Dashboard">
 			<Row>
 				<Col>
 					<h2>Dashboard</h2>
