@@ -3,21 +3,42 @@ import css from "./css.module.css";
 import InputPassword from "./InputPassword/InputPassword.jsx";
 import InputText from "./InputText/InputText.jsx";
 import LinkTo from "./LinkTo/LinkTo.jsx";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { signupSchema } from "./signupSchema.js";
 
 export default function SignUp() {
+	const {
+		register,
+		handleSubmit,
+		formState: { errors }
+	} = useForm({ resolver: zodResolver(signupSchema) });
+
+	const onSubmit = data => {
+		console.log(data);
+	};
+
 	return (
 		<div className={css.signup}>
-			<form className={css.form} onSubmit={e => e.preventDefault()}>
-				<InputText className={css.email} title="Email" placeholder="Value" />
+			<form className={css.form} onSubmit={handleSubmit(onSubmit)}>
+				<InputText
+					className={css.email}
+					title="Correo"
+					placeholder="ejemplo@gmail.com"
+					{...register("email")}
+					err={errors?.email?.message}
+				/>
 				<InputPassword
 					className={css.password}
-					title="Password"
-					placeholder="Value"
+					title="Contraseña"
+					placeholder=""
+					{...register("password")}
+					err={errors?.password?.message}
 				/>
-				<LinkTo to="/">Forgot password?</LinkTo>
-				<Btn>Sign up</Btn>
+				<LinkTo to="/">¿Olvidaste tu contraseña?</LinkTo>
+				<Btn disabled={Object.keys(errors).length}>Registrarse</Btn>
 				<span className={css.login}>
-					Already have an account? <LinkTo to="/">Login</LinkTo>
+					¿Ya tiene una cuenta? <LinkTo to="/">Login</LinkTo>
 				</span>
 			</form>
 		</div>

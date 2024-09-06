@@ -2,8 +2,9 @@ import { useState } from "react";
 import css from "./css.module.css";
 import EyeIcon from "../EyeIcon/EyeIcon.jsx";
 import { joinClass } from "../utils/joinClass.js";
+import { forwardRef } from "react";
 
-export default function Input(props) {
+export default forwardRef(function Input(props, ref) {
 	const { err, ...extraProps } = props;
 	const [isVisiblePass, setIsVisiblePass] = useState(false);
 
@@ -15,10 +16,11 @@ export default function Input(props) {
 			<input
 				placeholder="password"
 				{...extraProps}
+				ref={ref}
 				type={!isVisiblePass ? "password" : "text"}
 				className={finalClassInput}
 			></input>
 			<EyeIcon isVisiblePass={isVisiblePass} hVisiblePass={hVisiblePass} />
 		</label>
 	);
-}
+});

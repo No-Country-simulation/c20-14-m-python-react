@@ -1,8 +1,9 @@
+import { forwardRef } from "react";
 import css from "./css.module.css";
 import Input from "./Input/Input";
 import { joinClass } from "./utils/joinClass";
 
-export default function InputPassword(props) {
+export default forwardRef(function InputPassword(props, ref) {
 	const { className, title, err, ...extraProps } = props;
 
 	const finalClassName = joinClass([css.label, className]);
@@ -10,8 +11,8 @@ export default function InputPassword(props) {
 	return (
 		<label className={finalClassName}>
 			{title && <span className={css.title}>{title}</span>}
-			<Input {...extraProps} err={err} />
+			<Input {...extraProps} ref={ref} err={err} />
 			{err && <span className={css.err}>{err}</span>}
 		</label>
 	);
-}
+});
