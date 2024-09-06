@@ -8,7 +8,7 @@
 	--size-err: 20px;
 
 	position: relative;
-	border: 2px solid transparent;
+	border: 1px solid transparent;
 	padding: var(--sm) var(--md);
 	cursor: pointer;
 	min-width: 125px;
@@ -19,7 +19,7 @@
 }
 
 .btn:focus {
-	outline: 2px solid #06c;
+	outline: 2px solid var(--blue);
 }
 
 .btn__err {
@@ -30,7 +30,7 @@
 	cursor: initial;
 	background-color: transparent;
 	color: gray;
-	border: 2px solid gray;
+	border: 1px solid gray;
 }
 
 .primary {

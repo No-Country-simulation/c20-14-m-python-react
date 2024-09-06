@@ -12,6 +12,7 @@
 	color: #1e1e1e;
 	display: grid;
 	justify-content: center;
+	gap: var(--sm);
 	border: var(--border);
 	border-radius: var(--md);
 	width: 320px;
