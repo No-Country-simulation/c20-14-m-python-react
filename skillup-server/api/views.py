@@ -18,16 +18,15 @@ class RegisterView(View):
         data = json.loads(request.body)
         email = data.get ('email')
         password = data.get ('password')
-        username = data.get ('username')
         if User.objects.filter(email=email):
             return JsonResponse ({'error': 'Este e-mail ya esta en uso'}, status=400)
         
-            #Next to do, create return error for invalid JSON 
-            '''JSONDecodeError
-            ValidationError
-            except Exception''' 
+            # Next to do, create return error for invalid JSON
+            # JSONDecodeError
+            # ValidationError
+            # except Exception
         
-        user = User.objects.create(username=username, email=email, password=password)
+        user = User.objects.create(username=email, email=email, password=password)
         Profile.objects.create(user=user)
 
         token = generate_jwt_token(user.id)
