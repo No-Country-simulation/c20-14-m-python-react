@@ -11,8 +11,8 @@ from django.contrib.auth.hashers import make_password
 from django.views.decorators.csrf import csrf_exempt
 import json
 
-# Generar el token JWT
 
+# Generar el token JWT
 def generate_jwt_token(user_id):
     payload = {
         'user_id': user_id,
@@ -21,8 +21,6 @@ def generate_jwt_token(user_id):
     }
     token = jwt.encode(payload, settings.SECRET_KEY, algorithm='HS256')
     return token
-
-# Iniciar sesión y devolver el token JWT
 
 
 # Refrescar el token JWT
@@ -43,4 +41,3 @@ def refresh_token_view(request):
 
     return JsonResponse({'error': 'Método no permitido'}, status=405)
 
-# Registrar un nuevo usuario y devolver el token JWT
