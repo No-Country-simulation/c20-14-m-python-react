@@ -38,3 +38,14 @@ def refresh_token_view(request):
 
     return JsonResponse({'error': 'Método no permitido'}, status=405)
 
+
+# Verificar el token JWT
+def verify_jwt_token(token):
+    try:
+        payload = jwt.decode(token, settings.SECRET_KEY, algorithms=['HS256'])
+        return payload['user_id'] # Devuelve el id del usuario
+    except jwt.ExpiredSignatureError:
+        raise Exception('Token expirado')
+    except jwt.InvalidTokenError:
+        raise Exception('Token invalido')
+

@@ -9,7 +9,9 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import User 
 from django.views import View
 
-from skillup.auth import generate_jwt_token, refresh_token_view
+from api.jwt_auth_utils.auth import generate_jwt_token
+from api.jwt_auth_utils.mixins import JWTAuthenticationMixin
+
 
 @method_decorator(csrf_exempt, name='dispatch')
 class RegisterView(View):
@@ -31,5 +33,11 @@ class RegisterView(View):
 
         token = generate_jwt_token(user.id)
         return JsonResponse ({'message': 'Usuario registrado existosamente', 'token': token}, status=201)
+
+# VISTA PROTEGIDA
+
+# class HomeView(JWTAuthenticationMixin, View):
+#     def get(self, request):
+#         return JsonResponse({'Message': message}, status=200)
 
     
