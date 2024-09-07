@@ -93,6 +93,8 @@ DATABASES = {
         'NAME': 'skillup-db',
         'USER': 'postgres',
         'PASSWORD': 'postgres1234',
+        # For run locally
+        # 'HOST': '127.0.0.1',
         'HOST': 'db',
         'PORT': '5432',
     }
