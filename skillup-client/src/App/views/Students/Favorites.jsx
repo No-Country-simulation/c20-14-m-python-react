@@ -1,11 +1,10 @@
-/* eslint-disable react/jsx-no-undef */
-import { Container, Row, Col, Card, Badge } from "react-bootstrap";
+import { Container, Row, Col, Card, Badge, Button } from "react-bootstrap";
 import CardsData from "./CardsData";
 import "../Students/styles/CardLog.css";
 import { FaRegStar } from "react-icons/fa";
 
-const Recomendaciones = () => {
-	const recomendacionesCards = CardsData.filter(
+const Favorites = () => {
+	const favoritCards = CardsData.filter(
 		card => card.id === 1 || card.id === 2 || card.id === 5
 	);
 
@@ -13,11 +12,11 @@ const Recomendaciones = () => {
 		<Container fluid className="cardContainer">
 			<Row>
 				<Col>
-					<h2>Recomendaciones </h2>
+					<h2>Favoritos </h2>
 				</Col>
 			</Row>
 			<Row>
-				{recomendacionesCards.map((card, index) => (
+				{favoritCards.map((card, index) => (
 					<Col xs={12} md={6} lg={4} key={index}>
 						<Card className="mb-4">
 							<div className="cardImg">
@@ -47,4 +46,4 @@ const Recomendaciones = () => {
 	);
 };
 
-export default Recomendaciones;
+export default Favorites;

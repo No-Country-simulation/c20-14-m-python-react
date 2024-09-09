@@ -5,6 +5,7 @@ import Recomendaciones from "./Recomendaciones";
 import CursosDisponibles from "./CursosDisp";
 import imgBg from "./img/background-code.jpg";
 import Dashboard from "./CursosCompletados/Dashboard";
+import Favorites from "./Favorites";
 function Students() {
 	return (
 		<>
@@ -12,6 +13,7 @@ function Students() {
 			<CursosDisponibles />
 			<img className="centerBlock" src={imgBg} alt="imagen de fondo codigo" />
 			<Dashboard />
+			<Favorites />
 		</>
 	);
 }
