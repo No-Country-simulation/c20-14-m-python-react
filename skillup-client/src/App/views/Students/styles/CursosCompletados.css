@@ -4,13 +4,6 @@
 
 
 
-.cardsize {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
 
 .cardImg {
     position: relative;
@@ -40,13 +33,16 @@
 /* Estilo para la barra de progreso */
 .progress-bar-black .progress-bar{
 	background-color: black; /* Color de la barra de progreso */
+	font-weight: bold;
+	
   }
   
   /* Estilo para el porcentaje de progreso */
   .progreso-text {
-	font-size: 14px;
+	font-size: 20px;
 	text-align: right;
 	display: block;
+
   }
   
   .progreso-text span {
