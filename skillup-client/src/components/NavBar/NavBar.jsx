@@ -1,6 +1,6 @@
 import { Navbar, Nav, Container } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
-import logo3 from "./Logo3.svg";
+import logo3 from "./logo3.png";
 import "./NavBar.css";
 import { Link, useLocation } from "react-router-dom";
 import { INICIO, SIGN_UP } from "../../App/router/children";
@@ -11,9 +11,18 @@ function NavBar() {
 
 	if (pathname === "/estudiantes") {
 		return (
-			<Navbar bg="light" variant="light" expand="lg">
+			<Navbar
+				className="custom-navbar  border-bottom"
+				bg="light"
+				variant="light"
+				expand="lg"
+			>
 				<Container>
-					<Navbar.Brand as={Link} to={INICIO.path}>
+					<Navbar.Brand
+						as={Link}
+						to={INICIO.path}
+						className="d-flex align-items-center"
+					>
 						<img
 							src={logo3}
 							width="100"
@@ -21,6 +30,7 @@ function NavBar() {
 							className="d-inline-block align-top"
 							alt="logo"
 						/>
+						<span className="ms-2 fs-4 fw-bold">{`<Skill Up!>`}</span>{" "}
 					</Navbar.Brand>
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />
 					<Navbar.Collapse id="basic-navbar-nav">
@@ -63,9 +73,18 @@ function NavBar() {
 
 	if (pathname === "/registro") {
 		return (
-			<Navbar bg="light" variant="light" expand="lg">
+			<Navbar
+				className="custom-navbar  border-bottom"
+				bg="light"
+				variant="light"
+				expand="lg"
+			>
 				<Container>
-					<Navbar.Brand as={Link} to={INICIO.path}>
+					<Navbar.Brand
+						as={Link}
+						to={INICIO.path}
+						className="d-flex align-items-center"
+					>
 						<img
 							src={logo3}
 							width="100"
@@ -73,6 +92,7 @@ function NavBar() {
 							className="d-inline-block align-top"
 							alt="logo"
 						/>
+						<span className="ms-2 fs-4 fw-bold">{`<Skill Up!>`}</span>{" "}
 					</Navbar.Brand>
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />
 					<Navbar.Collapse id="basic-navbar-nav">
@@ -99,11 +119,20 @@ function NavBar() {
 			</Navbar>
 		);
 	}
-
+	//inicio
 	return (
-		<Navbar bg="light" variant="light" expand="lg">
+		<Navbar
+			className="custom-navbar border-bottom"
+			bg="light"
+			variant="light"
+			expand="lg"
+		>
 			<Container>
-				<Navbar.Brand as={Link} to={INICIO.path}>
+				<Navbar.Brand
+					as={Link}
+					to={INICIO.path}
+					className="d-flex align-items-center"
+				>
 					<img
 						src={logo3}
 						width="100"
@@ -111,6 +140,8 @@ function NavBar() {
 						className="d-inline-block align-top"
 						alt="logo"
 					/>
+					<span className="ms-2 fs-4 fw-bold">{`<Skill Up!>`}</span>{" "}
+					{/* Texto al lado del logo */}
 				</Navbar.Brand>
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse id="basic-navbar-nav">
@@ -132,12 +163,16 @@ function NavBar() {
 						</Nav.Link>
 						<div className="d-flex ms-3 align-items-center">
 							<Nav.Link href="#Sign_In" className="p-0">
-								<Button variant="secondary" size="sm" className="me-2 p-1">
+								<Button
+									variant="secondary"
+									size="md"
+									className="me-2 p-1 rounded-lg"
+								>
 									Sign In
 								</Button>
 							</Nav.Link>
 							<Nav.Link as={Link} to={SIGN_UP.path} className="p-0">
-								<Button variant="dark" size="sm" className="me-2 p-1">
+								<Button variant="dark" size="md" className="me-2 p-1">
 									Registro
 								</Button>
 							</Nav.Link>
