@@ -1,12 +1,15 @@
 import json
 
 from .models import Profile
+from django.shortcuts import render
+from django.http import JsonResponse
+from .utils.verification import validateToken
 
 from django.http import JsonResponse
 from django.utils.decorators import method_decorator
 
 from django.views.decorators.csrf import csrf_exempt
-from django.contrib.auth.models import User 
+from django.contrib.auth.models import User
 from django.views import View
 
 from api.jwt_auth_utils.auth import generate_jwt_token
@@ -22,17 +25,26 @@ class RegisterView(View):
         password = data.get ('password')
         if User.objects.filter(email=email):
             return JsonResponse ({'error': 'Este e-mail ya esta en uso'}, status=400)
-        
+
             # Next to do, create return error for invalid JSON
             # JSONDecodeError
             # ValidationError
             # except Exception
-        
+
         user = User.objects.create(username=email, email=email, password=password)
         Profile.objects.create(user=user)
 
         token = generate_jwt_token(user.id)
         return JsonResponse ({'message': 'Usuario registrado existosamente', 'token': token}, status=201)
+
+    def activate(self, request, uidb64, token):
+        user = validateToken(uidb64, token)
+        if user is not None:
+            user.is_active = True
+            user.save()
+            return JsonResponse({'status': 200})
+        else:
+            return JsonResponse({'status': 400})
 
 # VISTA PROTEGIDA
 
@@ -40,4 +52,3 @@ class RegisterView(View):
 #     def get(self, request):
 #         return JsonResponse({'Message': message}, status=200)
 
-    

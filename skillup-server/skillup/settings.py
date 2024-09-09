@@ -25,6 +25,16 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'It is a secret')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# Configuración para enviar email
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'jair.rome92@gmail.com'
+EMAIL_HOST_PASSWORD = 'ulkektgxhuzwpwrr'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+EMAIL_BACKEND = 'backend.email.EmailBackend'
+PASSWORD_RESET_TIMEOUT = 14400
+
 ALLOWED_HOSTS = [
     '0.0.0.0',
     '127.0.0.1',
