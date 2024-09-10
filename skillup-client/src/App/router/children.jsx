@@ -3,6 +3,7 @@ import SignUp from "../views/SignUp/SignUp.jsx";
 import Students from "../views/Students/Students.jsx";
 import UserProfile from "../views/UserProfile/UserProfile.jsx";
 
+
 export const SIGN_UP = {
 	id: crypto.randomUUID(),
 	path: "/registro",

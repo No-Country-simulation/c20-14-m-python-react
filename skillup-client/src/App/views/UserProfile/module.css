@@ -1,0 +1,45 @@
+.custom-form-control {
+  border: 1px solid #d9d9d9 !important;
+  border-radius: var(--md) !important;
+  outline: transparent;
+}
+
+.custom-form-control:focus {
+  box-shadow: var(--s-sm);
+}
+
+.custom-form-control::placeholder {
+  color: #959595 !important;
+  font-size: 0.9em !important;
+}
+
+.input-wrapper{
+  position: relative;
+}
+
+.iconInput {
+  height: 3em;
+  position: absolute;
+  right: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.custom-imgProfile {
+  display: none;
+}
+
+.img-thumbnail {
+  cursor: pointer;
+  width: 300px;
+  height: 300px;
+  object-fit:scale-down;
+  border-radius: 50%;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: #333;
+}
+
