@@ -1,0 +1,44 @@
+.btn {
+	--xs: 2px; /* Extra Small */
+	--sm: 4px; /* Small */
+	--md: 8px; /* Medium */
+	--lg: 16px; /* Large */
+	--xl: 32px; /* Extra Large */
+	--xxl: 64px; /* 2x Extra Large */
+	--size-err: 20px;
+
+	position: relative;
+	border: 1px solid transparent;
+	padding: var(--sm) var(--md);
+	cursor: pointer;
+	min-width: 125px;
+	min-height: 32px;
+	border-radius: var(--md);
+	display: grid;
+	place-items: center;
+}
+
+.btn:focus {
+	outline: 2px solid var(--blue);
+}
+
+.btn__err {
+	padding-right: calc(var(--size-err) + var(--md));
+}
+
+.btn:disabled {
+	cursor: initial;
+	background-color: transparent;
+	color: gray;
+	border: 1px solid gray;
+}
+
+.primary {
+	color: whitesmoke;
+	background-color: #2c2c2c;
+}
+
+.secondary {
+	color: whitesmoke;
+	background-color: darkslateblue;
+}
