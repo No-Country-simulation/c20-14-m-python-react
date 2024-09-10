@@ -1,4 +1,3 @@
-
 import Inicio from "../views/Inicio/Inicio.jsx";
 import Login from "../views/Login/Login.jsx";
 import SignUp from "../views/SignUp/SignUp.jsx";
@@ -31,7 +30,7 @@ export const CATALOGUE = {
 	path: "/catalogue",
 	name: "catalogue",
 	element: <Catalogue />
-
+};
 export const LOGIN = {
 	id: crypto.randomUUID(),
 	path: "login",
