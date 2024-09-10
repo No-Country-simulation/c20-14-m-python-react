@@ -7,7 +7,7 @@ export const useAuth = create()(
 	devtools(
 		(set, get) => ({
 			token: null,
-			removeToken: () => {
+			logout: () => {
 				set({ token: null });
 				localStorage.removeItem("token");
 			},
@@ -37,8 +37,8 @@ export const useAuth = create()(
 					const newToken = await refreshAuthService(token);
 					updateToken(newToken);
 				} catch {
-					const { removeToken } = get();
-					removeToken();
+					const { logout } = get();
+					logout();
 				}
 			}
 		}),
