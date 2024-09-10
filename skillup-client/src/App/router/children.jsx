@@ -1,7 +1,9 @@
+
 import Inicio from "../views/Inicio/Inicio.jsx";
 import Login from "../views/Login/Login.jsx";
 import SignUp from "../views/SignUp/SignUp.jsx";
 import Students from "../views/Students/Students.jsx";
+import Catalogue from "../views/Catalogo/Catalogue.jsx";
 
 export const SIGN_UP = {
 	id: crypto.randomUUID(),
@@ -23,6 +25,12 @@ export const INICIO = {
 	name: "inicio",
 	element: <Inicio />
 };
+
+export const CATALOGUE = {
+	id: crypto.randomUUID(),
+	path: "/catalogue",
+	name: "catalogue",
+	element: <Catalogue />
 
 export const LOGIN = {
 	id: crypto.randomUUID(),

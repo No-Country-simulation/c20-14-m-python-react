@@ -8,11 +8,14 @@ const Dashboard = () => {
 	);
 
 	return (
-
 		<Container fluid className="cardContainer">
 			<Row>
 				<Col>
-					<h2 className={css.heroText_ppal}>Dashboard</h2>
+					<h2 className={css.heroText_ppal}>
+						Toda la información la tendrás en un solo lugar
+						<br />
+						Dashboard
+					</h2>
 				</Col>
 			</Row>
 			<Row className="mb-5 gap-3">
