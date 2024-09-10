@@ -27,7 +27,7 @@ class RegisterView(View):
             # ValidationError
             # except Exception
 
-        user = User.objects.create(username=email, email=email, password=password, is_active=False)
+        user = User.objects.create_user(username=email, email=email, password=password, is_active=False)
         Profile.objects.create(user=user)
 
         token = generate_jwt_token(user.id)

@@ -8,14 +8,13 @@ from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 
 
-
 def send_verification_email(request, user):
     domain = get_current_site(request).domain
     uid = urlsafe_base64_encode(force_bytes(user.pk))
     token = account_activation_token.make_token(user)
 
-    mail_subject = "Activate your user account."
-    content = f'http://{domain}/activate/{uid}/{token}'
+    mail_subject = "Activa tu cuenta"
+    content = f'Hola {user.email}, haz clic en el siguiente enlace para validar tu registro:\nhttp://{domain}/activate/{uid}/{token}'
 
     message = Mail(
         from_email=os.getenv('DEFAULT_FROM_EMAIL', '<EMAIL>'),
