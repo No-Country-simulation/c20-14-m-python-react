@@ -14,7 +14,7 @@ export const loginService = async (signal, credentials) => {
 				resolve({
 					msg: "Usuario logueado correctamente",
 					token:
-						"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJuYW1lIjoiZWwgYmljaG8iLCJlbWFpbCI6ImNyN0BnbWFpbC5jb20iLCJpYXQiOjE2MTYyMzkwMjJ9.-OvS_eU_bB8jNYQRQYpswmot39Reel_qtI8nsAq12mA"
+						"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJuYW1lIjoiZWwgYmljaG8iLCJlbWFpbCI6ImNyN0BnbWFpbC5jb20iLCJpYXQiOjE3MjU5OTYzNTl9.lszhMet23iMyCq0a8rDDT3GQQT3YA54rN1Jfn_4yS0o"
 				});
 			}
 		}, 2000);

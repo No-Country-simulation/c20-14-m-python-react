@@ -25,17 +25,16 @@ export const useAuth = create()(
 				const token = localStorage.getItem("token");
 				if (!token) return;
 
-				const infoToken = jwtDecode(token);
-				const currentTime = Math.floor(Date.now() / 1000);
-				const daysInSeconds = 3 * 24 * 60 * 60;
-				const isTimeToRefresh = currentTime - infoToken.iat > daysInSeconds;
-
-				const { updateToken } = get();
-				if (!isTimeToRefresh) return updateToken(token);
-
 				try {
-					const res = await refreshAuthService(token);
-					const newToken = res.token;
+					const infoToken = jwtDecode(token);
+					const currentTime = Math.floor(Date.now() / 1000);
+					const daysInSeconds = 3 * 24 * 60 * 60;
+					const isTimeToRefresh = currentTime - infoToken.iat > daysInSeconds;
+
+					const { updateToken } = get();
+					if (!isTimeToRefresh) return updateToken(token);
+
+					const newToken = await refreshAuthService(token);
 					updateToken(newToken);
 				} catch {
 					const { removeToken } = get();
