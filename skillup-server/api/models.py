@@ -81,7 +81,7 @@ class Course(SoftDeleteModel):
     price = models.DecimalField(max_digits=8, decimal_places=2)
     slug = models.SlugField(unique=True, blank=True, editable=False)
     instructor = models.ForeignKey('Profile', on_delete=models.DO_NOTHING, related_name='courses_taught')
-    cover_image = models.ImageField(upload_to='cover_images/', blank=True)
+    cover_image = models.URLField(max_length=200, blank=True, null=True)
 
     def __str__(self):
         return self.title

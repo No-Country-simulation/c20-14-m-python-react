@@ -1,21 +1,16 @@
 .card {
 	height: 100%;
-}
-
-
-
-.cardsize {
-    width: 100%;
-    height: 100%;
-    display: flex;
+	display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-between; /* Para distribuir el contenido de la tarjeta */
 }
 
-.cardImg {
+.cardImg2 {
     position: relative;
     overflow: hidden;
     object-fit: cover;
+	height: 200px; /* Ajusta esta altura según tus necesidades */
+    width: 100%; 
 }
 .card-img-fixed {
   height: 100%; /* Ajusta la altura según sea necesario */
@@ -40,13 +35,16 @@
 /* Estilo para la barra de progreso */
 .progress-bar-black .progress-bar{
 	background-color: black; /* Color de la barra de progreso */
+	font-weight: bold;
+	
   }
   
   /* Estilo para el porcentaje de progreso */
   .progreso-text {
-	font-size: 14px;
+	font-size: 20px;
 	text-align: right;
 	display: block;
+
   }
   
   .progreso-text span {

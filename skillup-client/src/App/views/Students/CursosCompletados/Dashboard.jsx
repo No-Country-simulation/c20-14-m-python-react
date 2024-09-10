@@ -20,7 +20,7 @@ function Dashboard() {
 					</Col>
 				</Row>
 				<Row>
-					<Col xs={12} md={6} lg={4}>
+					<Col xs={12} md={6} lg={4} xl={3}>
 						<Card className="mb-4 cardsize">
 							<Card.Body className="text-center mt-3">
 								<Card.Title>No se ha inscrito a ningún curso aún</Card.Title>
@@ -48,9 +48,9 @@ function Dashboard() {
 			</Row>
 			<Row>
 				{DataEjemplo.map((course, index) => (
-					<Col xs={12} md={6} lg={4} key={index}>
+					<Col xs={12} md={6} lg={4} xl={3} key={index}>
 						<Card className="mb-4">
-							<div className="cardImg">
+							<div className="cardImg2">
 								<Card.Img
 									variant="top"
 									src={course.imageUrl}
