@@ -7,14 +7,16 @@ import CursosDisponibles from "./CursosDisponibles";
 import imgBg from "./img/background-code.jpg";
 
 import css from "./css.module.css";
+import FormIndex from "./FormIndex";
 
 const Inicio = () => {
 	return (
 		<>
+			<FormIndex />
 			<Hero />
 			<Recomendaciones />
-			<CursosDisponibles />
 			<img className={css.center} src={imgBg} alt="imagen de fondo codigo" />
+			<CursosDisponibles />
 		</>
 	);
 };

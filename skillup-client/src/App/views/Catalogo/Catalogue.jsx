@@ -28,7 +28,7 @@ const Catalogue = () => {
 				<Form.Group controlId="search">
 					<Form.Control
 						type="text"
-						placeholder="Buscar por ID..."
+						placeholder="Buscar nombre del curso..."
 						value={searchTerm}
 						onChange={handleSearchChange}
 					/>
