@@ -23,19 +23,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'It is a secret')
+SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 # Configuración para enviar email
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'jair.rome92@gmail.com'
-EMAIL_HOST_PASSWORD = 'ulkektgxhuzwpwrr'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False
-EMAIL_BACKEND = 'backend.email.EmailBackend'
-PASSWORD_RESET_TIMEOUT = 14400
+# EMAIL_HOST = 'smtp.sendgrid.net'
+# EMAIL_HOST_USER = 'apikey'
+# EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_USE_SSL = False
+# EMAIL_BACKEND = 'backend.email.EmailBackend'
+# PASSWORD_RESET_TIMEOUT = 14400
 
 ALLOWED_HOSTS = [
     '0.0.0.0',
@@ -101,10 +102,18 @@ WSGI_APPLICATION = 'skillup.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default='postgres://postgres1234:@localhost:5432/skillup-db',
-        conn_max_age=600
-    )
+    # 'default': dj_database_url.config(
+    #     default='postgres://postgres1234:@db:5432/skillup-db',
+    #     conn_max_age=600
+    # )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'skillup-db',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres1234',
+        'HOST': 'db',
+        'PORT': '5432',
+    }
 }
 
 
