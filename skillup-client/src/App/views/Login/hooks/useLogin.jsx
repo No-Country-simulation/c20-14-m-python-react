@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { STUDENTS } from "../../../router/children.jsx";
 import { loginService } from "../service/loginService.js";
+import { useAuth } from "../../../../auth/useAuth.js";
 
 export const useLogin = () => {
 	const navegate = useNavigate();
+	const updateToken = useAuth(auth => auth.updateToken);
 	const [loading, setLoading] = useState(false);
 	const [err, setErr] = useState(false);
 	const [credentials, setCredentials] = useState(null);
@@ -15,11 +17,14 @@ export const useLogin = () => {
 		setLoading(true);
 		setErr(false);
 		loginService(controller.signal, credentials)
-			.then(() => navegate(STUDENTS.path))
+			.then(({ token }) => {
+				updateToken(token);
+				navegate(STUDENTS.path);
+			})
 			.catch(() => setErr(true))
 			.finally(() => setLoading(false));
 		return () => controller.abort();
-	}, [credentials, navegate]);
+	}, [credentials, navegate, updateToken]);
 
 	const login = credentials => setCredentials({ ...credentials });
 
