@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
+import os
 import os.path
 from pathlib import Path
 
@@ -111,6 +112,8 @@ DATABASES = {
         'NAME': 'skillup-db',
         'USER': 'postgres',
         'PASSWORD': 'postgres1234',
+        # For run locally
+        # 'HOST': '127.0.0.1',
         'HOST': 'db',
         'PORT': '5432',
     }

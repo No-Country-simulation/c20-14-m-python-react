@@ -8,6 +8,7 @@ from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 
 
+
 def send_verification_email(request, user):
     domain = get_current_site(request).domain
     uid = urlsafe_base64_encode(force_bytes(user.pk))
