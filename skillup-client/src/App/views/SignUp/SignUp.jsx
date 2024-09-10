@@ -6,16 +6,19 @@ import LinkTo from "./LinkTo/LinkTo.jsx";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signupSchema } from "./signupSchema.js";
+import { useSignUp } from "./hooks/useSignUp.jsx";
+import { LOGIN } from "../../router/children.jsx";
 
 export default function SignUp() {
+	const { signUp, loading, err } = useSignUp();
 	const {
 		register,
 		handleSubmit,
 		formState: { errors }
 	} = useForm({ resolver: zodResolver(signupSchema) });
 
-	const onSubmit = data => {
-		console.log(data);
+	const onSubmit = credentials => {
+		signUp(credentials);
 	};
 
 	return (
@@ -36,9 +39,15 @@ export default function SignUp() {
 					err={errors?.password?.message}
 				/>
 				<LinkTo to="/">¿Olvidaste tu contraseña?</LinkTo>
-				<Btn disabled={Object.keys(errors).length}>Registrarse</Btn>
+				<Btn
+					loading={loading}
+					err={err}
+					disabled={Object.keys(errors).length || loading}
+				>
+					Registrarse
+				</Btn>
 				<span className={css.login}>
-					¿Ya tiene una cuenta? <LinkTo to="/">Login</LinkTo>
+					¿Ya tiene una cuenta? <LinkTo to={LOGIN.to}>Login</LinkTo>
 				</span>
 			</form>
 		</div>

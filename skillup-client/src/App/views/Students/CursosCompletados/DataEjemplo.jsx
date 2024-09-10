@@ -16,7 +16,7 @@ const DataEjemplo = [
 		date: "",
 		certificateUrl: "null", // No se necesita URL de certificado porque el progreso es menor a 100%
 		imageUrl: sqlim,
-		progreso: 10 // Progreso parcial, no mostrará el botón de certificado
+		progreso: 60 // Progreso parcial, no mostrará el botón de certificado
 	}
 ];
 
