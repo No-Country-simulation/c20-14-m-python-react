@@ -17,11 +17,16 @@
 	border-radius: var(--md);
 	width: 320px;
 	padding: 32px 16px;
+	height: 382px;
 }
 
 .email,
 .password {
 	margin-bottom: 32px;
+}
+
+.password {
+	margin-bottom: calc(var(--sm) + 64px);
 }
 
 .form a {
