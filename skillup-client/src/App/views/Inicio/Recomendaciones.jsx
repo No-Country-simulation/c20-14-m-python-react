@@ -8,13 +8,13 @@ const Recomendaciones = () => {
 	);
 
 	return (
-		<Container fluid className="cardContainer" id="Recomendaciones">
+		<Container fluid className={css.cardContainer}>
 			<Row>
 				<Col>
 					<h2 className={css.heroText_ppal}>Recomendaciones</h2>
 				</Col>
 			</Row>
-			<Row className="mb-5 gap-3">
+			<Row className="mb-2 gap-3">
 				{recommendedCards.map((card, index) => (
 					<Col xs={12} md={6} lg={4} key={index} className={css.cardCol}>
 						<Card className="mb-4 gap-3">

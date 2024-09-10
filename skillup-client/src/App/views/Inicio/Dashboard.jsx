@@ -8,16 +8,20 @@ const Dashboard = () => {
 	);
 
 	return (
-		<Container fluid className="cardContainer" id="Dashboard">
+		<Container fluid className="cardContainer">
 			<Row>
 				<Col>
-					<h2 className={css.heroText_ppal}>Dashboard</h2>
+					<h2 className={css.heroText_ppal}>
+						Toda la información la tendrás en un solo lugar
+						<br />
+						Dashboard
+					</h2>
 				</Col>
 			</Row>
 			<Row className="mb-5 gap-3">
 				{dashboardCards.map((card, index) => (
 					<Col xs={12} md={6} lg={4} key={index} className={css.cardCol}>
-						<Card className="mb-4">
+						<Card className="mb-4 gap-3">
 							<div className="cardImg">
 								<Card.Img variant="top" src={card.image} />
 								<Badge className="cardBadge" bg="primary">

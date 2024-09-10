@@ -13,7 +13,7 @@ const CursosDisp = () => {
 	);
 
 	return (
-		<Container fluid className="cardContainer">
+		<Container fluid className="cardContainer" id="CursosDisponibles">
 			<Row>
 				<Col>
 					<h2>Cursos Disponibles</h2>
