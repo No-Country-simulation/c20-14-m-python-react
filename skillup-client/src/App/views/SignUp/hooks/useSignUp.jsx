@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { signUpService } from "../service/signUpService.js";
 import { useNavigate } from "react-router-dom";
+import { LOGIN } from "../../../router/children.jsx";
 
 export const useSignUp = () => {
 	const navegate = useNavigate();
@@ -14,7 +15,7 @@ export const useSignUp = () => {
 		setLoading(true);
 		setErr(false);
 		signUpService(controller.signal, credentials)
-			.then(() => navegate("/"))
+			.then(() => navegate(LOGIN.to))
 			.catch(() => setErr(true))
 			.finally(() => setLoading(false));
 	}, [credentials, navegate]);
