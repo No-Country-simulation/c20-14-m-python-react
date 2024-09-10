@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signupSchema } from "./signupSchema.js";
 import { useSignUp } from "./hooks/useSignUp.jsx";
+import { LOGIN } from "../../router/children.jsx";
 
 export default function SignUp() {
 	const { signUp, loading, err } = useSignUp();
@@ -46,7 +47,7 @@ export default function SignUp() {
 					Registrarse
 				</Btn>
 				<span className={css.login}>
-					¿Ya tiene una cuenta? <LinkTo to="/">Login</LinkTo>
+					¿Ya tiene una cuenta? <LinkTo to={LOGIN.to}>Login</LinkTo>
 				</span>
 			</form>
 		</div>
