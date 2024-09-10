@@ -18,6 +18,7 @@ export const useSignUp = () => {
 			.then(() => navegate(LOGIN.to))
 			.catch(() => setErr(true))
 			.finally(() => setLoading(false));
+		return () => controller.abort();
 	}, [credentials, navegate]);
 
 	const signUp = credentials => setCredentials({ ...credentials });
