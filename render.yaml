@@ -1,7 +1,7 @@
 databases:
   - name: skillup
     plan: free
-    databaseName: skillup-db
+    databaseName: skillup
     user: skillup
 
 services:
@@ -14,7 +14,7 @@ services:
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: skillup-db
+          name: skillup
           property: connectionString
       - key: SECRET_KEY
         generateValue: true

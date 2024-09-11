@@ -95,7 +95,7 @@ WSGI_APPLICATION = 'skillup.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgres://postgres1234:@db:5432/skillup-db',
+        default='postgres://postgres1234:postgres@localhost:5432/skillup',
         conn_max_age=600
     )
     # 'default': {
