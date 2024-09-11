@@ -4,21 +4,29 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	padding-top: var(--xl);
+	padding-bottom: var(--xl);
 }
 
 .form {
 	color: #1e1e1e;
 	display: grid;
 	justify-content: center;
+	gap: var(--sm);
 	border: var(--border);
 	border-radius: var(--md);
 	width: 320px;
 	padding: 32px 16px;
+	height: 382px;
 }
 
 .email,
 .password {
 	margin-bottom: 32px;
+}
+
+.password {
+	margin-bottom: calc(var(--sm) + 64px);
 }
 
 .form a {
