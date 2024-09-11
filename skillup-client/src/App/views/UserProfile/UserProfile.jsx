@@ -11,8 +11,8 @@ import {
 	Alert
 } from "react-bootstrap";
 import logoUsuario from "./img/usuario.png";
-import logoEmail from "./img/Email.svg";
 import InputText from "./InputText/InputText";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 export default function UserProfile() {
 	const [profileImage, setProfileImage] = useState(null);
@@ -23,6 +23,9 @@ export default function UserProfile() {
 	const [email, setEmail] = useState("");
 	const [personalId, setPersonalId] = useState("");
 	const [password, setPassword] = useState("");
+	const [newPassword, setNewPassword] = useState("");
+	const [confirmNewPassword, setConfirmNewPassword] = useState("");
+	const [passwordVisible, setPasswordVisible] = useState(false);
 	const [linkedin, setLinkedin] = useState("");
 	const [discord, setDiscord] = useState("");
 	const [gitHub, setGitHub] = useState("");
@@ -31,6 +34,9 @@ export default function UserProfile() {
 
 	const handleSubmit = e => {
 		e.preventDefault();
+		console.log("Contraseña actual", password);
+		console.log("Nueva contraseña", newPassword);
+		console.log("Confirmar nueva contraseña", confirmNewPassword);
 		if (profileImage) {
 			const validImageTypes = ["image/jpeg", "image/png"];
 			if (!validImageTypes.includes(profileImage.type)) {
@@ -81,6 +87,11 @@ export default function UserProfile() {
 	const handleImageClick = () => {
 		fileInputRef.current.click();
 	};
+
+	const togglePasswordVisibility = () => {
+		setPasswordVisible(!passwordVisible);
+	};
+
 	return (
 		<Container className="mt-4 p-0 h-auto">
 			<Card className="w-100  w-md-75 w-lg-50 mb-4 mx-auto">
@@ -108,7 +119,7 @@ export default function UserProfile() {
 										className="img-thumbnail mb-3 align-self-center"
 										onClick={handleImageClick}
 									/>
-									<p className="text-center">{previewName}</p>
+									<p className="text-center fw-bold">{previewName}</p>
 								</div>
 							</Col>
 							<Col md={8} className="border-start">
@@ -176,7 +187,7 @@ export default function UserProfile() {
 											</svg>
 										</span>
 										<Form.Control
-											className="custom-form-control"
+											className="custom-form-control1"
 											type="email"
 											name="email"
 											value={email}
@@ -190,48 +201,108 @@ export default function UserProfile() {
 								<Form.Label as="h5">Cambio de contraseña</Form.Label>
 								<Form.Group className="mb-3" controlId="password">
 									<Form.Label className="fw-bold p-0">Password</Form.Label>
-									<Col sm="8">
+									<Col sm="8" className="d-flex align-items-center">
 										<Form.Control
 											type="password"
 											name="password"
 											value={password}
 											placeholder="Introducir contraseña"
 											onChange={e => setPassword(e.target.value)}
-											className="custom-form-control"
+											className="custom-form-control2"
 											required
 										/>
+										<span
+											className="input-group2-text"
+											id="basic-addon1"
+											onClick={togglePasswordVisibility}
+										>
+											{passwordVisible ? (
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													width="16"
+													height="16"
+													fill="currentColor"
+													class="bi bi-eye-slash"
+													viewBox="0 0 16 16"
+												>
+													<path d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7 7 0 0 0-2.79.588l.77.771A6 6 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755q-.247.248-.517.486z" />
+													<path d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829" />
+													<path d="M3.35 5.47q-.27.24-.518.487A13 13 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7 7 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12z" />
+												</svg>
+											) : (
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													width="16"
+													height="16"
+													fill="currentColor"
+													class="bi bi-eye-fill"
+													viewBox="0 0 16 16"
+												>
+													<path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0" />
+													<path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7" />
+												</svg>
+											)}
+										</span>
 									</Col>
 								</Form.Group>
-								<Form.Group className="mb-3" controlId="password">
+								<Form.Group className="mb-3" controlId="newPassword">
 									<Form.Label className="fw-bold p-0">
 										Nueva password
 									</Form.Label>
-									<Col sm="8">
+									<Col sm="8" className="d-flex align-items-center">
 										<Form.Control
 											type="password"
-											name="password"
-											value={password}
-											placeholder="Introducir contraseña"
+											name="newPassword"
+											value={newPassword}
+											placeholder="Introducir nueva contraseña"
 											onChange={e => setPassword(e.target.value)}
-											className="custom-form-control"
+											className="custom-form-control2"
 											required
 										/>
+										<span className="input-group2-text" id="basic-addon1">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												width="16"
+												height="16"
+												fill="currentColor"
+												class="bi bi-eye-slash"
+												viewBox="0 0 16 16"
+											>
+												<path d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7 7 0 0 0-2.79.588l.77.771A6 6 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755q-.247.248-.517.486z" />
+												<path d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829" />
+												<path d="M3.35 5.47q-.27.24-.518.487A13 13 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7 7 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12z" />
+											</svg>
+										</span>
 									</Col>
 								</Form.Group>
 
-								<Form.Group className="mb-3" controlId="password">
+								<Form.Group className="mb-3" controlId="confirmNewPassword">
 									<Form.Label className="fw-bold p-0">
 										Repetir nueva password
 									</Form.Label>
-									<Col sm="8">
+									<Col sm="8" className="d-flex align-items-center">
 										<Form.Control
 											type="password"
-											name="password"
-											value={password}
+											name="confirmPassword"
+											value={confirmNewPassword}
 											placeholder="Introducir nueva contraseña de nuevo"
-											className="custom-form-control"
+											className="custom-form-control2"
 											required
 										/>
+										<span className="input-group2-text" id="basic-addon1">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												width="16"
+												height="16"
+												fill="currentColor"
+												class="bi bi-eye-slash"
+												viewBox="0 0 16 16"
+											>
+												<path d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7 7 0 0 0-2.79.588l.77.771A6 6 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755q-.247.248-.517.486z" />
+												<path d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829" />
+												<path d="M3.35 5.47q-.27.24-.518.487A13 13 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7 7 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12z" />
+											</svg>
+										</span>
 									</Col>
 								</Form.Group>
 								<hr />
@@ -259,7 +330,7 @@ export default function UserProfile() {
 											value={discord}
 											placeholder="juanperez"
 											onChange={e => setDiscord(e.target.value)}
-											className="custom-form-control"
+											className="custom-form-control1"
 											required
 										/>
 									</Col>
@@ -286,7 +357,7 @@ export default function UserProfile() {
 											value={gitHub}
 											placeholder="https://www.linkedin.com/in/ejemplo"
 											onChange={e => setLinkedin(e.target.value)}
-											className="custom-form-control"
+											className="custom-form-control1"
 											required
 										/>
 									</Col>
@@ -312,7 +383,7 @@ export default function UserProfile() {
 											value={linkedin}
 											placeholder="https://github.com/ejemplo"
 											onChange={e => setGitHub(e.target.value)}
-											className="custom-form-control"
+											className="custom-form-control1"
 											required
 										/>
 									</Col>
