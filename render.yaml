@@ -1,8 +1,8 @@
 databases:
-  - name: db
+  - name: skillup
     plan: free
     databaseName: skillup-db
-    user: postgres
+    user: skillup
 
 services:
   - type: web
