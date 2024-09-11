@@ -65,6 +65,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
+
 CORS_ALLOW_ALL_ORIGINS = True
 
 ROOT_URLCONF = 'skillup.urls'
@@ -159,6 +161,16 @@ if not DEBUG:
     # Enable the WhiteNoise storage backend, which compresses static files to reduce disk use
     # and renames the files with unique names for each version to support long-term caching
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+    # Configuraciones de seguridad
+    SECURE_SSL_REDIRECT = True  # Redirige automáticamente todas las solicitudes HTTP a HTTPS
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO',
+                               'https')  # Necesario para que Django detecte correctamente HTTPS detrás de proxies (como Render)
+    SECURE_HSTS_SECONDS = 31536000  # Habilita HSTS (Strict-Transport-Security), 1 año
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+    SESSION_COOKIE_SECURE = True  # Solo envía cookies de sesión a través de HTTPS
+    CSRF_COOKIE_SECURE = True  # Solo envía cookies CSRF a través de HTTPS
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
