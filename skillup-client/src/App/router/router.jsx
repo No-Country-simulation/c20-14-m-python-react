@@ -11,6 +11,6 @@ export const router = createBrowserRouter([
 		path: "/",
 		element: <App />,
 		errorElement: <NotFound404 />,
-		children: [SIGN_UP, STUDENTS, INICIO, CATALOGUE]
+		
 	}
 ]);
