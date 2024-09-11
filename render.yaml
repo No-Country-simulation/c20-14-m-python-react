@@ -9,7 +9,7 @@ services:
     plan: free
     name: skillup
     runtime: python
-    buildCommand: "./skillup-server/build.sh"
+    buildCommand: "./build.sh"
     startCommand: "python -m gunicorn skillup.asgi:application -k uvicorn.workers.UvicornWorker"
     envVars:
       - key: DATABASE_URL
