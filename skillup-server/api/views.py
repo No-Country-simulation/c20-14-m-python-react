@@ -64,7 +64,6 @@ class UserActivationView(View):
 class LoginView(View):
     def post(self, request):
         data = json.loads(request.body)
-        print(data)
         email = data.get('email')
         password = data.get('password')
 
@@ -79,15 +78,6 @@ class LoginView(View):
             return JsonResponse({'error': 'Credenciales Invalidas'}, status=400)
 
 
-
-
-
-
-
-
-# VISTA PROTEGIDA
-
-# class HomeView(JWTAuthenticationMixin, View):
-#     def get(self, request):
-#         return JsonResponse({'Message': 'Hello world'}, status=200)
-
+class HomeView(JWTAuthenticationMixin, View):
+    def get(self, request):
+        return JsonResponse({'home': 'home'}, status=200)
