@@ -14,7 +14,7 @@ const CursosDisponibles = () => {
 	);
 
 	return (
-		<Container fluid className="cardContainer">
+		<Container fluid className={css.cardContainer} id="CursosDisponibles">
 			<Row>
 				<Col>
 					<h2 className={css.heroText_ppal}>Cursos Disponibles</h2>

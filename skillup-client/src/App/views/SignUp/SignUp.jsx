@@ -38,7 +38,7 @@ export default function SignUp() {
 					{...register("password")}
 					err={errors?.password?.message}
 				/>
-				<LinkTo to="/">¿Olvidaste tu contraseña?</LinkTo>
+
 				<Btn
 					loading={loading}
 					err={err}
