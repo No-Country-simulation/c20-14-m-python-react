@@ -1,8 +1,9 @@
 import json
 
+from django.contrib.auth import authenticate
+
 from .models import Profile
 from .utils.verification import validate_token, send_verification_email
-
 from django.http import JsonResponse
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
@@ -11,23 +12,13 @@ from django.views import View
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
 from django.contrib.auth.password_validation import validate_password
-from django.db import IntegrityError, transaction
-
 from api.jwt_auth_utils.auth import generate_jwt_token
 from api.jwt_auth_utils.mixins import JWTAuthenticationMixin
-
-
-
-
-
-
-
 
 
 @method_decorator(csrf_exempt, name='dispatch')
 class RegisterView(View):
     def post(self, request):
-        
         try:
             # Intentar cargar el cuerpo de la solicitud como JSON
             data = json.loads(request.body)
@@ -67,6 +58,31 @@ class UserActivationView(View):
             return JsonResponse({'status': 200})
         else:
             return JsonResponse({'status': 400})
+
+
+@method_decorator(csrf_exempt, name='dispatch')
+class LoginView(View):
+    def post(self, request):
+        data = json.loads(request.body)
+        print(data)
+        email = data.get('email')
+        password = data.get('password')
+
+        # User authentication
+        user = authenticate(request, username=email, password=password)
+
+        if user is not None:
+            token = generate_jwt_token(user.id)
+            return JsonResponse({'user_id': user.id, 'token': token}, status=200)
+
+        else:
+            return JsonResponse({'error': 'Credenciales Invalidas'}, status=400)
+
+
+
+
+
+
 
 
 # VISTA PROTEGIDA
