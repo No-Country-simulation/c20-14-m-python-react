@@ -1,353 +1,71 @@
 import { Navbar, Nav, Container } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
-import logo3 from "./logo3.png";
+import logo3 from "./Logo3.svg";
 import "./NavBar.css";
-import { Link, useLocation } from "react-router-dom";
-import {
-	ABOUT,
-	CATALOGUE,
-	INICIO,
-	SIGN_UP,
-	USER_PROFILE
-} from "../../App/router/children";
-import { FaUserCircle } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { INICIO, SIGN_UP } from "../../App/router/children";
 
 function NavBar() {
-	//Acerca de Nosotros
-	const { pathname } = useLocation();
-	if (pathname === "/about") {
-		return (
-			<Navbar
-				className="custom-navbar  border-bottom"
-				bg="light"
-				variant="light"
-				expand="lg"
-			>
-				<Container>
-					<Navbar.Brand
-						as={Link}
-						to={INICIO.path}
-						className="d-flex align-items-center"
-					>
-						<img
-							src={logo3}
-							width="100"
-							height="100"
-							className="d-inline-block align-top"
-							alt="logo"
-						/>
-						<span className="ms-2 fs-4 fw-bold">{`<Skill Up>`}</span>{" "}
-					</Navbar.Brand>
-					<Navbar.Toggle aria-controls="basic-navbar-nav" />
-					<Navbar.Collapse id="basic-navbar-nav">
-						<Nav className="mx-auto"></Nav>
-						<Nav className="ms-auto">
-							<Nav.Link href="#CursosDisponibles">
-								<Button variant="light" size="md">
-									Cursos Disponibles
-								</Button>
-							</Nav.Link>
-							<Nav.Link href="#Contact">
-								<Button variant="light" size="md">
-									Contacto
-								</Button>
-							</Nav.Link>
-						</Nav>
-					</Navbar.Collapse>
-				</Container>
-			</Navbar>
-		);
-	}
-	if (pathname === "/perfil") {
-		return (
-			<Navbar
-				className="custom-navbar  border-bottom"
-				bg="light"
-				variant="light"
-				expand="lg"
-			>
-				<Container>
-					<Navbar.Brand
-						as={Link}
-						to={INICIO.path}
-						className="d-flex align-items-center"
-					>
-						<img
-							src={logo3}
-							width="100"
-							height="100"
-							className="d-inline-block align-top"
-							alt="logo"
-						/>
-						<span className="ms-2 fs-4 fw-bold">{`<Skill Up>`}</span>{" "}
-					</Navbar.Brand>
-					<Navbar.Toggle aria-controls="basic-navbar-nav" />
-					<Navbar.Collapse id="basic-navbar-nav">
-						<Nav className="mx-auto"></Nav>
-						<Nav className="ms-auto">
-							{/* <Nav.Link href="#Recomendaciones">
-								<Button variant="light" size="md">
-									Recomendaciones
-								</Button>
-							</Nav.Link> */}
-							<Nav.Link href="#CursosDisponibles">
-								<Button variant="light" size="md">
-									Cursos Disponibles
-								</Button>
-							</Nav.Link>
-							<Nav.Link href="#Dashboard">
-								<Button variant="light" size="md">
-									Dashboard
-								</Button>
-							</Nav.Link>
-							<Nav.Link href="#Certificados">
-								<Button variant="light" size="md">
-									Certificados
-								</Button>
-							</Nav.Link>
-							<Nav.Link href="#Favoritos">
-								<Button variant="light" size="md">
-									Favoritos
-								</Button>
-							</Nav.Link>
-							<Nav.Link as={Link} to={USER_PROFILE.path}>
-								<Button
-									variant="light"
-									size="md"
-									className="d-flex align-items-center"
-								>
-									<FaUserCircle size={24} />
-									<span className="ms-2">Perfil Estudiante</span>
-								</Button>
-							</Nav.Link>
-						</Nav>
-					</Navbar.Collapse>
-				</Container>
-			</Navbar>
-		);
-	}
-
-	if (pathname === "/estudiantes") {
-		return (
-			<Navbar
-				className="custom-navbar  border-bottom"
-				bg="light"
-				variant="light"
-				expand="lg"
-			>
-				<Container>
-					<Navbar.Brand
-						as={Link}
-						to={INICIO.path}
-						className="d-flex align-items-center"
-					>
-						<img
-							src={logo3}
-							width="100"
-							height="100"
-							className="d-inline-block align-top"
-							alt="logo"
-						/>
-						<span className="ms-2 fs-4 fw-bold">{`<Skill Up>`}</span>{" "}
-					</Navbar.Brand>
-					<Navbar.Toggle aria-controls="basic-navbar-nav" />
-					<Navbar.Collapse id="basic-navbar-nav">
-						<Nav className="mx-auto"></Nav>
-						<Nav className="ms-auto">
-							<Nav.Link href="#Recomendaciones">
-								<Button variant="light" size="md">
-									Recomendaciones
-								</Button>
-							</Nav.Link>
-
-							<Nav.Link href="#Dashboard">
-								<Button variant="light" size="md">
-									Dashboard
-								</Button>
-							</Nav.Link>
-							<Nav.Link href="#Certificados">
-								<Button variant="light" size="md">
-									Certificados
-								</Button>
-							</Nav.Link>
-							<Nav.Link href="#Favoritos">
-								<Button variant="light" size="md">
-									Favoritos
-								</Button>
-							</Nav.Link>
-							<Nav.Link href="#Contact">
-								<Button variant="light" size="md">
-									Contacto
-								</Button>
-							</Nav.Link>
-							<Nav.Link as={Link} to={USER_PROFILE.path}>
-								<Button
-									variant="light"
-									size="md"
-									className="d-flex align-items-center"
-								>
-									<FaUserCircle size={24} />
-									<span className="ms-2">Perfil Estudiante</span>
-								</Button>
-							</Nav.Link>
-						</Nav>
-					</Navbar.Collapse>
-				</Container>
-			</Navbar>
-		);
-	}
-	if (pathname === "/login") {
-		return (
-			<Navbar
-				className="custom-navbar  border-bottom"
-				bg="light"
-				variant="light"
-				expand="lg"
-			>
-				<Container>
-					<Navbar.Brand
-						as={Link}
-						to={INICIO.path}
-						className="d-flex align-items-center"
-					>
-						<img
-							src={logo3}
-							width="100"
-							height="100"
-							className="d-inline-block align-top"
-							alt="logo"
-						/>
-						<span className="ms-2 fs-4 fw-bold">{`<Skill Up>`}</span>{" "}
-					</Navbar.Brand>
-					<Navbar.Toggle aria-controls="basic-navbar-nav" />
-					<Navbar.Collapse id="basic-navbar-nav">
-						<Nav className="mx-auto"></Nav>
-						<Nav className="ms-auto">
-							<Nav.Link href="#CursosDisponibles">
-								<Button variant="light" size="md">
-									Cursos Disponibles
-								</Button>
-							</Nav.Link>
-							<Nav.Link href="#Contact">
-								<Button variant="light" size="md">
-									Contacto
-								</Button>
-							</Nav.Link>
-						</Nav>
-					</Navbar.Collapse>
-				</Container>
-			</Navbar>
-		);
-	}
-
-	if (pathname === "/registro") {
-		return (
-			<Navbar
-				className="custom-navbar  border-bottom"
-				bg="light"
-				variant="light"
-				expand="lg"
-			>
-				<Container>
-					<Navbar.Brand
-						as={Link}
-						to={INICIO.path}
-						className="d-flex align-items-center"
-					>
-						<img
-							src={logo3}
-							width="100"
-							height="100"
-							className="d-inline-block align-top"
-							alt="logo"
-						/>
-						<span className="ms-2 fs-4 fw-bold">{`<Skill Up>`}</span>{" "}
-					</Navbar.Brand>
-					<Navbar.Toggle aria-controls="basic-navbar-nav" />
-					<Navbar.Collapse id="basic-navbar-nav">
-						<Nav className="mx-auto"></Nav>
-						<Nav className="ms-auto">
-							<Nav.Link href="#CursosDisponibles">
-								<Button variant="light" size="md">
-									Cursos Disponibles
-								</Button>
-							</Nav.Link>
-							<Nav.Link href="#Contact">
-								<Button variant="light" size="md">
-									Contacto
-								</Button>
-							</Nav.Link>
-						</Nav>
-					</Navbar.Collapse>
-				</Container>
-			</Navbar>
-		);
-	}
-	//inicio
 	return (
-		<Navbar
-			className="custom-navbar border-bottom"
-			bg="light"
-			variant="light"
-			expand="lg"
-		>
+		<Navbar bg="light" variant="ligth" expand="lg">
 			<Container>
-				<Navbar.Brand
-					as={Link}
-					to={INICIO.path}
-					className="d-flex align-items-center"
-				>
-					<img
-						src={logo3}
-						width="100"
-						height="100"
-						className="d-inline-block align-top"
-						alt="logo"
-					/>
-					<span className="ms-2 fs-4 fw-bold">{`<Skill Up>`}</span>{" "}
-					{/* Texto al lado del logo */}
+				<Navbar.Brand href="#home">
+					<Link to={INICIO}>
+						<img
+							src={logo3}
+							width="100"
+							height="100"
+							className="d-inline-block align-top"
+							alt="logo"
+						/>
+					</Link>
 				</Navbar.Brand>
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse id="basic-navbar-nav">
+					<Nav className="mx-auto"></Nav>
 					<Nav className="ms-auto">
-						<Nav.Link href="#Somos" as={Link} to={ABOUT.path}>
-							<Button variant="light" size="md">
-								Acerca de nosotros
-							</Button>
-						</Nav.Link>
 						<Nav.Link href="#Recomendaciones">
 							<Button variant="light" size="md">
 								Recomendaciones
 							</Button>
 						</Nav.Link>
-
-						<Nav.Link href="#CursosDisponibles" as={Link} to={CATALOGUE.path}>
+						<Nav.Link href="#CursosDisponibles">
 							<Button variant="light" size="md">
 								Cursos Disponibles
 							</Button>
 						</Nav.Link>
-						<Nav.Link href="#Contact">
+						<Nav.Link href="#Dashboard">
 							<Button variant="light" size="md">
-								Contacto
+								Dashboard
 							</Button>
 						</Nav.Link>
-						<div className="d-flex ms-3 align-items-center">
-							<Nav.Link href="#Sign_In" className="p-0">
-								<Button
-									variant="secondary"
-									size="md"
-									className="me-2 p-1 rounded-lg"
-								>
-									Sign In
+						<Nav.Link href="#Certificados">
+							<Button variant="light" size="md">
+								Certificados
+							</Button>
+						</Nav.Link>
+						<Nav.Link href="#Favoritos">
+							<Button variant="light" size="md">
+								Favoritos
+							</Button>
+						</Nav.Link>
+						<Nav.Link href="#Contact">
+							<Button variant="light" size="md" className="me-2">
+								Contact
+							</Button>
+						</Nav.Link>
+						<Nav.Link href="#Sign_In">
+							<Button variant="secondary" size="md">
+								Sign In
+							</Button>
+						</Nav.Link>
+						<Nav.Link href="#Register">
+							<Link to={SIGN_UP}>
+								<Button variant="dark" size="md">
+									Register
 								</Button>
-							</Nav.Link>
-							{/* SignUp == vista registro */}
-							<Nav.Link as={Link} to={SIGN_UP.path} className="p-0">
-								<Button variant="dark" size="md" className="me-2 p-1">
-									Registro
-								</Button>
-							</Nav.Link>
-						</div>
+							</Link>
+						</Nav.Link>
 					</Nav>
 				</Navbar.Collapse>
 			</Container>
