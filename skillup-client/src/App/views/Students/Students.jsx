@@ -5,11 +5,14 @@ import Recomendaciones from "./Recomendaciones";
 // import CursosDisponibles from "./CursosDisp";
 // import imgBg from "./img/background-code.jpg";
 import Dashboard from "./CursosCompletados/Dashboard";
+import Contact from "../../../components/Contacto/Contacto";
+
 function Students() {
 	return (
 		<>
 			<Recomendaciones />
 			<Dashboard />
+			<Contact />
 		</>
 	);
 }

@@ -3,7 +3,13 @@ import Button from "react-bootstrap/Button";
 import logo3 from "./logo3.png";
 import "./NavBar.css";
 import { Link, useLocation } from "react-router-dom";
-import { ABOUT, CATALOGUE, INICIO, SIGN_UP } from "../../App/router/children";
+import {
+	ABOUT,
+	CATALOGUE,
+	INICIO,
+	SIGN_UP,
+	USER_PROFILE
+} from "../../App/router/children";
 import { FaUserCircle } from "react-icons/fa";
 
 function NavBar() {
@@ -30,7 +36,7 @@ function NavBar() {
 							className="d-inline-block align-top"
 							alt="logo"
 						/>
-						<span className="ms-2 fs-4 fw-bold">{`<Skill Up!>`}</span>{" "}
+						<span className="ms-2 fs-4 fw-bold">{`<Skill Up>`}</span>{" "}
 					</Navbar.Brand>
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />
 					<Navbar.Collapse id="basic-navbar-nav">
@@ -73,7 +79,7 @@ function NavBar() {
 							className="d-inline-block align-top"
 							alt="logo"
 						/>
-						<span className="ms-2 fs-4 fw-bold">{`<Skill Up!>`}</span>{" "}
+						<span className="ms-2 fs-4 fw-bold">{`<Skill Up>`}</span>{" "}
 					</Navbar.Brand>
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />
 					<Navbar.Collapse id="basic-navbar-nav">
@@ -104,8 +110,15 @@ function NavBar() {
 									Favoritos
 								</Button>
 							</Nav.Link>
-							<Nav.Link>
-								<FaUserCircle size={34} className="me-2" />
+							<Nav.Link as={Link} to={USER_PROFILE.path}>
+								<Button
+									variant="light"
+									size="md"
+									className="d-flex align-items-center"
+								>
+									<FaUserCircle size={24} />
+									<span className="ms-2">Perfil Estudiante</span>
+								</Button>
 							</Nav.Link>
 						</Nav>
 					</Navbar.Collapse>
@@ -135,7 +148,7 @@ function NavBar() {
 							className="d-inline-block align-top"
 							alt="logo"
 						/>
-						<span className="ms-2 fs-4 fw-bold">{`<Skill Up!>`}</span>{" "}
+						<span className="ms-2 fs-4 fw-bold">{`<Skill Up>`}</span>{" "}
 					</Navbar.Brand>
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />
 					<Navbar.Collapse id="basic-navbar-nav">
@@ -146,11 +159,7 @@ function NavBar() {
 									Recomendaciones
 								</Button>
 							</Nav.Link>
-							<Nav.Link href="#CursosDisponibles">
-								<Button variant="light" size="md">
-									Cursos Disponibles
-								</Button>
-							</Nav.Link>
+
 							<Nav.Link href="#Dashboard">
 								<Button variant="light" size="md">
 									Dashboard
@@ -166,8 +175,20 @@ function NavBar() {
 									Favoritos
 								</Button>
 							</Nav.Link>
-							<Nav.Link>
-								<FaUserCircle size={34} className="me-2" />
+							<Nav.Link href="#Contact">
+								<Button variant="light" size="md">
+									Contacto
+								</Button>
+							</Nav.Link>
+							<Nav.Link as={Link} to={USER_PROFILE.path}>
+								<Button
+									variant="light"
+									size="md"
+									className="d-flex align-items-center"
+								>
+									<FaUserCircle size={24} />
+									<span className="ms-2">Perfil Estudiante</span>
+								</Button>
 							</Nav.Link>
 						</Nav>
 					</Navbar.Collapse>
@@ -196,7 +217,7 @@ function NavBar() {
 							className="d-inline-block align-top"
 							alt="logo"
 						/>
-						<span className="ms-2 fs-4 fw-bold">{`<Skill Up!>`}</span>{" "}
+						<span className="ms-2 fs-4 fw-bold">{`<Skill Up>`}</span>{" "}
 					</Navbar.Brand>
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />
 					<Navbar.Collapse id="basic-navbar-nav">
@@ -240,7 +261,7 @@ function NavBar() {
 							className="d-inline-block align-top"
 							alt="logo"
 						/>
-						<span className="ms-2 fs-4 fw-bold">{`<Skill Up!>`}</span>{" "}
+						<span className="ms-2 fs-4 fw-bold">{`<Skill Up>`}</span>{" "}
 					</Navbar.Brand>
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />
 					<Navbar.Collapse id="basic-navbar-nav">
@@ -283,7 +304,7 @@ function NavBar() {
 						className="d-inline-block align-top"
 						alt="logo"
 					/>
-					<span className="ms-2 fs-4 fw-bold">{`<Skill Up!>`}</span>{" "}
+					<span className="ms-2 fs-4 fw-bold">{`<Skill Up>`}</span>{" "}
 					{/* Texto al lado del logo */}
 				</Navbar.Brand>
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
