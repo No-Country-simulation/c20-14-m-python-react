@@ -10,11 +10,15 @@ import json
 
 
 # Generar el token JWT
-def generate_jwt_token(user_id):
+def generate_jwt_token(user):
     payload = {
-        'user_id': user_id,
+        'user_id': user.id,
+        'first_name': user.first_name,
+        'last_name': user.last_name,
+        'role': user.profile.role,
         'exp': datetime.utcnow() + timedelta(days=1),  # Expiración del token (1 día)
-        'iat': datetime.utcnow()  # Tiempo de emisión
+        'iat': datetime.utcnow(),  # Tiempo de emisión
+
     }
     token = jwt.encode(payload, settings.SECRET_KEY, algorithm='HS256')
     return token

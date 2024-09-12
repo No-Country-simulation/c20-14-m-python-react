@@ -1,15 +1,17 @@
 import json
 
+import jwt
 from django.contrib.auth import authenticate
 
-from .models import Profile
+from skillup import settings
+from .models import Profile, Enrollment, Course
 from .utils.verification import validate_token, send_verification_email
 from django.http import JsonResponse
 from django.utils.decorators import method_decorator
-from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_exempt, csrf_protect
 from django.contrib.auth.models import User
 from django.views import View
-from django.core.exceptions import ValidationError
+from django.core.exceptions import ValidationError, ObjectDoesNotExist
 from django.core.validators import validate_email
 from django.contrib.auth.password_validation import validate_password
 from api.jwt_auth_utils.auth import generate_jwt_token
@@ -71,13 +73,56 @@ class LoginView(View):
         user = authenticate(request, username=email, password=password)
 
         if user is not None:
-            token = generate_jwt_token(user.id)
+            token = generate_jwt_token(user)
             return JsonResponse({'user_id': user.id, 'token': token}, status=200)
 
         else:
             return JsonResponse({'error': 'Credenciales Invalidas'}, status=400)
 
 
-class HomeView(JWTAuthenticationMixin, View):
+class UserCoursesView(JWTAuthenticationMixin, View):
+    def get(self, request, pk):
+        enrollments = Enrollment.objects.filter(user_id=pk)
+
+        user_courses = []
+        for enrollment in enrollments:
+            course = enrollment.course
+            user_courses.append(course.as_dict())
+
+        return JsonResponse({'enrollments': user_courses}, status=200)
+
+
+class AllCoursesView(JWTAuthenticationMixin, View):
     def get(self, request):
-        return JsonResponse({'home': 'home'}, status=200)
+        courses = Course.objects.all()
+        courses_list = []
+
+        for course in courses:
+            courses_list.append(course.as_dict())
+
+        return JsonResponse({'message': 'success', 'courses': courses_list}, status=200)
+
+
+@method_decorator(csrf_exempt, name='dispatch')
+class ProfileView(JWTAuthenticationMixin, View):
+    def get(self, request, pk):
+        user_id = User.objects.get(pk=pk)
+        profile = Profile.objects.get(user_id=user_id)
+        return JsonResponse(profile.as_dict(), status=200)
+
+
+    def post(self, request, pk):
+        try:
+            profile = Profile.objects.get(user_id=pk)
+            data = json.loads(request.body)
+            print(data.items())
+
+            for key, value in data.items():
+                if hasattr(profile.user, key):
+                    setattr(profile.user, key, value)
+            profile.user.save()
+
+            return JsonResponse(profile.as_dict(), status=200)
+
+        except ObjectDoesNotExist:
+            return JsonResponse({'error': 'Perfil no encontrado'}, status=400)

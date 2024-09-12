@@ -16,7 +16,7 @@ class SoftDeleteModel(models.Model):
     is_deleted = models.BooleanField(default=False)
     objects = SoftDeleteManager()
     all_objects = models.Manager()
-    deleted_at = models.DateTimeField(null=True, default=None)
+    deleted_at = models.DateTimeField(null=True, default=None, blank=True)
 
     def soft_delete(self):
         self.deleted_at = timezone.now()
@@ -44,16 +44,20 @@ class Profile(SoftDeleteModel):
     user = models.OneToOneField(User, on_delete=models.DO_NOTHING, related_name='profile')
     profile_picture = models.ImageField(upload_to='profile_pictures/', blank=True)
     role = models.CharField(max_length=50, choices=PROFILE_ROLE_CHOICES, default=STUDENT)
+    social_networks_links = models.JSONField(default=dict, blank=True)
 
     def __str__(self):
         return f'{self.user.username} - {self.role}'
 
     def as_dict(self):
         return {
-            'id': self.id,
+            'profile_id': self.id,
             'user_id': self.user_id,
-            'profile_picture': self.profile_picture,
+            'first_name': self.user.first_name,
+            'last_name': self.user.last_name,
+            'profile_picture': self.profile_picture.url if self.profile_picture else None,
             'role': self.role,
+            'social_networks_links': self.social_networks_links,
         }
 
 
@@ -118,6 +122,7 @@ class Module(SoftDeleteModel):
     title = models.CharField(max_length=50, null=False, blank=False)
     order = models.PositiveIntegerField()
     video_url = models.URLField()
+    course = models.ForeignKey('Course', on_delete=models.DO_NOTHING, related_name='modules', null=True)
 
     def __str__(self):
         return self.title
