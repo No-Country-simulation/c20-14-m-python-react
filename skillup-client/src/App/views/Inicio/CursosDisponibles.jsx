@@ -10,27 +10,26 @@ const CursosDisponibles = () => {
 			card.id === 5 ||
 			card.id === 3 ||
 			card.id === 8 ||
-			card.id == 6
+			card.id == 9
 	);
 
 	return (
-		<Container fluid className="cardContainer" id="CursosDisponibles">
+		<Container fluid className={css.cardContainer} id="CursosDisponibles">
 			<Row>
 				<Col>
 					<h2 className={css.heroText_ppal}>Cursos Disponibles</h2>
 				</Col>
 			</Row>
-			<Row className="mb-5 gap-3">
+			<Row className={`mb-5 gap-3 ${css.adjustRow}`}>
 				{cursosCards.map((card, index) => (
 					<Col xs={12} md={6} lg={4} key={index} className={css.cardCol}>
-						<Card className="mb-4">
-							<div>
+						<Card className="mb-4 gap-3">
+							<div className="cardImg">
 								<Card.Img variant="top" src={card.image} />
 								<Badge className="cardBadge" bg="primary">
 									{card.hours} horas
 								</Badge>
 							</div>
-
 							<Card.Body>
 								<Card.Title>{card.course}</Card.Title>
 								<Card.Text>{card.title}</Card.Text>

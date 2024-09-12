@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { Container, Row, Col } from "react-bootstrap";
 import css from "./css.module.css";
 
@@ -12,15 +11,15 @@ const Hero = () => {
 	return (
 		<>
 			<Container fluid>
-				<Row>
-					<Col className={css.heroText} xs={12} md={6} lg={6}>
+				<Row className={css.flexColumn_desktop}>
+					<Col className={css.heroText} xs={12} md={6} lg={4}>
 						<h1 className={css.heroText_ppal}>
-							Encontra
+							Encuentra
 							<span className={css.greenText}> cursos y carreras </span>
 							de
-							<span className={css.pinkText}> alta especializacion </span>
+							<span className={css.pinkText}> alta especialización </span>
 							con
-							<span className={css.violetText}> practicas reales</span>
+							<span className={css.violetText}> prácticas reales</span>
 						</h1>
 					</Col>
 
@@ -32,26 +31,33 @@ const Hero = () => {
 
 						<p className={css.gridElement}>
 							5500 <br />
-							HORAS{" "}
+							HORAS
 						</p>
 
-						<p className={css.gridElement}>3000 ALUMNOS</p>
-
-						<img
-							className={css.gridElement}
-							src={studentPc}
-							alt="dos alumnos frente a laptops"
-						/>
-						<img
-							className={css.gridElement}
-							src={studentGrid}
-							alt="mujer joven sonriendo"
-						/>
-						<img
-							className={css.gridElement}
-							src={teacherGrid}
-							alt="imagen de aquiles gonzales profesor"
-						/>
+						<p className={css.gridElement}>
+							3000 <br /> ALUMNOS
+						</p>
+						<div className={`${css.imageContainer} ${css.gridElement}`}>
+							<img
+								className={css.imgGrid}
+								src={studentPc}
+								alt="dos alumnos frente a laptops"
+							/>
+						</div>
+						<div className={`${css.imageContainer} ${css.gridElement}`}>
+							<img
+								className={css.imgGrid}
+								src={studentGrid}
+								alt="mujer joven sonriendo"
+							/>
+						</div>
+						<div className={`${css.imageContainer} ${css.gridElement}`}>
+							<img
+								className={css.imgGrid}
+								src={teacherGrid}
+								alt="imagen de aquiles gonzales profesor"
+							/>
+						</div>
 					</Col>
 				</Row>
 			</Container>

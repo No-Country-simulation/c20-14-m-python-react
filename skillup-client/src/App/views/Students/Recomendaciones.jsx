@@ -8,7 +8,7 @@ const Recomendaciones = () => {
 	);
 
 	return (
-		<Container fluid className="cardContainer">
+		<Container fluid className="cardContainer" id="Recomendaciones">
 			<Row>
 				<Col>
 					<h2>Recomendaciones</h2>
