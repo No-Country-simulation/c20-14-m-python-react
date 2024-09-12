@@ -5,6 +5,7 @@ import Students from "../views/Students/Students.jsx";
 import UserProfile from "../views/UserProfile/UserProfile.jsx";
 import Catalogue from "../views/Catalogo/Catalogue.jsx";
 import RouteProtector from "./RouterProtector.jsx";
+import About from "../views/About/About.jsx";
 
 export const SIGN_UP = {
 	id: crypto.randomUUID(),
@@ -52,4 +53,10 @@ export const LOGIN = {
 	name: "Login",
 	element: <Login />
 };
-
+export const ABOUT = {
+	id: crypto.randomUUID(),
+	path: "about",
+	to: "/about",
+	name: "About",
+	element: <About />
+};
