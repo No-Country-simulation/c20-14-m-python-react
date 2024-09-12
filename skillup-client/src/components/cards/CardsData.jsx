@@ -20,7 +20,7 @@ const CardsData = [
 		title: "Domina JavaScript, el lenguaje de programación más popular en web.",
 		description:
 			"Aprende JavaScript desde cero y domina las bases de la programación web. ",
-		cost: "$163.00",
+		cost: "$173.00",
 		hours: 50
 	},
 	{
@@ -30,7 +30,7 @@ const CardsData = [
 		title: "Domina Next.js: Construcción de Aplicaciones Web",
 		description:
 			"Aprende a crear aplicaciones web rápidas y eficientes con Next.js, aprovechando su potente renderizado y optimización.",
-		cost: "$163.00",
+		cost: "$120.00",
 		hours: 60
 	},
 
@@ -41,7 +41,7 @@ const CardsData = [
 		title: "Aprende a administrar bases de datos con SQL.",
 		description:
 			"Domina SQL para gestionar y analizar datos de manera efectiva en cualquier base de datos.",
-		cost: "$163.00",
+		cost: "$150.00",
 		hours: 45
 	},
 	{
@@ -51,7 +51,7 @@ const CardsData = [
 		title: "Aprende a usar C++.",
 		description:
 			"Descubre los fundamentos de C++ y desarrolla habilidades para crear aplicaciones eficientes y de alto rendimiento.",
-		cost: "$260.00",
+		cost: "$200.00",
 		hours: 50
 	},
 
@@ -62,7 +62,7 @@ const CardsData = [
 		title: "Domina Django: Desarrollo Web Rápido",
 		description:
 			"Aprende a construir aplicaciones web robustas y escalables con Django, el potente framework de Python.",
-		cost: "$200.00",
+		cost: "$300.00",
 		hours: 90
 	},
 	{
@@ -73,7 +73,7 @@ const CardsData = [
 		description:
 			"Domina Docker para crear, desplegar y gestionar aplicaciones en contenedores de manera eficiente y escalable.",
 		cost: "$200.00",
-		hours: 100
+		hours: 50
 	},
 
 	{
@@ -93,6 +93,16 @@ const CardsData = [
 		title: "Domina TypeScript: Programación Segura y Eficiente",
 		description:
 			"Aprende TypeScript para mejorar tus habilidades en JavaScript, creando aplicaciones más seguras y mantenibles.",
+		cost: "$120.00",
+		hours: 60
+	},
+	{
+		id: 10,
+		image: CardsImg.java,
+		course: "JAVA",
+		title: "Java Moderno: Domina el Futuro",
+		description:
+			"Conviértete en un experto en Java con los recursos más recientes. Aprende a crear aplicaciones funcionales y mejora tus competencias en programación de manera efectiva",
 		cost: "$120.00",
 		hours: 60
 	}

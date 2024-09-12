@@ -4,7 +4,7 @@ import css from "./css.module.css";
 
 const Recomendaciones = () => {
 	const recommendedCards = CardsData.filter(
-		card => card.id === 1 || card.id === 2 || card.id === 5
+		card => card.id === 1 || card.id === 10 || card.id === 5
 	);
 
 	return (

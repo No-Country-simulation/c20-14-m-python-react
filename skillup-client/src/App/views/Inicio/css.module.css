@@ -37,7 +37,6 @@ img.center {
 	font-style: normal;
 	text-align: center;
 	margin: 25px;
-
 }
 
 .heroGrid {
@@ -99,32 +98,32 @@ img.center {
 	grid-column: 2/8;
 	grid-row: 2/4;
 	.imgGrid {
-        width: 100%;      
-        border-radius: 15px;
-    }
+		width: 100%;
+		border-radius: 15px;
+	}
 }
 /* imagen mujer */
 .heroGrid .gridElement:nth-child(5) {
 	grid-column: 3/5;
 	grid-row: 4/5;
 	.imgGrid {
-        width: 100%;      
-        border-radius: 15px;
-    }
+		width: 100%;
+		border-radius: 15px;
+	}
 }
 /* imagen profesor */
 .heroGrid .gridElement:nth-child(6) {
 	grid-column: 5/7;
 	grid-row: 4/5;
-    border: 1px solid #a5a3a3;
-    border-radius: 15px;
+	border: 1px solid #a5a3a3;
+	border-radius: 15px;
 }
 
 .cardCol {
 	padding: 0 30px;
 }
 
-.formAdjust{
+.formAdjust {
 	width: auto !important;
 }
 
@@ -139,80 +138,68 @@ img.center {
 		padding: 2rem 10rem;
 	}
 
+	.flexColumn_desktop {
+		flex-direction: column;
+	}
+
 	.heroText {
 		margin: auto;
-		display: flex;
-		align-items: center;
-		width: 30%;
+		width: 100%;
+	}
+
+	.heroText_ppal {
+		margin: 25px;
+		line-height: 2;
 	}
 	.heroGrid {
-		width: 80vw;
+		width: 90vw;
 		height: 80vh;
-		grid-template-rows: 45vh 12vh 20vh;
+		grid-template-rows: 10vh 45vh 15vh;
 		grid-template-columns: 0.1fr 1fr 0.1fr 1fr 0.1fr 1fr 0.1fr;
-		gap: 5px;
-		
-	}
-
-	.heroGrid .gridElement:nth-child(1) {
-		grid-column: 2/3;
-		grid-row: 2/3;
-		width: 50%;
+		gap: 15px;
 		margin: auto;
+		border: 1px solid #c1c1c1c9;
+		padding: 10px;
 	}
-	.heroGrid .gridElement:nth-child(2) {
-		grid-column: 4/5;
-		grid-row: 2/3;
-		width: 50%;
-		margin: auto;
+	.heroGrid .gridElement {
+		width: 200px;
 	}
-
+	.heroGrid .gridElement:nth-child(1),
+	.heroGrid .gridElement:nth-child(2),
 	.heroGrid .gridElement:nth-child(3) {
-		grid-column: 6/7;
-		grid-row: 2/3;
-		width: 50%;
-		margin: auto;
+		margin: 0 auto;
 	}
+
 	/* imagen grupo */
 	.heroGrid .gridElement:nth-child(4) {
 		grid-column: 2/7;
-		grid-row: 1/2;
+		grid-row: 2 /4;
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 
 		.imgGrid {
 			width: 100%;
+			height: 100%;
 			object-position: 0 30%;
 			border-radius: 15px;
-		}
-	}
-	/* imagen mujer */
-	.heroGrid .gridElement:nth-child(5) {
-		grid-column: 2/4;
-		grid-row: 3/4;
-		display: flex;
-		justify-content: flex-end;
-		border-radius: 15px;
-        .imgGrid{
-            width: auto;
-        }
-	}
-	/* imagen profesor */
-	.heroGrid .gridElement:nth-child(6) {
-		grid-column: 5/7;
-		grid-row: 3/4;
-		display: flex;
-		justify-content: flex-start;
-        border: none;
-		.imgGrid {
-			width: 45%;
-			height: 100%;
 			object-fit: cover;
-			object-position: 0 5px;
 		}
 	}
+
+	.heroGrid .gridElement:nth-child(5) {
+		.imgGrid {
+			height: 100%;
+		}
+	}
+
 	.cardCol {
 		width: 30%;
 		padding: unset;
 	}
 
+	.adjustRow {
+		row-gap: 5px;
+	}
 }
-
