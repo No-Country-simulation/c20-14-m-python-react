@@ -9,7 +9,6 @@ import django from "./img/django.webp";
 import docker from "./img/docker.webp";
 import reactTP from "./img/react+TP.webp";
 import typescript from "./img/TS.webp";
-import java from "./img/java.webp"
 
 const CardsImg = {
 	html,
@@ -20,8 +19,7 @@ const CardsImg = {
 	django,
 	docker,
 	reactTP,
-	typescript,
-	java
+	typescript
 };
 
 export default CardsImg;

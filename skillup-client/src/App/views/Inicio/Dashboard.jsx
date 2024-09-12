@@ -1,27 +1,22 @@
 import { Container, Row, Col, Card, Badge } from "react-bootstrap";
-import CardsData from "./CardsData";
-import "../Students/styles/Cursos.css";
+import CardsData from "../../../components/cards/CardsData";
+import css from "./css.module.css";
 
-const CursosDisp = () => {
-	const cursosDisp = CardsData.filter(
-		card =>
-			card.id === 1 ||
-			card.id === 2 ||
-			card.id === 3 ||
-			card.id === 4 ||
-			card.id === 5
+const Dashboard = () => {
+	const dashboardCards = CardsData.filter(
+		card => card.id === 3 || card.id === 4 || card.id === 7
 	);
 
 	return (
-		<Container fluid className="cardContainer">
+		<Container fluid className="cardContainer" id="Dashboard">
 			<Row>
 				<Col>
-					<h2>Cursos Disponibles</h2>
+					<h2 className={css.heroText_ppal}>Dashboard</h2>
 				</Col>
 			</Row>
-			<Row>
-				{cursosDisp.map((card, index) => (
-					<Col xs={12} md={6} lg={4} key={index}>
+			<Row className="mb-5 gap-3">
+				{dashboardCards.map((card, index) => (
+					<Col xs={12} md={6} lg={4} key={index} className={css.cardCol}>
 						<Card className="mb-4">
 							<div className="cardImg">
 								<Card.Img variant="top" src={card.image} />
@@ -44,4 +39,4 @@ const CursosDisp = () => {
 	);
 };
 
-export default CursosDisp;
+export default Dashboard;

@@ -1,9 +1,8 @@
 import { joinClass } from "../utils/joinClass";
 import State from "../State/State";
 import css from "./css.module.css";
-import { forwardRef } from "react";
 
-export default forwardRef(function Input(props, ref) {
+export default function Input(props) {
 	const { async, err, loading, success, kind, ...extraProps } = props;
 
 	const finalClassInput = joinClass([
@@ -16,7 +15,6 @@ export default forwardRef(function Input(props, ref) {
 	return (
 		<label className={css.label}>
 			<input
-				ref={ref}
 				placeholder="⌨️ Escribe aquí"
 				{...extraProps}
 				type="text"
@@ -25,4 +23,4 @@ export default forwardRef(function Input(props, ref) {
 			<State async={async} err={err} loading={loading} success={success} />
 		</label>
 	);
-});
+}
