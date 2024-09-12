@@ -10,7 +10,7 @@ const CatalogueData = [
 		calificacion: "4.9 ⭐⭐⭐⭐", //numero
 		nivel: "Pricipiante ", //principiante / medio / avanzado
 		duracion: "50 horas", //cantidad de horas del curos
-		lecciones: "5 clases", //cantidad de clases del curso
+		tema: "5 clases", //cantidad de clases del curso
 		descarga: "Contenido descargable", //igual en todos los cursos
 		ejercicios: "30 ejercicios para practica", //cantidad de ejercicios por curso
 		certificado: "Certificado al final de la cursada", //igual en todos los cursos
