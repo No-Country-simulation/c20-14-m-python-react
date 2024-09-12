@@ -42,7 +42,8 @@ const Catalogue = () => {
 							<h1 className={css.courseh1}>{data.course}</h1>
 							<div className={css.courseDescription}>
 								<p>{data.description}</p>
-								<p>{data.calification}</p>
+								<p>{data.calificacion}</p>
+								<p>{data.instructor}</p>
 							</div>
 							<div className="d-flex justify-content-center">
 								<Button className={css.btnSale}>Comprar</Button>
@@ -57,49 +58,49 @@ const Catalogue = () => {
 									<span>
 										<BiBarChartAlt />
 									</span>
-									{data.detail1}
+									{data.nivel}
 								</li>
 								<li>
 									<span>
 										<FaPlayCircle />
 									</span>
-									{data.detail2}
+									{data.duracion}
 								</li>
 								<li>
 									<span>
 										<MdOutlineTextSnippet />
 									</span>
-									{data.detail3}
+									{data.lecciones}
 								</li>
 								<li>
 									<span>
 										<FaCloudDownloadAlt />
 									</span>
-									{data.detail4}
+									{data.descarga}
 								</li>
 								<li>
 									<span>
 										<FaCode />
 									</span>
-									{data.detail5}
+									{data.ejercicios}
 								</li>
 								<li>
 									<span>
 										<PiCertificateDuotone />
 									</span>
-									{data.detail6}
+									{data.certificado}
 								</li>
 								<li>
 									<span>
 										<IoIosInfinite />
 									</span>
-									{data.detail7}
+									{data.acceso}
 								</li>
 								<li>
 									<span>
 										<GoClock />
 									</span>
-									{data.detail8}
+									{data.horario}
 								</li>
 							</ul>
 						</Col>
@@ -159,12 +160,6 @@ const Catalogue = () => {
 								</span>
 								{data.learn6}
 							</li>
-							<li>
-								<span className={css.check}>
-									<IoMdCheckmark />
-								</span>
-								{data.learn7}
-							</li>
 						</ul>
 					</Col>
 					<Col xs={12} className={css.cardCol}>
@@ -175,43 +170,43 @@ const Catalogue = () => {
 								<span>
 									<MdOutlineComputer />
 								</span>
-								{data.content1}
+								{data.clase1}
 							</li>
 							<li>
 								<span>
 									<MdOutlineComputer />
 								</span>
-								{data.content2}
+								{data.clase2}
 							</li>
 							<li>
 								<span>
 									<MdOutlineComputer />
 								</span>
-								{data.content3}
+								{data.clase3}
 							</li>
 							<li>
 								<span>
 									<MdOutlineComputer />
 								</span>
-								{data.content4}
+								{data.clase4}
 							</li>
 							<li>
 								<span>
 									<MdOutlineComputer />
 								</span>
-								{data.content5}
+								{data.clase5}
 							</li>
 							<li>
 								<span>
 									<MdOutlineComputer />
 								</span>
-								{data.content6}
+								{data.clase6}
 							</li>
 							<li>
 								<span>
 									<MdOutlineComputer />
 								</span>
-								{data.content7}
+								{data.clase7}
 							</li>
 						</ul>
 					</Col>
