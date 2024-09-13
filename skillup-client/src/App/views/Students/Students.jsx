@@ -2,17 +2,30 @@ import "bootstrap/dist/css/bootstrap.min.css";
 /* import Cards from './assets/components/cards/Cards' */
 import Recomendaciones from "./Recomendaciones";
 /*import Dashboard from "./assets/components/Dashboard";*/
-// import CursosDisponibles from "./CursosDisp";
-// import imgBg from "./img/background-code.jpg";
+import CursosDisp from "./CursosDisp";
+import imgBg from "./img/background-code.jpg";
 import Dashboard from "./CursosCompletados/Dashboard";
-import Contact from "../../../components/Contacto/Contacto";
-
+import Favorites from "./Favorites";
+import { useState } from "react";
+import CardsData from "./CardsData";
 function Students() {
+	const [cards, setCards] = useState(CardsData);
+
+	const toggleFavorite = id => {
+		const updatedCards = cards.map(card =>
+			card.id === id ? { ...card, favorite: !card.favorite } : card
+		);
+		setCards(updatedCards);
+	};
+
 	return (
 		<>
-			<Recomendaciones />
+			{/* Pasamos cards y toggleFavorite a Recomendaciones */}
+			<Recomendaciones cards={cards} toggleFavorite={toggleFavorite} />
+			<CursosDisp cards={cards} toggleFavorite={toggleFavorite} />
+			<img className="centerBlock" src={imgBg} alt="imagen de fondo codigo" />
 			<Dashboard />
-			<Contact />
+			<Favorites cards={cards} toggleFavorite={toggleFavorite} />
 		</>
 	);
 }

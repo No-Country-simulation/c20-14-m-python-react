@@ -1,0 +1,57 @@
+.card {
+	height: 100%;
+}
+
+.cardContainer {
+	padding: 5rem 10rem;
+}
+
+.cardImg {
+	position: relative;
+}
+
+.cardBadge {
+	width: fit-content;
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+}
+
+@media screen and (max-width: 768px) {
+	.cardContainer {
+		padding: inherit;
+	}
+}
+
+.position-relative {
+    position: relative;
+}
+
+.star-icon {
+    font-size: 24px; /* Tamaño del ícono */
+    color: rgb(48, 47, 43);     /* Color del ícono de estrella */
+    cursor: pointer; /* Hace que el ícono se vea interactivo */
+}
+
+.cardImg {
+    position: relative;
+}
+
+
+.d-flex {
+    display: flex;
+}
+
+.align-items-start {
+    align-items: start; /* Alinea el título y el ícono al principio del contenedor flex */
+}
+
+.justify-content-between {
+    justify-content: space-between; /* Espacia el título y el ícono a los extremos del contenedor flex */
+}
+
+.view-more-btn {
+    position: absolute;
+    bottom: 10px; /* Alineado en el fondo del Card.Body */
+    right: 10px;  /* Alineado a la derecha del Card.Body */
+}
