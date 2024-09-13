@@ -156,20 +156,21 @@ function NavBar() {
 						<Nav className="ms-auto">
 							<Nav.Link href="#Recomendaciones">
 								<Button variant="light" size="md">
-									Recomendaciones
+									Recomendados
+								</Button>
+							</Nav.Link>
+							<Nav.Link href="#CursosDisponibles" as={Link} to={CATALOGUE.path}>
+								<Button variant="light" size="md">
+									Cursos
 								</Button>
 							</Nav.Link>
 
 							<Nav.Link href="#Dashboard">
 								<Button variant="light" size="md">
-									Dashboard
+									Mis Cursos
 								</Button>
 							</Nav.Link>
-							<Nav.Link href="#Certificados">
-								<Button variant="light" size="md">
-									Certificados
-								</Button>
-							</Nav.Link>
+
 							<Nav.Link href="#Favoritos">
 								<Button variant="light" size="md">
 									Favoritos
@@ -187,9 +188,17 @@ function NavBar() {
 									className="d-flex align-items-center"
 								>
 									<FaUserCircle size={24} />
-									<span className="ms-2">Perfil Estudiante</span>
+									<span className="ms-2">Perfil</span>
 								</Button>
 							</Nav.Link>
+							<div className="d-flex ms-3 align-items-center">
+								{/* SignUp == vista registro */}
+								<Nav.Link as={Link} to={SIGN_UP.path} className="p-0">
+									<Button variant="dark" size="md" className="me-2 p-1">
+										Cerrar Sesión
+									</Button>
+								</Nav.Link>
+							</div>
 						</Nav>
 					</Navbar.Collapse>
 				</Container>
@@ -332,19 +341,10 @@ function NavBar() {
 							</Button>
 						</Nav.Link>
 						<div className="d-flex ms-3 align-items-center">
-							<Nav.Link href="#Sign_In" className="p-0">
-								<Button
-									variant="secondary"
-									size="md"
-									className="me-2 p-1 rounded-lg"
-								>
-									Sign In
-								</Button>
-							</Nav.Link>
 							{/* SignUp == vista registro */}
 							<Nav.Link as={Link} to={SIGN_UP.path} className="p-0">
 								<Button variant="dark" size="md" className="me-2 p-1">
-									Registro
+									Iniciar Sesión
 								</Button>
 							</Nav.Link>
 						</div>
