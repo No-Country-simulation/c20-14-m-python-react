@@ -89,6 +89,9 @@ class UserCoursesView(JWTAuthenticationMixin, View):
             course = enrollment.course
             user_courses.append(course.as_dict())
 
+        if len(user_courses) == 0:
+            return JsonResponse({'error': 'El usuario aun no esta inscrito en ningun curso'}, status=400)
+
         return JsonResponse({'enrollments': user_courses}, status=200)
 
 
@@ -97,14 +100,24 @@ class AllCoursesView(JWTAuthenticationMixin, View):
         courses = Course.objects.all()
         courses_list = []
 
+        if pk:
+            try:
+                course = courses.get(pk=pk)
+                return JsonResponse({'course': course.as_dict()}, status=200)
+            except ObjectDoesNotExist:
+                return JsonResponse({'error': 'Curso no encontrado'}, status=400)
+
         for course in courses:
             courses_list.append(course.as_dict())
 
-        if pk:
-            course = courses.get(pk=pk)
-            return JsonResponse({'course': course.as_dict()}, status=200)
-
         return JsonResponse({'message': 'success', 'courses': courses_list}, status=200)
+
+
+class ModuleView(JWTAuthenticationMixin, View):
+    def get(self, request, course_id, module_id):
+        module = Module.objects.get(course_id=course_id, id=module_id)
+        return JsonResponse({'module': module.as_dict()}, status=200)
+
 
 
 @method_decorator(csrf_exempt, name='dispatch')

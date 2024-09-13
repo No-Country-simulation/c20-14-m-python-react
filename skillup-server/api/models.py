@@ -115,7 +115,9 @@ class Course(SoftDeleteModel):
             'price': self.price,
             'slug': self.slug,
             'instructor': self.instructor_id,
+            'cover_image': self.cover_image,
             'modules': list(self.modules.values('id', 'title', 'order', 'video_url')),
+            # 'wishlists': list(self.wishlists.values('id', 'user', 'created_at')),
         }
 
 
@@ -210,3 +212,20 @@ class Rating(SoftDeleteModel):
             'created_at': self.created_at,
             'enrollment': self.enrollment_id,
         }
+
+
+# class WishList(SoftDeleteModel):
+#     user = models.ForeignKey('Profile', on_delete=models.DO_NOTHING, related_name='wishlists')
+#     course = models.ManyToManyField('Course', related_name='wishlists')
+#     created_at = models.DateTimeField(auto_now_add=True)
+#
+#     def __str__(self):
+#         return f"{self.user_id} - {self.course}"
+#
+#
+#     def as_dict(self):
+#         return {
+#             'id': self.id,
+#             'course_id': self.course.id,
+#             'created_at': self.created_at,
+#         }
