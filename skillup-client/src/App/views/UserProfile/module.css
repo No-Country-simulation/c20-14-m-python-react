@@ -5,19 +5,12 @@
 }
 .custom-form-control1 {
 	border: 1px solid #d9d9d9 !important;
-	border-radius: var(--md) !important;
+
 	border-top-left-radius: 0%;
 	border-bottom-left-radius: 0%;
 	outline: transparent;
 }
 
-.custom-form-control2 {
-	border: 1px solid #d9d9d9 !important;
-	border-right: none !important;
-	border-top-right-radius: 0%;
-	border-bottom-right-radius: 0%;
-	outline: transparent;
-}
 .custom-form-control:focus {
 	box-shadow: var(--s-sm) !important;
 }
@@ -58,6 +51,7 @@ hr {
 .input-group-text {
 	display: flex;
 	align-items: center;
+	height: 2.35rem;
 	padding: 0.35rem 0.65rem;
 	line-height: 1.5;
 	color: var(--bs-body-color);
@@ -88,4 +82,10 @@ hr {
 	color: #5b5b5c;
 	height: 25px;
 	width: 25px;
+}
+
+.span {
+	display: block;
+	color: red;
+	font-size: 14px;
 }
