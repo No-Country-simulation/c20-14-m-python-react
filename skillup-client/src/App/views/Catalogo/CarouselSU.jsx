@@ -19,12 +19,14 @@ function CarouselSU() {
 						lg={8}
 						className="d-flex flex-column justify-content-center"
 					>
-						<h3 className={css.slideTitle}>Jackson Redbeard</h3>
+						<h3 className={css.slideTitle}>
+							Javier M. <br /> Graduado en Desarrollo Web Completo
+						</h3>
 					</Col>
 					<Col xs={12} className="d-flex flex-wrap ">
 						<p className={css.slideText}>
-							Nulla vitae elit libero, a pharetra augue mollis interdum. Nulla
-							vitae elit libero, a pharetra augue mollis interdum.
+							Skillup cambió mi vida. Logré cambiar de carrera y ahora trabajo
+							como desarrollador web.
 						</p>
 					</Col>
 				</Row>
@@ -40,12 +42,14 @@ function CarouselSU() {
 						lg={8}
 						className="d-flex flex-column justify-content-center"
 					>
-						<h3 className={css.slideTitle}>Melissa Bobhairstyle</h3>
+						<h3 className={css.slideTitle}>
+							Ana R. <br /> Estudiante de Diseño UX/UI
+						</h3>
 					</Col>
 					<Col xs={12} className="d-flex flex-wrap ">
 						<p className={css.slideText}>
-							Nulla vitae elit libero, a pharetra augue mollis interdum. Nulla
-							vitae elit libero, a pharetra augue mollis interdum.
+							Los cursos de Skillup son increíbles. Me encantó la flexibilidad
+							de poder aprender a mi propio ritmo.
 						</p>
 					</Col>
 				</Row>
@@ -61,12 +65,14 @@ function CarouselSU() {
 						lg={8}
 						className="d-flex flex-column justify-content-center"
 					>
-						<h3 className={css.slideTitle}>Nathaly Freckles</h3>
+						<h3 className={css.slideTitle}>
+							Nathaly Freckles <br /> Graduada en Machine Learning
+						</h3>
 					</Col>
 					<Col xs={12} className="d-flex flex-wrap ">
 						<p className={css.slideText}>
-							Nulla vitae elit libero, a pharetra augue mollis interdum. Nulla
-							vitae elit libero, a pharetra augue mollis interdum.
+							Los instructores son muy profesionales y siempre están dispuestos
+							a ayudar.
 						</p>
 					</Col>
 				</Row>
