@@ -93,12 +93,16 @@ class UserCoursesView(JWTAuthenticationMixin, View):
 
 
 class AllCoursesView(JWTAuthenticationMixin, View):
-    def get(self, request):
+    def get(self, request, pk):
         courses = Course.objects.all()
         courses_list = []
 
         for course in courses:
             courses_list.append(course.as_dict())
+
+        if pk:
+            course = courses.get(pk=pk)
+            return JsonResponse({'course': course.as_dict()}, status=200)
 
         return JsonResponse({'message': 'success', 'courses': courses_list}, status=200)
 
