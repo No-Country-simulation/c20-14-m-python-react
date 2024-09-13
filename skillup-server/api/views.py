@@ -4,7 +4,7 @@ import jwt
 from django.contrib.auth import authenticate
 
 from skillup import settings
-from .models import Profile, Enrollment, Course
+from .models import Profile, Enrollment, Course, Module
 from .utils.verification import validate_token, send_verification_email
 from django.http import JsonResponse
 from django.utils.decorators import method_decorator

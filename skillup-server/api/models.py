@@ -109,12 +109,13 @@ class Course(SoftDeleteModel):
             'id': self.id,
             'title': self.title,
             'description': self.description,
-            'category': self.category.name,
+            'category': list(self.category.values('id', 'name')),
             'duration': self.duration,
             'date_created': self.date_created,
             'price': self.price,
             'slug': self.slug,
             'instructor': self.instructor_id,
+            'modules': list(self.modules.values('id', 'title', 'order', 'video_url')),
         }
 
 

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Profile, Course, Module
+from .models import Profile, Course, Module, Category
 
 # Register your models here.
 
@@ -7,4 +7,5 @@ from .models import Profile, Course, Module
 admin.site.register(Profile)
 admin.site.register(Course)
 admin.site.register(Module)
+admin.site.register(Category)
 
