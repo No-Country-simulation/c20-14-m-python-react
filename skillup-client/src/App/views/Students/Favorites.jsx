@@ -1,27 +1,19 @@
-
-import { Container, Row, Col, Card, Badge } from "react-bootstrap";
+import { Container, Row, Col, Card, Badge, Button } from "react-bootstrap";
 import { FaRegStar, FaStar } from "react-icons/fa";
 
-const CursosDisp = ({ cards, toggleFavorite }) => {
-	// Filtrar los cursos disponibles
-	const cursosDisp = cards.filter(
-		card =>
-			card.id === 1 ||
-			card.id === 2 ||
-			card.id === 3 ||
-			card.id === 4 ||
-			card.id === 5
-	);
+const Favorites = ({ cards, toggleFavorite }) => {
+	// Filtrar las tarjetas que están marcadas como favoritas
+	const favoritCards = cards.filter(card => card.favorite);
 
 	return (
-		<Container fluid className="cardContainer" id="CursosDisponibles">
+		<Container fluid className="cardContainer">
 			<Row>
 				<Col>
-					<h2>Cursos Disponibles</h2>
+					<h2>Favoritos</h2>
 				</Col>
 			</Row>
 			<Row>
-				{cursosDisp.map((card, index) => (
+				{favoritCards.map((card, index) => (
 					<Col xs={12} md={6} lg={4} key={index}>
 						<Card className="mb-4">
 							<div className="cardImg">
@@ -30,8 +22,7 @@ const CursosDisp = ({ cards, toggleFavorite }) => {
 									{card.hours} horas
 								</Badge>
 							</div>
-
-							<Card.Body>
+							<Card.Body className="position-relative">
 								<div className="d-flex align-items-start justify-content-between">
 									<Card.Title>{card.course}</Card.Title>
 									{/* Mostrar estrella llena o vacía según el estado de favorito */}
@@ -52,6 +43,10 @@ const CursosDisp = ({ cards, toggleFavorite }) => {
 								<Card.Text>{card.title}</Card.Text>
 								<Card.Text>{card.description}</Card.Text>
 								<Card.Text>Costo: {card.cost}</Card.Text>
+
+								<Button variant="primary" className="view-more-btn">
+									Ver más
+								</Button>
 							</Card.Body>
 						</Card>
 					</Col>
@@ -61,4 +56,4 @@ const CursosDisp = ({ cards, toggleFavorite }) => {
 	);
 };
 
-export default CursosDisp;
+export default Favorites;

@@ -9,7 +9,8 @@ const CardsData = [
 		description:
 			"Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui cum nulla minima id officia reiciendis?",
 		cost: "$163.00",
-		hours: 40
+		hours: 40,
+		favorite: false
 	},
 
 	{
@@ -20,7 +21,8 @@ const CardsData = [
 		description:
 			"Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui cum nulla minima id officia reiciendis?",
 		cost: "$163.00",
-		hours: 50
+		hours: 50,
+		favorite: false
 	},
 	{
 		id: 3,
@@ -30,7 +32,8 @@ const CardsData = [
 		description:
 			"Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui cum nulla minima id officia reiciendis?",
 		cost: "$163.00",
-		hours: 60
+		hours: 60,
+		favorite: true
 	},
 
 	{
@@ -41,7 +44,8 @@ const CardsData = [
 		description:
 			"Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui cum nulla minima id officia reiciendis?",
 		cost: "$163.00",
-		hours: 45
+		hours: 45,
+		favorite: true
 	}
 ];
 
