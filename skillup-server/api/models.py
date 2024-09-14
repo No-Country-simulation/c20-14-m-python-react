@@ -106,7 +106,7 @@ class Course(SoftDeleteModel):
         return slug
 
     def as_dict(self):
-        instructor_profile = Profile.objects.get(user=self.instructor, role='Instructor')
+        instructor_profile = Profile.objects.get(id=self.instructor.id, role='Instructor')
         return {
             'id': self.id,
             'title': self.title,
