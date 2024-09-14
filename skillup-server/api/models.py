@@ -16,7 +16,7 @@ class SoftDeleteModel(models.Model):
     is_deleted = models.BooleanField(default=False)
     objects = SoftDeleteManager()
     all_objects = models.Manager()
-    deleted_at = models.DateTimeField(null=True, default=None)
+    deleted_at = models.DateTimeField(null=True, default=None, blank=True)
 
     def soft_delete(self):
         self.deleted_at = timezone.now()
@@ -44,16 +44,21 @@ class Profile(SoftDeleteModel):
     user = models.OneToOneField(User, on_delete=models.DO_NOTHING, related_name='profile')
     profile_picture = models.ImageField(upload_to='profile_pictures/', blank=True)
     role = models.CharField(max_length=50, choices=PROFILE_ROLE_CHOICES, default=STUDENT)
+    social_networks_links = models.JSONField(default=dict, blank=True)
 
     def __str__(self):
         return f'{self.user.username} - {self.role}'
 
     def as_dict(self):
         return {
-            'id': self.id,
+            'profile_id': self.id,
             'user_id': self.user_id,
-            'profile_picture': self.profile_picture,
+            'first_name': self.user.first_name,
+            'last_name': self.user.last_name,
+            'profile_picture': self.profile_picture.url if self.profile_picture else None,
             'role': self.role,
+            'social_networks_links': self.social_networks_links,
+            # 'enrollments': list(self.enrollments.all()),
         }
 
 
@@ -105,12 +110,15 @@ class Course(SoftDeleteModel):
             'id': self.id,
             'title': self.title,
             'description': self.description,
-            'category': self.category.name,
+            'category': list(self.category.values('id', 'name')),
             'duration': self.duration,
             'date_created': self.date_created,
             'price': self.price,
             'slug': self.slug,
             'instructor': self.instructor_id,
+            'cover_image': self.cover_image,
+            'modules': list(self.modules.values('id', 'title', 'order', 'video_url')),
+            # 'wishlists': list(self.wishlists.values('id', 'user', 'created_at')),
         }
 
 
@@ -118,6 +126,7 @@ class Module(SoftDeleteModel):
     title = models.CharField(max_length=50, null=False, blank=False)
     order = models.PositiveIntegerField()
     video_url = models.URLField()
+    course = models.ForeignKey('Course', on_delete=models.DO_NOTHING, related_name='modules', null=True)
 
     def __str__(self):
         return self.title
@@ -204,3 +213,20 @@ class Rating(SoftDeleteModel):
             'created_at': self.created_at,
             'enrollment': self.enrollment_id,
         }
+
+
+# class WishList(SoftDeleteModel):
+#     user = models.ForeignKey('Profile', on_delete=models.DO_NOTHING, related_name='wishlists')
+#     course = models.ManyToManyField('Course', related_name='wishlists')
+#     created_at = models.DateTimeField(auto_now_add=True)
+#
+#     def __str__(self):
+#         return f"{self.user_id} - {self.course}"
+#
+#
+#     def as_dict(self):
+#         return {
+#             'id': self.id,
+#             'course_id': self.course.id,
+#             'created_at': self.created_at,
+#         }

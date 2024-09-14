@@ -1,0 +1,22 @@
+databases:
+  - name: skillup
+    plan: free
+    databaseName: skillup
+    user: skillup
+
+services:
+  - type: web
+    plan: free
+    name: skillup
+    runtime: python
+    buildCommand: "./build.sh"
+    startCommand: "cd skillup-server && python -m gunicorn skillup.asgi:application -k uvicorn.workers.UvicornWorker"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: skillup
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4

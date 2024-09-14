@@ -16,10 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from api.views import activate
+from api.views import UserActivationView
+from api.jwt_auth_utils.auth import refresh_token_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
-    path('activate/<uidb64>/<token>', activate, name='activate'),
+    path('activate/<uidb64>/<token>', UserActivationView.as_view(), name='activate'),
+    path('token-refresh/', refresh_token_view, name='token-refresh'),
+
 ]
