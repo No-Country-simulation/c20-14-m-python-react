@@ -58,6 +58,7 @@ class Profile(SoftDeleteModel):
             'profile_picture': self.profile_picture.url if self.profile_picture else None,
             'role': self.role,
             'social_networks_links': self.social_networks_links,
+            # 'enrollments': list(self.enrollments.all()),
         }
 
 

@@ -4,6 +4,7 @@ import jwt
 
 from datetime import datetime, timedelta
 from django.conf import settings
+from django.contrib.auth.models import User
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
@@ -18,7 +19,6 @@ def generate_jwt_token(user):
         'role': user.profile.role,
         'exp': datetime.utcnow() + timedelta(days=1),  # Expiración del token (1 día)
         'iat': datetime.utcnow(),  # Tiempo de emisión
-
     }
     token = jwt.encode(payload, settings.SECRET_KEY, algorithm='HS256')
     return token
@@ -33,7 +33,8 @@ def refresh_token_view(request):
 
         try:
             payload = jwt.decode(old_token, settings.SECRET_KEY, algorithms=['HS256'])
-            new_token = generate_jwt_token(payload['user_id'])
+            user = User.objects.get(id=payload['user_id'])
+            new_token = generate_jwt_token(user)
             return JsonResponse({'token': new_token})
         except jwt.ExpiredSignatureError:
             return JsonResponse({'error': 'Token expirado'}, status=401)

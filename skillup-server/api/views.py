@@ -38,7 +38,6 @@ class RegisterView(View):
             user = User.objects.create_user(username=email, email=email, password=password, is_active=False)
             Profile.objects.create(user=user)
 
-            
             # SEND VERIFICATION EMAIL
             send_verification_email(request, user)
             return JsonResponse ({'message': 'Usuario registrado existosamente'}, status=201)
@@ -74,7 +73,7 @@ class LoginView(View):
 
         if user is not None:
             token = generate_jwt_token(user)
-            return JsonResponse({'user_id': user.id, 'token': token}, status=200)
+            return JsonResponse({'token': token}, status=200)
 
         else:
             return JsonResponse({'error': 'Credenciales Invalidas'}, status=400)
@@ -84,31 +83,28 @@ class UserCoursesView(JWTAuthenticationMixin, View):
     def get(self, request, pk):
         enrollments = Enrollment.objects.filter(user_id=pk)
 
+        if not enrollments:
+            return JsonResponse({'error': 'El usuario aun no esta inscrito en ningun curso'}, status=400)
+
         user_courses = []
         for enrollment in enrollments:
             course = enrollment.course
             user_courses.append(course.as_dict())
 
-        if len(user_courses) == 0:
-            return JsonResponse({'error': 'El usuario aun no esta inscrito en ningun curso'}, status=400)
 
         return JsonResponse({'enrollments': user_courses}, status=200)
 
 
-class AllCoursesView(JWTAuthenticationMixin, View):
-    def get(self, request, pk):
-        courses = Course.objects.all()
-        courses_list = []
-
+class CoursesView(JWTAuthenticationMixin, View):
+    def get(self, request, pk=None):
         if pk:
             try:
-                course = courses.get(pk=pk)
+                course = Course.objects.get(pk=pk)
                 return JsonResponse({'course': course.as_dict()}, status=200)
             except ObjectDoesNotExist:
                 return JsonResponse({'error': 'Curso no encontrado'}, status=400)
 
-        for course in courses:
-            courses_list.append(course.as_dict())
+        courses_list = [course.as_dict() for course in Course.objects.all()]
 
         return JsonResponse({'message': 'success', 'courses': courses_list}, status=200)
 
@@ -123,8 +119,7 @@ class ModuleView(JWTAuthenticationMixin, View):
 @method_decorator(csrf_exempt, name='dispatch')
 class ProfileView(JWTAuthenticationMixin, View):
     def get(self, request, pk):
-        user_id = User.objects.get(pk=pk)
-        profile = Profile.objects.get(user_id=user_id)
+        profile = Profile.objects.get(user_id=pk)
         return JsonResponse(profile.as_dict(), status=200)
 
 
@@ -132,7 +127,6 @@ class ProfileView(JWTAuthenticationMixin, View):
         try:
             profile = Profile.objects.get(user_id=pk)
             data = json.loads(request.body)
-            print(data.items())
 
             for key, value in data.items():
                 if hasattr(profile.user, key):
