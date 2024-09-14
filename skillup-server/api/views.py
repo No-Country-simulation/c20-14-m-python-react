@@ -109,6 +109,26 @@ class CoursesView(JWTAuthenticationMixin, View):
         return JsonResponse({'message': 'success', 'courses': courses_list}, status=200)
 
 
+
+@method_decorator(csrf_exempt, name='dispatch')
+class EnrollmentView(JWTAuthenticationMixin, View):
+    def post(self, request):
+        data = json.loads(request.body)
+        user = User.objects.get(pk=data.get('user_id'))
+        profile = Profile.objects.get(user_id=user.pk)
+        course = Course.objects.get(pk=data.get('course_id'))
+
+        enrollments = Enrollment.objects.filter(user=profile)
+        for enrollment in enrollments:
+            if enrollment.course == course:
+                return JsonResponse({'error': 'El usuario ya está inscrito en este curso'}, status=400)
+
+        Enrollment.objects.create(user=profile, course=course)
+
+        return JsonResponse ({'message': 'Usuario inscrito existosamente'}, status=201)
+
+
+
 class ModuleView(JWTAuthenticationMixin, View):
     def get(self, request, course_id, module_id):
         module = Module.objects.get(course_id=course_id, id=module_id)
