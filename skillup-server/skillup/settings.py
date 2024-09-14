@@ -32,7 +32,6 @@ ALLOWED_HOSTS = [
     '0.0.0.0',
     '127.0.0.1',
     'localhost',
-    'skillup-pamz.onrender.com',
 
 ]
 
@@ -100,16 +99,6 @@ DATABASES = {
         default='postgres://postgres1234:postgres@localhost:5432/skillup',
         conn_max_age=600
     )
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME': 'skillup-db',
-    #     'USER': 'postgres',
-    #     'PASSWORD': 'postgres1234',
-    #     # For run locally
-    #     # 'HOST': '127.0.0.1',
-    #     'HOST': 'db',
-    #     'PORT': '5432',
-    # }
 }
 
 
