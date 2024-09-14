@@ -104,7 +104,7 @@ class CoursesView(JWTAuthenticationMixin, View):
             except ObjectDoesNotExist:
                 return JsonResponse({'error': 'Curso no encontrado'}, status=400)
 
-        courses_list = [course.as_dict() for course in Course.objects.all()]
+        courses_list = [course.as_dict() for course in Course.objects.all().order_by('id')]
 
         return JsonResponse({'message': 'success', 'courses': courses_list}, status=200)
 
