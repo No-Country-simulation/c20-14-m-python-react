@@ -106,6 +106,7 @@ class Course(SoftDeleteModel):
         return slug
 
     def as_dict(self):
+        instructor_profile = Profile.objects.get(user=self.instructor)
         return {
             'id': self.id,
             'title': self.title,
@@ -115,7 +116,7 @@ class Course(SoftDeleteModel):
             'date_created': self.date_created,
             'price': self.price,
             'slug': self.slug,
-            'instructor': self.instructor_id,
+            'instructor': instructor_profile.as_dict(),
             'cover_image': self.cover_image,
             'modules': list(self.modules.values('id', 'title', 'order', 'video_url')),
             # 'wishlists': list(self.wishlists.values('id', 'user', 'created_at')),
