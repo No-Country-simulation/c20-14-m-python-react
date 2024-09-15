@@ -33,9 +33,12 @@
 		margin-bottom: 2rem;
 	}
 	.detailh2 {
+		font-weight: 600;
 		text-align: center;
 		padding: 10px;
-		margin: 15px 0;
+		margin: 15px 0;		
+	
+		
 	}
 	ul {
 		list-style: none;
@@ -62,12 +65,12 @@
 	border-radius: 8px;
 }
 
-.courseh1 {
-	font-family: fantasy;
-	font-size: 3.5rem;
+.courseh1 {	
+	font-size: 2.5rem;
 	text-align: center;
-	padding: 15px 0;
-}
+	font-weight: 800;
+    font-style: normal;}
+    
 
 .courseDescription {
 	margin: 5px 10px;
@@ -127,8 +130,8 @@
 }
 
 .whoh2 {
-	font-size: 2.5rem;
-	font-family: fantasy;
+	font-size: 2.3rem;	
+	font-weight: 600;
 }
 
 hr{
@@ -142,8 +145,7 @@ hr{
 	margin: 0 auto;
 }
 
-.carouselh3{
-    font-family: fantasy;
+.carouselh3{ 
     margin-bottom: 40px;
 }
 
@@ -207,23 +209,18 @@ hr{
         margin-bottom: 25px;
     }
 
-	.listWho {
-		display: flex;
-		flex-direction: column;
-		align-items: center;       
+	.listWho {		
+		width: 50%;
+        padding: 0 50px;     
 		li {
             line-height: 1.25;
-            margin: 7px;
+            margin: 20px 0;
 		}
 	}
 
     .who{
         margin-top: 50px;
-    }
-
-    .whoh2{
-        margin-bottom: 20px;
-    }
+    }   
 
     .carouselh3b{
         margin-top: 25px;
@@ -231,4 +228,7 @@ hr{
         color:#f926ae;
         font-size: 2rem;
     }
+	h2{
+		margin: 0;
+	}
 }

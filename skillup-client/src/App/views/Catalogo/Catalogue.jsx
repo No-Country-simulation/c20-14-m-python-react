@@ -1,8 +1,7 @@
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import { FaPlayCircle, FaCloudDownloadAlt, FaCode } from "react-icons/fa";
 import { BiBarChartAlt } from "react-icons/bi";
-import { MdOutlineComputer } from "react-icons/md"; //MdOutlineTextSnippet,
-/*import { PiCertificateDuotone } from "react-icons/pi"; */
+import { MdOutlineComputer } from "react-icons/md";
 import { IoIosInfinite } from "react-icons/io";
 import { GoClock } from "react-icons/go";
 import { IoMdCheckmark } from "react-icons/io";
@@ -24,6 +23,12 @@ const Catalogue = () => {
 
 	return (
 		<Container fluid className="cardContainer">
+			<Row className="mx-auto w-75 text-center">
+				<h1>
+					Todos los cursos en un solo lugar, que te gustaría aprender hoy?
+				</h1>
+			</Row>
+
 			<Form className={`${css.courseSearch} mb-4`}>
 				<Form.Group controlId="search">
 					<Form.Control
@@ -39,9 +44,9 @@ const Catalogue = () => {
 				<Row key={index} className={css.courseRow}>
 					<Row>
 						<Col>
-							<h1 className={css.courseh1}>{data.course}</h1>
+							<h2 className={css.courseh1}>{data.course}</h2>
 							<div className={css.courseDescription}>
-								<p>{data.description}</p>
+								<p className="mx-auto w-75">{data.description}</p>
 								<p>{data.calificacion}</p>
 								<p>
 									<span className={css.courseTeacher}>INSTRUCTOR:</span>{" "}
@@ -57,7 +62,7 @@ const Catalogue = () => {
 					</Row>
 					<Row className="m-0">
 						<Col xs={12} md={6} lg={4} className={css.cardCol}>
-							<h2 className={css.detailh2}>DETALLE DEL CURSO</h2>
+							<h2 className={css.detailh2}>Detalle del curso</h2>
 							<ul>
 								<li>
 									<span>
@@ -71,12 +76,6 @@ const Catalogue = () => {
 									</span>
 									{data.duracion}
 								</li>
-								{/* 	<li>
-									<span>
-										<MdOutlineTextSnippet />
-									</span>
-									{data.tema}
-								</li> */}
 								<li>
 									<span>
 										<FaCloudDownloadAlt />
@@ -89,12 +88,6 @@ const Catalogue = () => {
 									</span>
 									{data.ejercicios}
 								</li>
-								{/* 	<li>
-									<span>
-										<PiCertificateDuotone />
-									</span>
-									{data.certificado}
-								</li> */}
 								<li>
 									<span>
 										<IoIosInfinite />
@@ -126,7 +119,7 @@ const Catalogue = () => {
 					</Row>
 					<Col xs={12} className={css.cardCol}>
 						<h2 className={`${css.detailh2} ${css.largeText}`}>
-							EN ESTE CURSO APRENDERAS
+							En este curso aprenderás
 						</h2>
 						<ul>
 							<li>
@@ -168,7 +161,7 @@ const Catalogue = () => {
 						</ul>
 					</Col>
 					<Col xs={12} className={css.cardCol}>
-						<h2 className={css.contenth2}>CONTENIDO DEL CURSO</h2>
+						<h2 className={css.contenth2}>Contenido del curso</h2>
 						<h3 className={css.contenth3}>12 horas 15 videos</h3>
 						<ul>
 							<li>
@@ -231,10 +224,8 @@ const Catalogue = () => {
 							</li>
 						</ul>
 					</Col>
-					<Col className="d-flex justify-content-center">
-						<Button className={`${css.btnSale} btn-secondary`}>
-							Suscribirse
-						</Button>
+					<Col className="d-flex justify-content-center mb-5">
+						<Button className={`${css.btnSale} btn-black`}>Suscríbete</Button>
 					</Col>
 					<hr />
 				</Row>
