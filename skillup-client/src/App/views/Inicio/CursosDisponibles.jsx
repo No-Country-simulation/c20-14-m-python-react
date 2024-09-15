@@ -1,16 +1,17 @@
-import { Container, Row, Col, Card, Badge } from "react-bootstrap";
+import { Container, Row, Col, Card, Badge, Button } from "react-bootstrap";
 import CardsData from "../../../components/cards/CardsData";
+import { Link } from "react-router-dom";
 import css from "./css.module.css";
 
 const CursosDisponibles = () => {
 	const cursosCards = CardsData.filter(
 		card =>
-			card.id === 1 ||
+			card.id === 9 ||
 			card.id === 2 ||
 			card.id === 5 ||
-			card.id === 3 ||
-			card.id === 8 ||
-			card.id == 9
+			card.id === 6 ||
+			card.id === 7 ||
+			card.id == 4
 	);
 
 	return (
@@ -39,6 +40,13 @@ const CursosDisponibles = () => {
 						</Card>
 					</Col>
 				))}
+			</Row>
+			<Row>
+				<Link to="/catalogue" className="w-50 mx-auto">
+					<Button variant="dark" size="lg" className="w-100 btn-black">
+						Ver mas
+					</Button>
+				</Link>
 			</Row>
 		</Container>
 	);

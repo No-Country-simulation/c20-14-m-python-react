@@ -25,6 +25,7 @@ img.center {
 	flex-direction: column;
 	padding: 1rem;
 	display: flex;
+	margin-bottom: 100px;
 }
 
 .heroText {
