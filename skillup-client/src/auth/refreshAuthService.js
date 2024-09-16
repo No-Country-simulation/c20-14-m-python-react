@@ -1,7 +1,8 @@
 import { API } from "../consts/api.js";
 
-export const refreshAuthService = async token => {
+export const refreshAuthService = async (signal, token) => {
 	const res = await fetch(API.refreshToken, {
+		signal,
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json"

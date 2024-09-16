@@ -21,24 +21,24 @@ export const useAuth = create()(
 				const infoToken = jwtDecode(token);
 				return infoToken;
 			},
-			refreshToken: async () => {
+			refreshToken: async signal => {
 				const token = localStorage.getItem("token");
 				if (!token) return;
 
 				try {
 					const infoToken = jwtDecode(token);
 					const currentTime = Math.floor(Date.now() / 1000);
-					const daysInSeconds = 10;
-					const isTimeToRefresh = currentTime - infoToken.iat > daysInSeconds;
+					const hoursInSeconds = 5; // 12h en segundos
+					const isTimeToRefresh = currentTime - infoToken.iat > hoursInSeconds;
 
 					const { updateToken } = get();
 					if (!isTimeToRefresh) return updateToken(token);
 
-					const newToken = await refreshAuthService(token);
-					updateToken(newToken);
+					const { token: newToken } = await refreshAuthService(signal, token);
+					return updateToken(newToken);
 				} catch {
 					const { logout } = get();
-					logout();
+					return logout();
 				}
 			}
 		}),
