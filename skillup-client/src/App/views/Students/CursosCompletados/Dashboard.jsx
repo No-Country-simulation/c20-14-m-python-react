@@ -16,7 +16,7 @@ function Dashboard() {
 			<Container fluid className="cardContainer" id="Dashboard">
 				<Row>
 					<Col>
-						<h2>Dashboard</h2>
+						<h2>Mis Cursos</h2>
 					</Col>
 				</Row>
 				<Row>
@@ -43,7 +43,7 @@ function Dashboard() {
 		<Container fluid className="cardContainer" id="Dashboard">
 			<Row>
 				<Col>
-					<h2>Dashboard</h2>
+					<h2>Mis Cursos</h2>
 				</Col>
 			</Row>
 			<Row>
