@@ -28,7 +28,7 @@ export const useAuth = create()(
 				try {
 					const infoToken = jwtDecode(token);
 					const currentTime = Math.floor(Date.now() / 1000);
-					const hoursInSeconds = 5; // 12h en segundos
+					const hoursInSeconds = 12 * 60 * 60; // 12h en segundos
 					const isTimeToRefresh = currentTime - infoToken.iat > hoursInSeconds;
 
 					const { updateToken } = get();
