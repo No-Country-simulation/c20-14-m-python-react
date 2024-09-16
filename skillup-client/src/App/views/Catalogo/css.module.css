@@ -3,14 +3,18 @@
 }
 
 .courseRow {
-	margin-bottom: 40px;
+	margin-bottom: 40px; 	
+	border-radius: 15px;
+	width: 90vw;
+	margin: 0 auto;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
 }
 
 .courseSearch {
-    width: 80vw;
-    display: block;
-    margin: 0 auto;
-    padding: 25px;
+	width: 80vw;
+	display: block;
+	margin: 0 auto;
+	padding: 25px;
 }
 
 .cardCol {
@@ -36,9 +40,7 @@
 		font-weight: 600;
 		text-align: center;
 		padding: 10px;
-		margin: 15px 0;		
-	
-		
+		margin: 15px 0;
 	}
 	ul {
 		list-style: none;
@@ -65,12 +67,12 @@
 	border-radius: 8px;
 }
 
-.courseh1 {	
+.courseh1 {
 	font-size: 2.5rem;
 	text-align: center;
 	font-weight: 800;
-    font-style: normal;}
-    
+	font-style: normal;
+}
 
 .courseDescription {
 	margin: 5px 10px;
@@ -130,23 +132,23 @@
 }
 
 .whoh2 {
-	font-size: 2.3rem;	
+	font-size: 2.3rem;
 	font-weight: 600;
 }
 
-hr{
-   margin: 50px 0 10px 0;
+hr {
+	margin: 50px 0 10px 0;
 }
 
 .carousel {
 	position: relative;
 	width: fit-content;
-    height: auto;
+	height: auto;
 	margin: 0 auto;
 }
 
-.carouselh3{ 
-    margin-bottom: 40px;
+.carouselh3 {
+	margin-bottom: 40px;
 }
 
 .carouselSlide {
@@ -189,46 +191,70 @@ hr{
 
 @media screen and (min-width: 769px) {
 	.cardCol {
-		width: 50vw;
+		width: 80vw;
 	}
 
 	.courseSearch {
-		width: 50vw;		
+		width: 50vw;
+	}
+
+	.courseh1 {
+		text-align: center;
+	}
+
+	.courseRow {
+		display: flex;
+		justify-content: center;
+		margin-bottom: 50px;
+		
+	}
+
+	.courseRowInside {
+		margin: 0 !important;
+		width: 80vw;
 	}
 
 	.video {
 		width: 40vw;
 		video {
 			margin: 0 auto;
-            width: 100%;
+			width: 100%;
 		}
 	}
 
-    .contentParagraph {
-        padding: 0;
-        margin-bottom: 25px;
-    }
+	.contentParagraph {
+		padding: 0;
+		margin-bottom: 25px;
+	}
 
-	.listWho {		
+	.listWho {
 		width: 50%;
-        padding: 0 50px;     
+		padding: 0 50px;
 		li {
-            line-height: 1.25;
-            margin: 20px 0;
+			line-height: 1.25;
+			margin: 20px 0;
 		}
 	}
 
-    .who{
-        margin-top: 50px;
-    }   
+	.who {
+		margin-top: 50px;
+	}
 
-    .carouselh3b{
-        margin-top: 25px;
-        padding: 25px;
-        color:#f926ae;
-        font-size: 2rem;
-    }
-	h2{
+	.carouselh3b {
+		margin-top: 25px;
+		padding: 25px;
+		color: #f926ae;
+		font-size: 2rem;
+	}
+	h2 {
 		margin: 0;
+	}
+
+	.btnBox {
+		width: 80vw;
+	}
+	ul{
+		width: 70%;
+		margin: 0 auto 25px auto;
 	}
 }
