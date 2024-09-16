@@ -1,34 +1,32 @@
 import uuid
-
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
 from django.utils.text import slugify
 
-
 class SoftDeleteManager(models.Manager):
-
     def get_queryset(self):
+        # Ensure only non-deleted objects are returned
         return super().get_queryset().filter(deleted_at__isnull=True)
 
-
 class SoftDeleteModel(models.Model):
-    is_deleted = models.BooleanField(default=False)
+    is_deleted = models.BooleanField(default=False)  # Added field for soft delete status
     objects = SoftDeleteManager()
     all_objects = models.Manager()
     deleted_at = models.DateTimeField(null=True, default=None, blank=True)
 
     def soft_delete(self):
         self.deleted_at = timezone.now()
+        self.is_deleted = True  # Mark as deleted
         self.save()
 
     def restore(self):
         self.deleted_at = None
+        self.is_deleted = False  # Mark as not deleted
         self.save()
 
     class Meta:
         abstract = True
-
 
 class Profile(SoftDeleteModel):
     STUDENT = 'ST'
@@ -46,6 +44,10 @@ class Profile(SoftDeleteModel):
     role = models.CharField(max_length=50, choices=PROFILE_ROLE_CHOICES, default=STUDENT)
     social_networks_links = models.JSONField(default=dict, blank=True)
 
+    # Index on 'role' for faster querying
+    class Meta:
+        indexes = [models.Index(fields=['role'])]
+
     def __str__(self):
         return f'{self.user.username} - {self.role}'
 
@@ -58,13 +60,15 @@ class Profile(SoftDeleteModel):
             'profile_picture': self.profile_picture.url if self.profile_picture else None,
             'role': self.role,
             'social_networks_links': self.social_networks_links,
-            # 'enrollments': list(self.enrollments.all()),
         }
-
 
 class Category(SoftDeleteModel):
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True, null=True)
+
+    # Index on 'name' for faster querying
+    class Meta:
+        indexes = [models.Index(fields=['name'])]
 
     def __str__(self):
         return self.name
@@ -75,7 +79,6 @@ class Category(SoftDeleteModel):
             'name': self.name,
             'description': self.description,
         }
-
 
 class Course(SoftDeleteModel):
     title = models.CharField(max_length=255, null=False, blank=False)
@@ -88,12 +91,13 @@ class Course(SoftDeleteModel):
     instructor = models.ForeignKey('Profile', on_delete=models.DO_NOTHING, related_name='courses_taught')
     cover_image = models.URLField(max_length=200, blank=True, null=True)
 
-    def __str__(self):
-        return self.title
+    # Index on 'slug' for faster querying
+    class Meta:
+        indexes = [models.Index(fields=['slug'])]
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.title)
+            self.slug = self.generate_unique_slug()  # Generate unique slug
         super().save(*args, **kwargs)
 
     def generate_unique_slug(self):
@@ -106,7 +110,8 @@ class Course(SoftDeleteModel):
         return slug
 
     def as_dict(self):
-        instructor_profile = Profile.objects.get(user_id=self.instructor.id, role='IN')
+        # Use select_related to reduce number of queries
+        instructor_profile = Profile.objects.select_related('user').get(user_id=self.instructor.id, role='IN')
         return {
             'id': self.id,
             'title': self.title,
@@ -119,15 +124,17 @@ class Course(SoftDeleteModel):
             'instructor': instructor_profile.as_dict(),
             'cover_image': self.cover_image,
             'modules': list(self.modules.values('id', 'title', 'order', 'video_url')),
-            # 'wishlists': list(self.wishlists.values('id', 'user', 'created_at')),
         }
-
 
 class Module(SoftDeleteModel):
     title = models.CharField(max_length=50, null=False, blank=False)
     order = models.PositiveIntegerField()
     video_url = models.URLField()
     course = models.ForeignKey('Course', on_delete=models.DO_NOTHING, related_name='modules', null=True)
+
+    # Index on 'title' and 'course' for faster querying
+    class Meta:
+        indexes = [models.Index(fields=['title']), models.Index(fields=['course'])]
 
     def __str__(self):
         return self.title
@@ -140,11 +147,14 @@ class Module(SoftDeleteModel):
             'video_url': self.video_url,
         }
 
-
 class Enrollment(SoftDeleteModel):
     enrollment_date = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey('Profile', on_delete=models.DO_NOTHING, related_name='enrollments')
-    course = models.ForeignKey('Course', on_delete=models.DO_NOTHING, related_name='courses')
+    course = models.ForeignKey('Course', on_delete=models.DO_NOTHING, related_name='enrollments')
+
+    # Index on 'user' and 'course' for faster querying
+    class Meta:
+        indexes = [models.Index(fields=['user']), models.Index(fields=['course'])]
 
     def __str__(self):
         return f"Enrollment for {self.user}"
@@ -157,11 +167,14 @@ class Enrollment(SoftDeleteModel):
             'course': self.course_id,
         }
 
-
 class Progress(SoftDeleteModel):
     progress_percentage = models.PositiveIntegerField()  # A percentage value (0-100)
     updated_at = models.DateTimeField(default=timezone.now)
     enrollment = models.ForeignKey('Enrollment', on_delete=models.CASCADE, related_name='progresses')
+
+    # Index on 'enrollment' for faster querying
+    class Meta:
+        indexes = [models.Index(fields=['enrollment'])]
 
     def __str__(self):
         return f"Progress: {self.progress_percentage}% - Enrollment ID: {self.enrollment.id}"
@@ -174,11 +187,14 @@ class Progress(SoftDeleteModel):
             'enrollment': self.enrollment_id,
         }
 
-
 class Certificate(SoftDeleteModel):
     code = models.CharField(max_length=100, unique=True)
     url = models.URLField()
     enrollment = models.ForeignKey('Enrollment', on_delete=models.DO_NOTHING, related_name='certificates')
+
+    # Index on 'code' for faster querying
+    class Meta:
+        indexes = [models.Index(fields=['code'])]
 
     def __str__(self):
         return f"{self.code} - {self.enrollment.course.title}"
@@ -196,12 +212,15 @@ class Certificate(SoftDeleteModel):
             'enrollment': self.enrollment_id,
         }
 
-
 class Rating(SoftDeleteModel):
     value = models.IntegerField()
     comment = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     enrollment = models.ForeignKey('Enrollment', on_delete=models.DO_NOTHING, related_name='ratings')
+
+    # Index on 'enrollment' for faster querying
+    class Meta:
+        indexes = [models.Index(fields=['enrollment'])]
 
     def __str__(self):
         return f"{self.value} stars"
@@ -215,15 +234,18 @@ class Rating(SoftDeleteModel):
             'enrollment': self.enrollment_id,
         }
 
-
+# Uncomment and optimize if you decide to use WishList in the future
 # class WishList(SoftDeleteModel):
 #     user = models.ForeignKey('Profile', on_delete=models.DO_NOTHING, related_name='wishlists')
 #     course = models.ManyToManyField('Course', related_name='wishlists')
 #     created_at = models.DateTimeField(auto_now_add=True)
 #
+#     # Index on 'user' for faster querying
+#     class Meta:
+#         indexes = [models.Index(fields=['user'])]
+#
 #     def __str__(self):
 #         return f"{self.user_id} - {self.course}"
-#
 #
 #     def as_dict(self):
 #         return {
