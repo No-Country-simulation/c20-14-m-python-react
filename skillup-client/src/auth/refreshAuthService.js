@@ -1,8 +1,15 @@
-export const refreshAuthService = token => {
-	return new Promise((resolve, reject) =>
-		setTimeout(() => {
-			if (token === "token malo") return reject(new Error("Token invalido"));
-			return resolve(token);
-		}, 2000)
-	);
+import { API } from "../consts/api.js";
+
+export const refreshAuthService = async token => {
+	const res = await fetch(API.refreshToken, {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json"
+		},
+		body: JSON.stringify({ token })
+	});
+
+	if (!res.ok) throw new Error("Err refresh token");
+
+	return await res.json();
 };

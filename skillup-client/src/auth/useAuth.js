@@ -28,7 +28,7 @@ export const useAuth = create()(
 				try {
 					const infoToken = jwtDecode(token);
 					const currentTime = Math.floor(Date.now() / 1000);
-					const daysInSeconds = 3 * 24 * 60 * 60;
+					const daysInSeconds = 10;
 					const isTimeToRefresh = currentTime - infoToken.iat > daysInSeconds;
 
 					const { updateToken } = get();
