@@ -8,6 +8,7 @@ import Dashboard from "./CursosCompletados/Dashboard";
 import Favorites from "./Favorites";
 import { useState } from "react";
 import CardsData from "./CardsData";
+import Contact from "../../../components/Contacto/Contacto";
 function Students() {
 	const [cards, setCards] = useState(CardsData);
 
@@ -26,6 +27,7 @@ function Students() {
 			<img className="centerBlock" src={imgBg} alt="imagen de fondo codigo" />
 			<Dashboard />
 			<Favorites cards={cards} toggleFavorite={toggleFavorite} />
+			<Contact />
 		</>
 	);
 }
