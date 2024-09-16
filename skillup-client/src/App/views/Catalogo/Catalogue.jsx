@@ -1,11 +1,11 @@
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import { FaPlayCircle, FaCloudDownloadAlt, FaCode } from "react-icons/fa";
 import { BiBarChartAlt } from "react-icons/bi";
-import { MdOutlineComputer } from "react-icons/md"; //MdOutlineTextSnippet,
-/*import { PiCertificateDuotone } from "react-icons/pi"; */
+import { MdOutlineComputer } from "react-icons/md";
 import { IoIosInfinite } from "react-icons/io";
 import { GoClock } from "react-icons/go";
 import { IoMdCheckmark } from "react-icons/io";
+import { FaVideo } from "react-icons/fa";
 import CatalogueData from "./CatalogueData";
 import css from "./css.module.css";
 import CarouselSU from "./CarouselSU";
@@ -24,11 +24,17 @@ const Catalogue = () => {
 
 	return (
 		<Container fluid className="cardContainer">
+			<Row className="mx-auto w-75 text-center">
+				<h1>
+					Todos los cursos en un solo lugar, que te gustaría aprender hoy?
+				</h1>
+			</Row>
+
 			<Form className={`${css.courseSearch} mb-4`}>
 				<Form.Group controlId="search">
 					<Form.Control
 						type="text"
-						placeholder="Buscar nombre del curso..."
+						placeholder="Busca tu curso..."
 						value={searchTerm}
 						onChange={handleSearchChange}
 					/>
@@ -37,27 +43,26 @@ const Catalogue = () => {
 
 			{filteredData.map((data, index) => (
 				<Row key={index} className={css.courseRow}>
-					<Row>
-						<Col>
-							<h1 className={css.courseh1}>{data.course}</h1>
+					<Row className={`align-items-center   ${css.courseRowInside}`}>
+						<Col lg={8}>
+							<h2 className={css.courseh1}>{data.course}</h2>
 							<div className={css.courseDescription}>
 								<p>{data.description}</p>
 								<p>{data.calificacion}</p>
 								<p>
-									<span className={css.courseTeacher}>INSTRUCTOR:</span>{" "}
+									<span className={css.courseTeacher}>INSTRUCTOR:</span>
 									{data.instructor}
 								</p>
 							</div>
-							<div className="d-flex justify-content-center">
+							<div className="d-flex justify-content-center ">
 								<Button className={`${css.btnSale} btn-secondary`}>
 									Comprar
 								</Button>
 							</div>
 						</Col>
-					</Row>
-					<Row className="m-0">
-						<Col xs={12} md={6} lg={4} className={css.cardCol}>
-							<h2 className={css.detailh2}>DETALLE DEL CURSO</h2>
+
+						<Col className={css.cardCol}>
+							<h2 className={css.detailh2}>Detalle del curso</h2>
 							<ul>
 								<li>
 									<span>
@@ -71,12 +76,6 @@ const Catalogue = () => {
 									</span>
 									{data.duracion}
 								</li>
-								{/* 	<li>
-									<span>
-										<MdOutlineTextSnippet />
-									</span>
-									{data.tema}
-								</li> */}
 								<li>
 									<span>
 										<FaCloudDownloadAlt />
@@ -89,12 +88,6 @@ const Catalogue = () => {
 									</span>
 									{data.ejercicios}
 								</li>
-								{/* 	<li>
-									<span>
-										<PiCertificateDuotone />
-									</span>
-									{data.certificado}
-								</li> */}
 								<li>
 									<span>
 										<IoIosInfinite />
@@ -126,7 +119,7 @@ const Catalogue = () => {
 					</Row>
 					<Col xs={12} className={css.cardCol}>
 						<h2 className={`${css.detailh2} ${css.largeText}`}>
-							EN ESTE CURSO APRENDERAS
+							En este curso aprenderás
 						</h2>
 						<ul>
 							<li>
@@ -167,56 +160,84 @@ const Catalogue = () => {
 							</li>
 						</ul>
 					</Col>
-					<Col xs={12} className={css.cardCol}>
-						<h2 className={css.contenth2}>CONTENIDO DEL CURSO</h2>
+					<Col xs={12} lg={12} className={css.cardCol}>
+						<h2 className={css.contenth2}>Contenido del curso</h2>
 						<h3 className={css.contenth3}>12 horas 15 videos</h3>
 						<ul>
-							<li>
-								<span>
+							<li className="row">
+								<span className="col-lg-2 col-xs-1">
 									<MdOutlineComputer />
 								</span>
-								{data.clase1}
+								<p className="col-lg-6 col-xs-3">{data.clase1}</p>
+
+								<span className="col-lg-2 col-xs-2">
+									<FaVideo />
+								</span>
 							</li>
-							<li>
-								<span>
+							<li className="row">
+								<span className="col-lg-2">
 									<MdOutlineComputer />
 								</span>
-								{data.clase2}
+								<p className="col-lg-6">{data.clase2}</p>
+								<span className="col-lg-2">
+									<FaVideo />
+								</span>
 							</li>
-							<li>
-								<span>
+							<li className="row">
+								<span className="col-lg-2">
 									<MdOutlineComputer />
 								</span>
-								{data.clase3}
+								<p className="col-lg-6">{data.clase3}</p>
+
+								<span className="col-lg-2">
+									<FaVideo />
+								</span>
 							</li>
-							<li>
-								<span>
+							<li className="row">
+								<span className="col-lg-2">
 									<MdOutlineComputer />
 								</span>
-								{data.clase4}
+								<p className="col-lg-6">{data.clase4}</p>
+
+								<span className="col-lg-2">
+									<FaVideo />
+								</span>
 							</li>
-							<li>
-								<span>
+							<li className="row">
+								<span className="col-lg-2">
 									<MdOutlineComputer />
 								</span>
-								{data.clase5}
+								<p className="col-lg-6">{data.clase5}</p>
+
+								<span className="col-lg-2">
+									<FaVideo />
+								</span>
 							</li>
-							<li>
-								<span>
+							<li className="row">
+								<span className="col-lg-2">
 									<MdOutlineComputer />
 								</span>
-								{data.clase6}
+								<p className="col-lg-6">{data.clase6}</p>
+
+								<span className="col-lg-2">
+									<FaVideo />
+								</span>
 							</li>
-							<li>
-								<span>
+							<li className="row">
+								<span className="col-lg-2">
 									<MdOutlineComputer />
 								</span>
-								{data.clase7}
+								<p className="col-lg-6">{data.clase7}</p>
+
+								<span className="col-lg-2">
+									<FaVideo />
+								</span>
 							</li>
 						</ul>
 					</Col>
 					<Col
 						xs={12}
+						lg={12}
 						className={`d-flex flex-column align-items-center ${css.who}`}
 					>
 						<h2 className={`text-center ${css.contenth2} ${css.whoh2}`}>
@@ -231,12 +252,10 @@ const Catalogue = () => {
 							</li>
 						</ul>
 					</Col>
-					<Col className="d-flex justify-content-center">
-						<Button className={`${css.btnSale} btn-secondary`}>
-							Suscribirse
-						</Button>
+					<Col className="d-flex justify-content-center mb-5">
+						<Button className={`${css.btnSale} btn-black`}>Suscríbete</Button>
 					</Col>
-					<hr />
+					{/* <hr /> */}
 				</Row>
 			))}
 			<Row>

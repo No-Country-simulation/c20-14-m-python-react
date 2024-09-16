@@ -25,15 +25,15 @@ img.center {
 	flex-direction: column;
 	padding: 1rem;
 	display: flex;
+	margin-bottom: 100px;
 }
 
 .heroText {
 	margin: 25px 0;
 }
 
-.heroText_ppal {
-	font-family: "Poppins", system-ui;
-	font-weight: 800;
+.heroText_ppal {	
+	font-weight: 600;
 	font-style: normal;
 	text-align: center;
 	margin: 25px;
@@ -149,7 +149,7 @@ img.center {
 
 	.heroText_ppal {
 		margin: 25px;
-		line-height: 2;
+		font-size: 2.5rem;
 	}
 	.heroGrid {
 		width: 90vw;
