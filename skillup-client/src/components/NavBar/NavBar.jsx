@@ -6,6 +6,7 @@ import { Link, useLocation } from "react-router-dom";
 import {
 	ABOUT,
 	CATALOGUE,
+	CONTACTO,
 	INICIO,
 	LOGIN,
 	USER_PROFILE
@@ -69,31 +70,6 @@ function NavBar() {
 					<Navbar.Collapse id="basic-navbar-nav">
 						<Nav className="mx-auto"></Nav>
 						<Nav className="ms-auto">
-							{/* <Nav.Link href="#Recomendaciones">
-								<Button variant="light" size="md">
-									Recomendaciones
-								</Button>
-							</Nav.Link> */}
-							<Nav.Link href="#CursosDisponibles">
-								<Button variant="light" size="md">
-									Cursos Disponibles
-								</Button>
-							</Nav.Link>
-							<Nav.Link href="#Dashboard">
-								<Button variant="light" size="md">
-									Dashboard
-								</Button>
-							</Nav.Link>
-							<Nav.Link href="#Certificados">
-								<Button variant="light" size="md">
-									Certificados
-								</Button>
-							</Nav.Link>
-							<Nav.Link href="#Favoritos">
-								<Button variant="light" size="md">
-									Favoritos
-								</Button>
-							</Nav.Link>
 							<Nav.Link as={Link} to={USER_PROFILE.path}>
 								<Button
 									variant="light"
@@ -303,7 +279,7 @@ function NavBar() {
 								Cursos
 							</Button>
 						</Nav.Link>
-						<Nav.Link href="#Contact">
+						<Nav.Link href="#Contact" as={Link} to={CONTACTO.path}>
 							<Button variant="light" size="md">
 								Contacto
 							</Button>
