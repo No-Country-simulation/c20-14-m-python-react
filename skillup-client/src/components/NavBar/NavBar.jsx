@@ -7,7 +7,7 @@ import {
 	ABOUT,
 	CATALOGUE,
 	INICIO,
-	SIGN_UP,
+	LOGIN,
 	USER_PROFILE
 } from "../../App/router/children";
 import { FaUserCircle } from "react-icons/fa";
@@ -23,11 +23,11 @@ function NavBar() {
 				variant="light"
 				expand="lg"
 			>
-				<Container>
+				<Container className="justify-content-center">
 					<Navbar.Brand
 						as={Link}
 						to={INICIO.path}
-						className="d-flex align-items-center"
+						className="d-flex align-items-center  mx-auto"
 					>
 						<img
 							src={logo3}
@@ -38,22 +38,6 @@ function NavBar() {
 						/>
 						<span className="ms-2 fs-4 fw-bold">{`<Skill Up>`}</span>{" "}
 					</Navbar.Brand>
-					<Navbar.Toggle aria-controls="basic-navbar-nav" />
-					<Navbar.Collapse id="basic-navbar-nav">
-						<Nav className="mx-auto"></Nav>
-						<Nav className="ms-auto">
-							<Nav.Link href="#CursosDisponibles">
-								<Button variant="light" size="md">
-									Cursos Disponibles
-								</Button>
-							</Nav.Link>
-							<Nav.Link href="#Contact">
-								<Button variant="light" size="md">
-									Contacto
-								</Button>
-							</Nav.Link>
-						</Nav>
-					</Navbar.Collapse>
 				</Container>
 			</Navbar>
 		);
@@ -117,7 +101,7 @@ function NavBar() {
 									className="d-flex align-items-center"
 								>
 									<FaUserCircle size={24} />
-									<span className="ms-2">Perfil Estudiante</span>
+									<span className="ms-2">Perfil</span>
 								</Button>
 							</Nav.Link>
 						</Nav>
@@ -193,8 +177,8 @@ function NavBar() {
 							</Nav.Link>
 							<div className="d-flex ms-3 align-items-center">
 								{/* SignUp == vista registro */}
-								<Nav.Link as={Link} to={SIGN_UP.path} className="p-0">
-									<Button variant="dark" size="md" className="me-2 p-1">
+								<Nav.Link as={Link} to={LOGIN.path} className="p-0">
+									<Button variant="dark" size="md" className="me-2 p-2">
 										Cerrar Sesión
 									</Button>
 								</Nav.Link>
@@ -213,11 +197,11 @@ function NavBar() {
 				variant="light"
 				expand="lg"
 			>
-				<Container>
+				<Container className="justify-content-center">
 					<Navbar.Brand
 						as={Link}
 						to={INICIO.path}
-						className="d-flex align-items-center"
+						className="d-flex align-items-center mx-auto"
 					>
 						<img
 							src={logo3}
@@ -228,22 +212,6 @@ function NavBar() {
 						/>
 						<span className="ms-2 fs-4 fw-bold">{`<Skill Up>`}</span>{" "}
 					</Navbar.Brand>
-					<Navbar.Toggle aria-controls="basic-navbar-nav" />
-					<Navbar.Collapse id="basic-navbar-nav">
-						<Nav className="mx-auto"></Nav>
-						<Nav className="ms-auto">
-							<Nav.Link href="#CursosDisponibles">
-								<Button variant="light" size="md">
-									Cursos Disponibles
-								</Button>
-							</Nav.Link>
-							<Nav.Link href="#Contact">
-								<Button variant="light" size="md">
-									Contacto
-								</Button>
-							</Nav.Link>
-						</Nav>
-					</Navbar.Collapse>
 				</Container>
 			</Navbar>
 		);
@@ -332,7 +300,7 @@ function NavBar() {
 
 						<Nav.Link href="#CursosDisponibles" as={Link} to={CATALOGUE.path}>
 							<Button variant="light" size="md">
-								Cursos Disponibles
+								Cursos
 							</Button>
 						</Nav.Link>
 						<Nav.Link href="#Contact">
@@ -341,9 +309,8 @@ function NavBar() {
 							</Button>
 						</Nav.Link>
 						<div className="d-flex ms-3 align-items-center">
-							{/* SignUp == vista registro */}
-							<Nav.Link as={Link} to={SIGN_UP.path} className="p-0">
-								<Button variant="dark" size="md" className="me-2 p-1">
+							<Nav.Link as={Link} to={LOGIN.path} className="p-0">
+								<Button variant="dark" size="md" className="me-2 p-2">
 									Iniciar Sesión
 								</Button>
 							</Nav.Link>

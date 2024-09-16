@@ -6,7 +6,7 @@ const Favorites = ({ cards, toggleFavorite }) => {
 	const favoritCards = cards.filter(card => card.favorite);
 
 	return (
-		<Container fluid className="cardContainer">
+		<Container fluid className="cardContainer" id="Favoritos">
 			<Row>
 				<Col>
 					<h2>Favoritos</h2>
