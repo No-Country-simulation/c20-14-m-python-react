@@ -27,20 +27,35 @@ class RegisterView(View):
             email = data.get('email')
             password = data.get('password')
 
+
+
             if validate_email(email):
                 return JsonResponse({'error': 'Correo electronico no valido'}, status=400)
             
             validate_password(password)
             
-            if User.objects.filter(email=email):
-                return JsonResponse ({'error': 'Este e-mail ya esta en uso'}, status=400)
-            
-            user = User.objects.create_user(username=email, email=email, password=password, is_active=False)
-            Profile.objects.create(user=user)
+            try:
+                user = User.objects.get(username=email)
 
-            # SEND VERIFICATION EMAIL
-            send_verification_email(request, user)
-            return JsonResponse ({'message': 'Usuario registrado existosamente'}, status=201)
+                if user.is_active:
+                    return JsonResponse({'error': 'Este usuario ya existe y esta activado.'}, status=400)
+
+                else:
+                    user.username = email
+                    user.set_password(password)
+                    user.save()
+                    # SEND VERIFICATION EMAIL
+                    send_verification_email(request, user)
+                    return JsonResponse({'message': 'Usuario registrado existosamente'}, status=201)
+
+            except ObjectDoesNotExist:
+            
+                user = User.objects.create_user(username=email, email=email, password=password, is_active=False)
+                Profile.objects.create(user=user)
+
+                # SEND VERIFICATION EMAIL
+                send_verification_email(request, user)
+                return JsonResponse ({'message': 'Usuario registrado existosamente'}, status=201)
         
         except json.JSONDecodeError:
             return JsonResponse({'error': 'Solicitud inválida. Se esperaba un JSON'}, status=400)
@@ -95,7 +110,7 @@ class UserCoursesView(JWTAuthenticationMixin, View):
         return JsonResponse({'enrollments': user_courses}, status=200)
 
 
-class CoursesView(JWTAuthenticationMixin, View):
+class CoursesView(View):
     def get(self, request, pk=None):
         if pk:
             try:
