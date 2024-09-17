@@ -106,7 +106,11 @@ class Course(SoftDeleteModel):
         return slug
 
     def as_dict(self):
-        instructor_profile = Profile.objects.get(user_id=self.instructor.id, role='IN')
+        try:
+            instructor_profile = self.instructor
+            instructor_data = instructor_profile.as_dict() if instructor_profile else {}
+        except Profile.DoesNotExist:
+            instructor_data = {'error': 'Instructor profile not found'}
         return {
             'id': self.id,
             'title': self.title,
@@ -116,7 +120,7 @@ class Course(SoftDeleteModel):
             'date_created': self.date_created,
             'price': self.price,
             'slug': self.slug,
-            'instructor': instructor_profile.as_dict(),
+            'instructor': instructor_data,
             'cover_image': self.cover_image,
             'modules': list(self.modules.values('id', 'title', 'order', 'video_url')),
             # 'wishlists': list(self.wishlists.values('id', 'user', 'created_at')),

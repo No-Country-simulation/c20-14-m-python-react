@@ -10,7 +10,7 @@ from .views import (RegisterView,
 urlpatterns = [
     path('register/', RegisterView.as_view(), name='register'),
     path('login/', LoginView.as_view(), name='login'),
-    path('user/<int:pk>/courses/', UserCoursesView.as_view(), name='user_courses'),
+    path('user/profile/<int:pk>/courses/', UserCoursesView.as_view(), name='user_courses'),
     path('enroll/', EnrollmentView.as_view(), name='enroll_course'),
     path('courses/', CoursesView.as_view(), name='courses'),
     path('courses/<int:pk>/', CoursesView.as_view(), name='course'),

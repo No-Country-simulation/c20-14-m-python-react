@@ -1,8 +1,9 @@
 import json
+from django.utils import timezone
 
 import jwt
 from django.contrib.auth import authenticate
-from django.db.backends.base.base.BaseDatabaseWrapper import timezone
+
 
 from skillup import settings
 from .models import Profile, Enrollment, Course, Module, Progress

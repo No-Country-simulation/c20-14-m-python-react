@@ -96,10 +96,21 @@ WSGI_APPLICATION = 'skillup.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default='postgres://postgres1234:postgres@localhost:5432/skillup',
-        conn_max_age=600
-    )
+    # 'default': dj_database_url.config(
+    #     default='postgres://postgres1234:postgres@localhost:5432/skillup',
+    #     conn_max_age=600
+    # )
+
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'skillup-db',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres1234',
+        # For run locally
+        # 'HOST': '127.0.0.1',
+        'HOST': 'db',
+        'PORT': '5432',
+    }
 }
 
 
