@@ -149,7 +149,7 @@ function NavBar() {
 								</Button>
 							</Nav.Link>
 
-							<Nav.Link href="#Dashboard">
+							<Nav.Link href="#MisCursos">
 								<Button variant="light" size="md">
 									Mis Cursos
 								</Button>

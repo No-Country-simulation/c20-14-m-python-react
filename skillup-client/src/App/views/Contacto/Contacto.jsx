@@ -3,8 +3,7 @@ import emailjs from "emailjs-com";
 import { Container, Form, Button, Row, Col } from "react-bootstrap";
 import "./Contacto.css";
 import { useLocation } from "react-router-dom";
-
-function Contact() {
+function Contacto() {
 	// Obtén la ubicación actual
 	const { pathname } = useLocation();
 	const form = useRef();
@@ -102,7 +101,7 @@ function Contact() {
 						/>
 					</Form.Group>
 					<div className="d-flex justify-content-end">
-						<Button type="submit" variant="dark" className="w-30 btn-black">
+						<Button type="submit" variant="primary" className="w-30 btn-black">
 							Enviar
 						</Button>
 					</div>
@@ -115,4 +114,4 @@ function Contact() {
 	);
 }
 
-export default Contact;
+export default Contacto;
