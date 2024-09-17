@@ -1,11 +1,13 @@
 import json
 
+from django.shortcuts import render
 import jwt
 from django.contrib.auth import authenticate
 
 from skillup import settings
 from .models import Profile, Enrollment, Course, Module
 from .utils.verification import validate_token, send_verification_email
+from .utils.luhn import LuhnAlgorithm
 from django.http import JsonResponse
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
@@ -123,6 +125,8 @@ class EnrollmentView(JWTAuthenticationMixin, View):
             if enrollment.course == course:
                 return JsonResponse({'error': 'El usuario ya está inscrito en este curso'}, status=400)
 
+        #to do... bind the PaymentView with EnrollmentView 
+
         Enrollment.objects.create(user=profile, course=course)
 
         return JsonResponse ({'message': 'Usuario inscrito existosamente'}, status=201)
@@ -157,3 +161,13 @@ class ProfileView(JWTAuthenticationMixin, View):
 
         except ObjectDoesNotExist:
             return JsonResponse({'error': 'Perfil no encontrado'}, status=400)
+
+class PaymentView(View):
+    def get(self, request):
+        return render(request, 'payment_form.html')
+
+    def post(self, request):
+        card_number = request.POST.get('card_number', '')
+        is_valid = LuhnAlgorithm.validate(card_number)
+        message = 'Payment successful!' if is_valid else 'Invalid card number. Please try again.'
+        return render(request, 'payment_form.html', {'message': message})

@@ -1,11 +1,12 @@
 from django.urls import path
-from .views import (RegisterView,
+from .views import (PaymentView, RegisterView,
                     LoginView,
                     ProfileView,
                     UserCoursesView,
                     CoursesView,
                     ModuleView,
-                    EnrollmentView)
+                    EnrollmentView
+                    )
 
 urlpatterns = [
     path('register/', RegisterView.as_view(), name='register'),
@@ -16,5 +17,6 @@ urlpatterns = [
     path('courses/<int:pk>/', CoursesView.as_view(), name='course'),
     path('courses/<int:course_id>/module/<int:module_id>/', ModuleView.as_view(), name='module'),
     path('user/<int:pk>/profile/', ProfileView.as_view(), name='profile'),
+    path('payment/', PaymentView.as_view(), name='payment')
 
 ]
