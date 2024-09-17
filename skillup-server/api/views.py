@@ -2,9 +2,10 @@ import json
 
 import jwt
 from django.contrib.auth import authenticate
+from django.db.backends.base.base.BaseDatabaseWrapper import timezone
 
 from skillup import settings
-from .models import Profile, Enrollment, Course, Module
+from .models import Profile, Enrollment, Course, Module, Progress
 from .utils.verification import validate_token, send_verification_email
 from django.http import JsonResponse
 from django.utils.decorators import method_decorator
@@ -172,3 +173,35 @@ class ProfileView(JWTAuthenticationMixin, View):
 
         except ObjectDoesNotExist:
             return JsonResponse({'error': 'Perfil no encontrado'}, status=400)
+
+
+
+class UpdateProgressView(JWTAuthenticationMixin, View):
+    def post(self, request):
+        enrollment_id = request.POST.get('enrollment_id')
+        progress_percentage = request.POST.get('progress_percentage')
+
+
+        if not enrollment_id or not progress_percentage:
+            return JsonResponse({'error': 'Inscripción o Progreso faltantes'}, status=400)
+
+        try:
+            progress_percentage = int(progress_percentage)
+            if not (0 <= progress_percentage <= 100):
+                return JsonResponse({'error': 'El progreso debe estar entre 0 y 100'}, status=400)
+        except ValueError:
+            return JsonResponse({'error': 'Valor del progreso invalido'}, status=400)
+
+        enrollment = Enrollment.objects.get(pk=enrollment_id)
+
+        if not enrollment:
+            return JsonResponse({'error': 'Inscripción no encontrada'}, status=404)
+
+        progress = Progress.objects.get(enrollment=enrollment)
+        progress.progress_percentage = progress_percentage
+        progress.updated_at = timezone.now()
+        progress.save()
+
+        return JsonResponse({'message': 'Progreso actualizado exitosamente', 'progress_percentage': progress_percentage})
+
+
