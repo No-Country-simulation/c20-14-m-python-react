@@ -5,7 +5,7 @@ from .views import (RegisterView,
                     UserCoursesView,
                     CoursesView,
                     ModuleView,
-                    EnrollmentView, UpdateProgressView)
+                    EnrollmentView, UpdateProgressView, CompleteCourseView)
 
 urlpatterns = [
     path('register/', RegisterView.as_view(), name='register'),
@@ -16,6 +16,7 @@ urlpatterns = [
     path('courses/<int:pk>/', CoursesView.as_view(), name='course'),
     path('courses/<int:course_id>/module/<int:module_id>/', ModuleView.as_view(), name='module'),
     path('update-progress/', UpdateProgressView.as_view(), name='update_progress'),
+    path('complete-course/<int:enrollment_id>/', CompleteCourseView.as_view(), name='complete_course'),
     path('user/<int:pk>/profile/', ProfileView.as_view(), name='profile'),
 
 ]

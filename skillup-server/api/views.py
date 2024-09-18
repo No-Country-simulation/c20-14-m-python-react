@@ -1,12 +1,12 @@
 import json
-from django.utils import timezone
+import os
 
-import jwt
+from django.utils import timezone
 from django.contrib.auth import authenticate
 
 
 from skillup import settings
-from .models import Profile, Enrollment, Course, Module, Progress
+from .models import Profile, Enrollment, Course, Module, Progress, Certificate
 from .utils.verification import validate_token, send_verification_email
 from django.http import JsonResponse
 from django.utils.decorators import method_decorator
@@ -18,6 +18,11 @@ from django.core.validators import validate_email
 from django.contrib.auth.password_validation import validate_password
 from api.jwt_auth_utils.auth import generate_jwt_token
 from api.jwt_auth_utils.mixins import JWTAuthenticationMixin
+
+from reportlab.lib.pagesizes import letter
+from reportlab.pdfgen import canvas
+from django.conf import settings
+import os
 
 
 @method_decorator(csrf_exempt, name='dispatch')
@@ -198,6 +203,10 @@ class UpdateProgressView(JWTAuthenticationMixin, View):
         if not enrollment:
             return JsonResponse({'error': 'Inscripción no encontrada'}, status=404)
 
+        if progress_percentage == 100:
+            enrollment.is_complete = True
+            enrollment.save()
+
         progress = Progress.objects.get(enrollment=enrollment)
         progress.progress_percentage = progress_percentage
         progress.updated_at = timezone.now()
@@ -205,4 +214,29 @@ class UpdateProgressView(JWTAuthenticationMixin, View):
 
         return JsonResponse({'message': 'Progreso actualizado exitosamente', 'progress_percentage': progress_percentage})
 
+@method_decorator(csrf_exempt, name='dispatch')
+class CompleteCourseView(JWTAuthenticationMixin, View):
+    def post(self, request, enrollment_id):
+        enrollment = Enrollment.objects.get(pk=enrollment_id)
 
+        if enrollment.is_complete:
+            certificate = Certificate.objects.create(enrollment=enrollment)
+            certificate.generate_code()
+
+            # Genera el PDF
+            pdf_filename = f"certificates/{certificate.code}.pdf"
+            pdf_path = os.path.join(settings.MEDIA_ROOT, pdf_filename)
+            c = canvas.Canvas(pdf_path, pagesize=letter)
+            c.drawString(100, 750, "Certificado de finalización")
+            c.drawString(100, 730, f"Este certificado se otorga a: {enrollment.user.user.first_name} {enrollment.user.user.last_name}")
+            c.drawString(100, 710, f"Curso: {enrollment.course.title}")
+            c.drawString(100, 690, f"Código: {certificate.code}")
+            c.save()
+
+            # Guarda la URL en el certificado
+            certificate.url = pdf_filename
+            certificate.save()
+
+            return JsonResponse({'message': 'Certificado completada exitosamente', 'certificate': certificate.as_dict()}, status=200)
+        else:
+            return JsonResponse({'message': 'El curso no esta completado'}, status=400)

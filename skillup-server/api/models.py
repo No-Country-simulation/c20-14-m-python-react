@@ -149,6 +149,7 @@ class Enrollment(SoftDeleteModel):
     enrollment_date = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey('Profile', on_delete=models.DO_NOTHING, related_name='enrollments')
     course = models.ForeignKey('Course', on_delete=models.DO_NOTHING, related_name='courses')
+    is_complete = models.BooleanField(default=False)
 
     def __str__(self):
         return f"Enrollment for {self.user}"
@@ -159,6 +160,7 @@ class Enrollment(SoftDeleteModel):
             'enrollment_date': self.enrollment_date,
             'user': self.user_id,
             'course': self.course_id,
+            'is_complete': self.is_complete,
         }
 
 

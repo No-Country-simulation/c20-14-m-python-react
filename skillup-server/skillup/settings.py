@@ -107,8 +107,8 @@ DATABASES = {
         'USER': 'postgres',
         'PASSWORD': 'postgres1234',
         # For run locally
-        # 'HOST': '127.0.0.1',
-        'HOST': 'db',
+        'HOST': '127.0.0.1',
+        # 'HOST': 'db',
         'PORT': '5432',
     }
 }
@@ -155,6 +155,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 PROFILE_PICTURE_DIR = 'profile_pictures/'
+
 
 
 # This production code might break development mode, so we check whether we're in DEBUG mode
