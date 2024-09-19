@@ -1,5 +1,4 @@
 import requests
-import time
 
 def ping_endpoint():
     url = 'https://skillup-pi83.onrender.com'
@@ -13,6 +12,4 @@ def ping_endpoint():
         print(f"Error en el ping: {e}")
 
 if __name__ == "__main__":
-    while True:
         ping_endpoint()
-        time.sleep(60 * 10) # Each 10 minutes
