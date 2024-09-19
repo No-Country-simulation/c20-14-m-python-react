@@ -1,3 +1,7 @@
+.formStyles{
+	border: 1px solid #1f5489;
+}
+
 .cardContainer {
 	padding: 20px;
 }
@@ -152,7 +156,7 @@ hr {
 }
 
 .carouselSlide {
-	background: #21294b;
+	background: #404a72;
 	max-width: 500px;
 	margin: 0 auto;
 	height: 40vh;
@@ -172,15 +176,7 @@ hr {
 }
 
 .slideImage {
-	clip-path: polygon(
-		0% 0%,
-		100% 0%,
-		100% 75%,
-		75% 75%,
-		75% 100%,
-		50% 75%,
-		0% 75%
-	);
+	clip-path: polygon(0 0, 100% 0%, 100% 85%, 80% 86%, 85% 100%, 47% 87%, 0 87%);
 }
 
 /* 
@@ -191,7 +187,8 @@ hr {
 
 @media screen and (min-width: 769px) {
 	.cardCol {
-		width: 80vw;
+		width: 60vw;
+		padding: 5px 15px
 	}
 
 	.courseSearch {
@@ -204,14 +201,24 @@ hr {
 
 	.courseRow {
 		display: flex;
-		justify-content: center;
-		margin-bottom: 50px;
+        justify-content: center;
+        margin-bottom: 80px;
+        width: auto;
 		
 	}
 
 	.courseRowInside {
 		margin: 0 !important;
 		width: 80vw;
+		padding-right: 50px;
+	}
+
+	.courseDescription p:nth-child(1){
+		text-align: justify;
+	}
+
+	.courseTeacher {
+		margin-right: 25px;
 	}
 
 	.video {
@@ -228,8 +235,7 @@ hr {
 	}
 
 	.listWho {
-		width: 50%;
-		padding: 0 50px;
+		width: 50%;		
 		li {
 			line-height: 1.25;
 			margin: 20px 0;
@@ -242,9 +248,10 @@ hr {
 
 	.carouselh3b {
 		margin-top: 25px;
-		padding: 25px;
+		padding: 25px 0;
 		color: #f926ae;
-		font-size: 2rem;
+		font-size: 2.3rem;
+		font-weight: 600;
 	}
 	h2 {
 		margin: 0;
@@ -254,7 +261,7 @@ hr {
 		width: 80vw;
 	}
 	ul{
-		width: 70%;
+		width: 80%;
 		margin: 0 auto 25px auto;
 	}
 }
