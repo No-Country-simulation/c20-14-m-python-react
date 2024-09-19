@@ -55,6 +55,7 @@ class Profile(SoftDeleteModel):
             'user_id': self.user_id,
             'first_name': self.user.first_name,
             'last_name': self.user.last_name,
+            'email': self.user.email,
             'profile_picture': self.profile_picture.url if self.profile_picture else None,
             'role': self.role,
             'social_networks_links': self.social_networks_links,
