@@ -1,7 +1,9 @@
 asgiref==3.8.1
 attrs==24.2.0
 Brotli==1.1.0
+certifi==2024.8.30
 chardet==5.2.0
+charset-normalizer==3.3.2
 click==8.1.7
 dj-database-url==2.2.0
 Django==5.1
@@ -10,6 +12,7 @@ djangorestframework==3.15.2
 drf-yasg==1.21.7
 gunicorn==23.0.0
 h11==0.14.0
+idna==3.10
 inflection==0.5.1
 jsonschema==4.23.0
 jsonschema-specifications==2023.12.1
@@ -23,11 +26,13 @@ pytz==2024.2
 PyYAML==6.0.2
 referencing==0.35.1
 reportlab==4.2.2
+requests==2.32.3
 rpds-py==0.20.0
 sendgrid==6.11.0
 sqlparse==0.5.1
 starkbank-ecdsa==2.2.0
 typing_extensions==4.12.2
 uritemplate==4.1.1
+urllib3==2.2.3
 uvicorn==0.30.6
 whitenoise==6.7.0
