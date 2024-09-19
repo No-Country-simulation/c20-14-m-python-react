@@ -25,5 +25,8 @@ jobs:
           python3 -m pip install --upgrade pip
           pip install requests
 
+      - name: Wait before sending ping
+        run: sleep 10
+
       - name: Send ping to Render
-        run: python main.py
+        run: python .github/workflows/main.py
