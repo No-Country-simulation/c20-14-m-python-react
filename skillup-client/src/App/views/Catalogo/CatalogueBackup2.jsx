@@ -7,12 +7,13 @@ import {
 } from "react-icons/fa";
 import { BiBarChartAlt } from "react-icons/bi";
 import { MdOutlineComputer } from "react-icons/md";
-import { IoIosInfinite, IoMdCheckmark } from "react-icons/io";
+import { IoIosInfinite } from "react-icons/io";
 import { GoClock } from "react-icons/go";
+import { IoMdCheckmark } from "react-icons/io";
 import CarouselSU from "./CarouselSU";
 import css from "./css.module.css";
 import { useState, useEffect } from "react";
-import CatalogueData from "./CatalogueData";
+
 const Catalogue = () => {
 	const [searchTerm, setSearchTerm] = useState("");
 	const [courses, setCourses] = useState([]);
@@ -27,10 +28,10 @@ const Catalogue = () => {
 				if (data.message === "success") {
 					setCourses(data.courses);
 				} else {
-					console.error("No carga informacion del curso");
+					console.error("Error fetching data");
 				}
 			} catch (error) {
-				console.error("Falta informacion:", error);
+				console.error("Error fetching data:", error);
 			}
 		};
 
@@ -39,13 +40,6 @@ const Catalogue = () => {
 
 	const handleSearchChange = e => {
 		setSearchTerm(e.target.value);
-	};
-	//extrae de la ruta de url de la api para la informacion del iframe
-	const extractVideoId = url => {
-		const regex =
-			/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^&\n]{11})/;
-		const matches = url.match(regex);
-		return matches ? matches[1] : null;
 	};
 
 	const filteredCourses = courses.filter(course =>
@@ -72,31 +66,29 @@ const Catalogue = () => {
 			</Form>
 
 			{filteredCourses.map((course, index) => {
-				const { title, description, modules } = course;
-				const courseData = CatalogueData.find(item => item.title === title); // Busca los datos del curso en CatalogueData
-				// Si no se encuentra el curso, retorna null
-				if (!courseData) {
-					return null;
-				}
-				//info que no se encuentra en api
-				const {
-					calificacion, //estrellas varia segun curso
-					instructor, //varia segun curso nombres en api no tienen nombre y apellido a pesar de tener esos campos
-					nivel, // inicial/intermedio/avanzado
-					duracion, //cantidad de horas varia segun curso **ver desde api
-					ejercicios //cantidad de ejercicio varia segun curso
-				} = courseData;
+				// Extracting course data
+				const { title, description, cover_image, modules } = course;
+				// Dummy data for `calificacion`, `instructor`, and other fields
+				// Replace with actual logic if you have it
+				const calificacion = "4.5"; // This should be obtained from your data source
+				const instructor = "Instructor Name"; // This should be obtained from your data source
+				const nivel = "Intermedio"; // This should be obtained from your data source
+				const duracion = "10 horas"; // This should be obtained from your data source
+				const descarga = "Sí"; // This should be obtained from your data source
+				const ejercicios = "10"; // This should be obtained from your data source
+				const acceso = "Vitalicio"; // This should be obtained from your data source
+				const horario = "Flexible"; // This should be obtained from your data source
 
 				return (
 					<Row key={index} className={css.courseRow}>
 						<Row className={`align-items-center ${css.courseRowInside}`}>
-							<Col lg={7}>
+							<Col lg={8}>
 								<h2 className={css.courseh1}>{title}</h2>
 								<div className={css.courseDescription}>
 									<p>{description}</p>
 									<p>{calificacion}</p>
 									<p>
-										<span className={css.courseTeacher}>INSTRUCTOR: </span>
+										<span className={css.courseTeacher}>INSTRUCTOR:</span>
 										{instructor}
 									</p>
 								</div>
@@ -126,7 +118,7 @@ const Catalogue = () => {
 										<span>
 											<FaCloudDownloadAlt />
 										</span>
-										Contenido descargable
+										{descarga}
 									</li>
 									<li>
 										<span>
@@ -138,24 +130,25 @@ const Catalogue = () => {
 										<span>
 											<IoIosInfinite />
 										</span>
-										Acesso sin vencimiento
+										{acceso}
 									</li>
 									<li>
 										<span>
 											<GoClock />
 										</span>
-										Aprende a tu ritmo
+										{horario}
 									</li>
 								</ul>
 							</Col>
 						</Row>
-
 						<Row>
 							<Col
 								xs={12}
 								className="d-flex flex-column align-items-center mt-5"
 							>
-								<h2 className={`text-center mt-5 ${css.contenth2}`}>
+								<h2
+									className={`text-center mt-5 ${css.contenth2} ${css.whoh2}`}
+								>
 									Contenido validado por expertos
 								</h2>
 								<p className={css.contentParagraph}>
@@ -163,19 +156,14 @@ const Catalogue = () => {
 									actualizaciones
 								</p>
 								<div className={css.video}>
-									<iframe
-										width="560"
-										height="315"
-										src={`https://www.youtube.com/embed/${extractVideoId(modules[0]?.video_url)}`}
-										title="Video del curso"
-										frameBorder="0"
-										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-										allowFullScreen
-									></iframe>
+									<video
+										controls
+										src={modules[0]?.video_url}
+										poster={cover_image}
+									></video>
 								</div>
 							</Col>
 						</Row>
-
 						<Col xs={12} className={css.cardCol}>
 							<h2 className={`${css.detailh2} ${css.largeText}`}>
 								En este curso aprenderás
@@ -191,7 +179,6 @@ const Catalogue = () => {
 								))}
 							</ul>
 						</Col>
-
 						<Col xs={12} lg={12} className={css.cardCol}>
 							<h2 className={css.contenth2}>Contenido del curso</h2>
 							<h3 className={css.contenth3}>12 horas 15 videos</h3>
@@ -203,19 +190,24 @@ const Catalogue = () => {
 										</span>
 										<p className="col-lg-6 col-xs-3">{module.title}</p>
 										<span className="col-lg-2 col-xs-2">
-											<FaVideo />
+											<a
+												href={module.video_url}
+												target="_blank"
+												rel="noopener noreferrer"
+											>
+												<FaVideo />
+											</a>
 										</span>
 									</li>
 								))}
 							</ul>
 						</Col>
-
 						<Col
 							xs={12}
 							lg={12}
 							className={`d-flex flex-column align-items-center ${css.who}`}
 						>
-							<h2 className={`text-center ${css.contenth2}`}>
+							<h2 className={`text-center ${css.contenth2} ${css.whoh2}`}>
 								Quiénes pueden tomar este curso
 							</h2>
 							<ul className={css.listWho}>
@@ -227,11 +219,8 @@ const Catalogue = () => {
 								</li>
 							</ul>
 						</Col>
-
 						<Col className="d-flex justify-content-center mb-5">
-							<Button variant="dark" className="css.btnSale">
-								Suscríbete
-							</Button>
+							<Button className={`${css.btnSale} btn-black`}>Suscríbete</Button>
 						</Col>
 					</Row>
 				);
