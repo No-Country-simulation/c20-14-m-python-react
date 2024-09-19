@@ -7,6 +7,7 @@ import Catalogue from "../views/Catalogo/Catalogue.jsx";
 import RouteProtector from "./RouterProtector.jsx";
 import About from "../views/About/About.jsx";
 import Payments from "../views/Payments/Payments.jsx";
+import CourseDetails from "../views/CourseDetails/CourseDetails.jsx";
 
 export const SIGN_UP = {
 	id: crypto.randomUUID(),
@@ -68,4 +69,12 @@ export const PAYMENTS = {
 	to: "/pagos",
 	name: "Pagos",
 	element: <Payments />
+};
+
+export const COURSE_DETAILS = {
+	id: crypto.randomUUID(),
+	path: "details/:id",
+	to: "/details/",
+	name: "Detalle del curso",
+	element: <CourseDetails />
 };
