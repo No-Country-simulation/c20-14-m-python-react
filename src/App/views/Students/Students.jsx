@@ -21,12 +21,11 @@ function Students() {
 
 	return (
 		<>
-			{/* Pasamos cards y toggleFavorite a Recomendaciones */}
-			<Recomendaciones cards={cards} toggleFavorite={toggleFavorite} />
-			<CursosDisp cards={cards} toggleFavorite={toggleFavorite} />
-			{/* <img className="centerBlock" src={imgBg} alt="imagen de fondo codigo" /> */}
 			<MisCursos />
 			<Favorites cards={cards} toggleFavorite={toggleFavorite} />
+
+			<Recomendaciones cards={cards} toggleFavorite={toggleFavorite} />
+			<CursosDisp cards={cards} toggleFavorite={toggleFavorite} />
 			<Contact />
 		</>
 	);

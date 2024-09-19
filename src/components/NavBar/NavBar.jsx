@@ -8,6 +8,7 @@ import {
 	CATALOGUE,
 	INICIO,
 	LOGIN,
+	STUDENTS,
 	USER_PROFILE
 } from "../../App/router/children";
 import { FaUserCircle } from "react-icons/fa";
@@ -16,6 +17,7 @@ import { useAuth } from "../../auth/useAuth.js";
 function NavBar() {
 	//Acerca de Nosotros
 	const logout = useAuth(auth => auth.logout);
+	const token = useAuth(auth => auth.token);
 	const { pathname } = useLocation();
 	if (pathname === "/about") {
 		return (
@@ -316,9 +318,13 @@ function NavBar() {
 							</Button>
 						</Nav.Link>
 						<div className="d-flex ms-3 align-items-center">
-							<Nav.Link as={Link} to={LOGIN.path} className="p-0">
+							<Nav.Link
+								as={Link}
+								to={token ? STUDENTS.path : LOGIN.path}
+								className="p-0"
+							>
 								<Button variant="dark" size="md" className="me-2 p-2">
-									Iniciar Sesión
+									{token ? STUDENTS.name : "Inicial sesión"}
 								</Button>
 							</Nav.Link>
 						</div>
