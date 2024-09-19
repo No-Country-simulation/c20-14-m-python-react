@@ -162,11 +162,16 @@ class ProfileView(JWTAuthenticationMixin, View):
         try:
             profile = Profile.objects.get(user_id=pk)
             data = json.loads(request.body)
+            profile_social_networks_links = data.get('social_networks_links')
 
             for key, value in data.items():
                 if hasattr(profile.user, key):
                     setattr(profile.user, key, value)
+
+            if profile_social_networks_links is not None:
+                profile.social_networks_links = profile_social_networks_links
             profile.user.save()
+            profile.save()
 
             return JsonResponse(profile.as_dict(), status=200)
 
