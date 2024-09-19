@@ -1,0 +1,9 @@
+.err {
+	position: absolute;
+	top: 50%;
+	right: calc(var(--size-err) / 2);
+	transform: translateY(-50%);
+	width: var(--size-err);
+	height: var(--size-err);
+	color: red;
+}
