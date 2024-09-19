@@ -1,9 +1,10 @@
-.card {
-	height: 100%;
-}
+.card-col {
+    margin-bottom: 20px; /* Puedes ajustar este valor para el margen exterior */
+  }
 
 .cardContainer {
 	padding: 5rem 10rem;
+   
 }
 
 .cardImg {
@@ -55,3 +56,10 @@
     bottom: 10px; /* Alineado en el fondo del Card.Body */
     right: 10px;  /* Alineado a la derecha del Card.Body */
 }
+
+.course-image {
+    height: 300px; /* Puedes ajustar esta altura según tu preferencia */
+    object-fit: cover; /* Asegura que la imagen mantenga sus proporciones y se ajuste al contenedor */
+    width: 100%; /* Se asegura de que la imagen ocupe todo el ancho disponible */
+  }
+  
