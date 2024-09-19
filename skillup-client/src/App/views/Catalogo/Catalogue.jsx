@@ -63,6 +63,7 @@ const Catalogue = () => {
 			<Form className={`${css.courseSearch} mb-4`}>
 				<Form.Group controlId="search">
 					<Form.Control
+						className={css.formStyles}
 						type="text"
 						placeholder="Busca tu curso..."
 						value={searchTerm}
