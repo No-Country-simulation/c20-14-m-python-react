@@ -5,6 +5,7 @@ import { Form, Button, Col, Row, Container, Card } from "react-bootstrap";
 import logoUsuario from "./img/usuario.png";
 import { useAuth } from "../../../auth/useAuth.js";
 import { getUserService } from "./service/getUserService.js";
+import { updateUserService } from "./service/updateUserService.js";
 
 export default function UserProfile() {
 	const [profileImage, setProfileImage] = useState(null);
@@ -24,6 +25,7 @@ export default function UserProfile() {
 	const [gitHub, setGitHub] = useState("");
 	const [feedback, setFeedback] = useState({ message: "", type: "" });
 	const fileInputRef = useRef(null);
+	const [submit, setSubmit] = useState(false);
 	const { user_id } = useAuth(auth => auth.getInfoToken());
 	const token = useAuth(auth => auth.token);
 
@@ -39,53 +41,36 @@ export default function UserProfile() {
 				setGitHub(user?.social_networks_links.github);
 				setDiscord(user?.social_networks_links.discord);
 				setLinkedin(user?.social_networks_links.linkedin);
+				setProfileImage(user?.profile_picture);
 			})
 			.catch(err => console.log(err));
 	}, [user_id, token]);
 
+	useEffect(() => {
+		if (!user_id || !submit) return;
+
+		const controller = new AbortController();
+
+		updateUserService(controller.signal, user_id, token, {
+			first_name: firstName,
+			last_name: lastName,
+			email: email,
+			social_networks_links: {
+				github: gitHub,
+				discord,
+				linkedin
+			}
+		})
+			.then(() => {})
+			.catch(err => console.log(err))
+			.finally(() => setSubmit(false));
+	}, [submit]);
+
 	const handleSubmit = e => {
 		e.preventDefault();
-
-		if (profileImage) {
-			const validImageTypes = ["image/jpeg", "image/png"];
-			if (!validImageTypes.includes(profileImage.type)) {
-				setFeedback({
-					message: "Por favor, sube una imagen válida (jpg, png, gif)",
-					type: "error"
-				});
-				return;
-			}
-		}
-		const formData = new formData();
-		formData.append("firstName", firstName);
-		formData.append("email", email);
-		if (profileImage) {
-			formData.append("profileImage", profileImage);
-		}
-		//set loading
-		fetch("https://jsonplaceholder.typicode.com/users", {
-			method: "POST",
-			body: formData
-		})
-			.then(response => response.json())
-			.then(data => {
-				if (data.sucess) {
-					setFeedback({ message: "Perfil actualizado", type: "sucess" });
-					if (profileImage) {
-						setPreviewImage(URL, createObjectURL(profileImage));
-					}
-				} else {
-					setFeedback({ message: "Error: ${data.message}", type: "error" });
-				}
-			})
-			.catch(error => {
-				console.error("Error", error);
-				setFeedback({
-					message: "Error al actualizar el perfil",
-					type: "error"
-				});
-			});
+		setSubmit(true);
 	};
+
 	const handleImageChange = e => {
 		const file = e.target.files[0];
 		setProfileImage(file);
@@ -128,7 +113,7 @@ export default function UserProfile() {
 								<div className="flex-fill">
 									<img
 										id="profilePic"
-										src={previewImage}
+										src={profileImage}
 										alt="Foto de perfil"
 										className="img-thumbnail mb-3 align-self-center"
 										onClick={handleImageClick}
@@ -148,7 +133,6 @@ export default function UserProfile() {
 											placeholder="Ejemplo: Juan"
 											onChange={e => setFirstName(e.target.value)}
 											className="custom-form-control"
-											required
 										/>
 									</Col>
 								</Form.Group>
@@ -162,7 +146,6 @@ export default function UserProfile() {
 											placeholder="Ejemplo: Perez"
 											onChange={e => setLastName(e.target.value)}
 											className="custom-form-control"
-											required
 										/>
 									</Col>
 								</Form.Group>
@@ -178,7 +161,6 @@ export default function UserProfile() {
 											maxLength="8"
 											onChange={e => setPersonalId(e.target.value)}
 											className="custom-form-control"
-											required
 										/>
 									</Col>
 								</Form.Group>
@@ -207,7 +189,6 @@ export default function UserProfile() {
 											value={email}
 											placeholder="ejemplo@gmail.com"
 											onChange={e => setEmail(e.target.value)}
-											required
 										/>
 									</Col>
 								</Form.Group>
@@ -223,7 +204,6 @@ export default function UserProfile() {
 											placeholder="Introducir contraseña"
 											onChange={e => setPassword(e.target.value)}
 											className="custom-form-control2"
-											required
 										/>
 										<span
 											className="input-group2-text"
@@ -236,7 +216,7 @@ export default function UserProfile() {
 													width="16"
 													height="16"
 													fill="currentColor"
-													class="bi bi-eye-slash"
+													className="bi bi-eye-slash"
 													viewBox="0 0 16 16"
 												>
 													<path d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7 7 0 0 0-2.79.588l.77.771A6 6 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755q-.247.248-.517.486z" />
@@ -271,7 +251,6 @@ export default function UserProfile() {
 											placeholder="Introducir nueva contraseña"
 											onChange={e => setNewPassword(e.target.value)}
 											className="custom-form-control2"
-											required
 										/>
 										<span
 											className="input-group2-text"
@@ -319,7 +298,6 @@ export default function UserProfile() {
 											value={confirmNewPassword}
 											placeholder="Introducir nueva contraseña de nuevo"
 											className="custom-form-control2"
-											required
 										/>
 										<span
 											className="input-group2-text"
@@ -375,13 +353,12 @@ export default function UserProfile() {
 											</svg>
 										</span>
 										<Form.Control
-											type="url"
+											type="text"
 											name="discord"
 											value={discord}
 											placeholder="juanperez"
 											onChange={e => setDiscord(e.target.value)}
 											className="custom-form-control1"
-											required
 										/>
 									</Col>
 								</Form.Group>
@@ -403,12 +380,11 @@ export default function UserProfile() {
 										</span>
 										<Form.Control
 											type="url"
-											name="gitHub"
-											value={gitHub}
+											name="linkedin"
+											value={linkedin}
 											placeholder="https://www.linkedin.com/in/ejemplo"
 											onChange={e => setLinkedin(e.target.value)}
 											className="custom-form-control1"
-											required
 										/>
 									</Col>
 								</Form.Group>
@@ -429,19 +405,18 @@ export default function UserProfile() {
 										</span>
 										<Form.Control
 											type="url"
-											name="linkedin"
-											value={linkedin}
+											name="gitHub"
+											value={gitHub}
 											placeholder="https://github.com/ejemplo"
 											onChange={e => setGitHub(e.target.value)}
 											className="custom-form-control1"
-											required
 										/>
 									</Col>
 								</Form.Group>
 							</Col>
 						</Row>
 						<div className="d-flex justify-content-center">
-							<Button variant="dark" className="mt-4">
+							<Button type="submit" variant="dark" className="mt-4">
 								Guardar Cambios
 							</Button>
 						</div>

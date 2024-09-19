@@ -1,6 +1,6 @@
 import { API } from "../../../../consts/api.js";
 
-export const getUserService = async (signal, id, token, user) => {
+export const updateUserService = async (signal, id, token, user) => {
 	const res = await fetch(API.user + id + "/profile/", {
 		signal,
 		method: "POST",
