@@ -4,6 +4,7 @@ class Url {
 	singUp = `${this.baseUrl}/register/`;
 	refreshToken = `https://skillup-pi83.onrender.com/token-refresh/`;
 	user = `https://skillup-pi83.onrender.com/api/user/`;
+	course = "https://skillup-pi83.onrender.com/api/courses/";
 }
 
 export const API = new Url();
