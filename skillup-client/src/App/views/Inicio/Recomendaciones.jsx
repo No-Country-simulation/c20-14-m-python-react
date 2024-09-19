@@ -1,14 +1,16 @@
-import { Container, Row, Col, Card, Badge } from "react-bootstrap";
+import { Container, Row, Col, Card, Badge, Button } from "react-bootstrap";
 import CardsData from "../../../components/cards/CardsData";
+
 import css from "./css.module.css";
+import { Link } from "react-router-dom";
 
 const Recomendaciones = () => {
 	const recommendedCards = CardsData.filter(
-		card => card.id === 1 || card.id === 2 || card.id === 5
+		card => card.id === 3 || card.id === 10 || card.id === 5
 	);
 
 	return (
-		<Container fluid className="cardContainer" id="Recomendaciones">
+		<Container fluid className={css.cardContainer} id="Recomendaciones">
 			<Row>
 				<Col>
 					<h2 className={css.heroText_ppal}>Recomendaciones</h2>
@@ -34,6 +36,13 @@ const Recomendaciones = () => {
 						</Card>
 					</Col>
 				))}
+			</Row>
+			<Row>
+				<Link to="/catalogue" className="w-50 mx-auto">
+					<Button variant="dark" size="lg" className="w-100 btn-black">
+						Ver mas
+					</Button>
+				</Link>
 			</Row>
 		</Container>
 	);
