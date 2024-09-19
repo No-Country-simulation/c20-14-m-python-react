@@ -24,6 +24,6 @@ jobs:
     if response.status_code == 200:
         print('Ping exitoso!')
     else:
-        print(f'Error en el ping: {response.status_code}')
+        print(response.status_code)
     except requests.exceptions.RequestException as e:
         print(e)
