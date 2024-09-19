@@ -21,6 +21,7 @@ const Cards = () => {
 			</Row>
 			<Row>
 				{DataEjemplo.map(card => (
+					//  linkea al curso especifico segun id
 					<Link key={card.id} to={COURSE_DETAILS.to + card.id}>
 						<Col xs={12} md={6} lg={4}>
 							<Card className="mb-4">

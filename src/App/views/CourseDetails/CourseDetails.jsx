@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router-do
 import { geCourseByIdService } from "./service/geCourseByIdService.js";
 
 export default function CourseDetails() {
@@ -20,9 +20,13 @@ export default function CourseDetails() {
 
 	if (!course) return null;
 	return (
-		<article>
-			<div>{course.course.title}</div>
-			<div>{course.course.description}</div>
-		</article>
+		<>
+			<Container>
+				<Row>
+					<Col></Col>
+					<Col></Col>
+				</Row>
+			</Container>
+		</>
 	);
 }

@@ -73,7 +73,7 @@ const Catalogue = () => {
 			</Form>
 
 			{filteredCourses.map((course, index) => {
-				const { title, description, modules } = course;
+				const { title, price, description, modules } = course;
 				const courseData = CatalogueData.find(item => item.title === title); // Busca los datos del curso en CatalogueData
 				// Si no se encuentra el curso, retorna null
 				if (!courseData) {
@@ -103,7 +103,7 @@ const Catalogue = () => {
 								</div>
 								<div className="d-flex justify-content-center">
 									<Button className={`${css.btnSale} btn-secondary`}>
-										Comprar
+										Comprar a solo $ <span>{price}</span>
 									</Button>
 								</div>
 							</Col>
