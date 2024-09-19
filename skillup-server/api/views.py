@@ -203,14 +203,16 @@ class UpdateProgressView(JWTAuthenticationMixin, View):
         if not enrollment:
             return JsonResponse({'error': 'Inscripción no encontrada'}, status=404)
 
-        if progress_percentage == 100:
-            enrollment.is_complete = True
-            enrollment.save()
+
 
         progress = Progress.objects.get(enrollment=enrollment)
         progress.progress_percentage = progress_percentage
         progress.updated_at = timezone.now()
         progress.save()
+
+        if progress.progress_percentage == 100:
+            enrollment.is_complete = True
+            enrollment.save()
 
         return JsonResponse({'message': 'Progreso actualizado exitosamente', 'progress_percentage': progress_percentage})
 
