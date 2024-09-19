@@ -2,10 +2,10 @@ import requests
 import time
 
 def ping_endpoint():
-    url = 'http://localhost:8000/'
+    url = 'https://skillup-pi83.onrender.com'
     try:
         response = requests.get(url)
-        if response.status_code == 200:
+        if response.status_code == 404:
             print("ping exitoso!")
         else:
             print(f"Error en el ping: {response.status_code}")

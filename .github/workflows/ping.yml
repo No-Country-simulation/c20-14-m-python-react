@@ -1,29 +1,29 @@
-name: Keep Render Alive
+name: Run main.py
 
 on:
   schedule:
-    - cron: "* * * * *"
+    - cron: '* * * * *'
 
 jobs:
   ping_job:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Install pip and requests
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Cache pip dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install dependencies
         run: |
-          sudo apt-get install -y python3-pip
-          pip3 install requests
+          python3 -m pip install --upgrade pip
+          pip install requests
 
       - name: Send ping to Render
-        run: |
-          python3 -c "
-          import requests
-          url = 'https://skillup-pi83.onrender.com'
-          try:
-            response = requests.get(url)
-              if response.status_code == 200:
-                  print('Ping exitoso!')
-              else:
-                  print(response.status_code)
-          except requests.exceptions.RequestException as error:
-                  print(error)
+        run: python main.py
