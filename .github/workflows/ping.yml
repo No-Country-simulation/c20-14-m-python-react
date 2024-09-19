@@ -25,5 +25,5 @@ jobs:
         print('Ping exitoso!')
     else:
         print(response.status_code)
-    except requests.exceptions.RequestException as e:
-        print(e)
+    except requests.exceptions.RequestException as error:
+        print(error)
