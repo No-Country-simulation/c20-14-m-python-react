@@ -1,18 +1,10 @@
-import React, { useState, useRef } from "react";
-import { useForm } from "react-hook-form";
+import React, { useState, useRef, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./module.css";
-import {
-	Form,
-	Button,
-	Col,
-	Row,
-	Container,
-	Card,
-	Alert
-} from "react-bootstrap";
+import { Form, Button, Col, Row, Container, Card } from "react-bootstrap";
 import logoUsuario from "./img/usuario.png";
-import InputText from "./InputText/InputText";
+import { useAuth } from "../../../auth/useAuth.js";
+import { getUserService } from "./service/getUserService.js";
 
 export default function UserProfile() {
 	const [profileImage, setProfileImage] = useState(null);
@@ -32,13 +24,28 @@ export default function UserProfile() {
 	const [gitHub, setGitHub] = useState("");
 	const [feedback, setFeedback] = useState({ message: "", type: "" });
 	const fileInputRef = useRef(null);
+	const { user_id } = useAuth(auth => auth.getInfoToken());
+	const token = useAuth(auth => auth.token);
+
+	useEffect(() => {
+		const controller = new AbortController();
+
+		getUserService(controller.signal, user_id, token)
+			.then(user => {
+				setEmail(user?.email);
+				setFirstName(user?.first_name);
+				setLastName(user?.last_name);
+				setProfileImage(user?.profile_picture);
+				setGitHub(user?.social_networks_links.github);
+				setDiscord(user?.social_networks_links.discord);
+				setLinkedin(user?.social_networks_links.linkedin);
+			})
+			.catch(err => console.log(err));
+	}, [user_id, token]);
 
 	const handleSubmit = e => {
 		e.preventDefault();
-		console.log("Contraseña actual", password);
-		console.log("Nueva contraseña", newPassword);
-		console.log("Confirmar nueva contraseña", confirmNewPassword);
-		console.log("Nombre", firstName);
+
 		if (profileImage) {
 			const validImageTypes = ["image/jpeg", "image/png"];
 			if (!validImageTypes.includes(profileImage.type)) {
@@ -96,6 +103,8 @@ export default function UserProfile() {
 	const toggleNewPasswordVisibility = () => {
 		setNewPasswordVisible(!newPasswordVisible);
 	};
+
+	if (!user_id) return null;
 
 	return (
 		<Container className="mt-4 p-0 h-auto">

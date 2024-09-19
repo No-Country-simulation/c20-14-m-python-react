@@ -11,9 +11,11 @@ import {
 	USER_PROFILE
 } from "../../App/router/children";
 import { FaUserCircle } from "react-icons/fa";
+import { useAuth } from "../../auth/useAuth.js";
 
 function NavBar() {
 	//Acerca de Nosotros
+	const logout = useAuth(auth => auth.logout);
 	const { pathname } = useLocation();
 	if (pathname === "/about") {
 		return (
@@ -178,7 +180,12 @@ function NavBar() {
 							<div className="d-flex ms-3 align-items-center">
 								{/* SignUp == vista registro */}
 								<Nav.Link as={Link} to={LOGIN.path} className="p-0">
-									<Button variant="dark" size="md" className="me-2 p-2">
+									<Button
+										variant="dark"
+										size="md"
+										className="me-2 p-2"
+										onClick={logout}
+									>
 										Cerrar Sesión
 									</Button>
 								</Nav.Link>
