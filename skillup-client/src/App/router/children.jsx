@@ -6,6 +6,7 @@ import UserProfile from "../views/UserProfile/UserProfile.jsx";
 import Catalogue from "../views/Catalogo/Catalogue.jsx";
 import RouteProtector from "./RouterProtector.jsx";
 import About from "../views/About/About.jsx";
+import Contact from "../../components/Contacto/Contacto.jsx";
 
 export const SIGN_UP = {
 	id: crypto.randomUUID(),
@@ -59,4 +60,12 @@ export const ABOUT = {
 	to: "/about",
 	name: "About",
 	element: <About />
+};
+
+export const CONTACTO = {
+	id: crypto.randomUUID(),
+	path: "contacto",
+	to: "/contacto",
+	name: "Contacto",
+	element: <Contact />
 };

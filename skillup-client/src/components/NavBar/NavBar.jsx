@@ -6,6 +6,7 @@ import { Link, useLocation } from "react-router-dom";
 import {
 	ABOUT,
 	CATALOGUE,
+	CONTACTO,
 	INICIO,
 	LOGIN,
 	USER_PROFILE
@@ -13,7 +14,7 @@ import {
 import { FaUserCircle } from "react-icons/fa";
 
 function NavBar() {
-	//Acerca de Nosotros
+	// vista Acerca de Nosotros
 	const { pathname } = useLocation();
 	if (pathname === "/about") {
 		return (
@@ -254,6 +255,59 @@ function NavBar() {
 									Contacto
 								</Button>
 							</Nav.Link>
+						</Nav>
+					</Navbar.Collapse>
+				</Container>
+			</Navbar>
+		);
+	}
+	if (pathname === "/catalogue") {
+		return (
+			<Navbar
+				className="custom-navbar  border-bottom"
+				bg="light"
+				variant="light"
+				expand="lg"
+			>
+				<Container>
+					<Navbar.Brand
+						as={Link}
+						to={INICIO.path}
+						className="d-flex align-items-center"
+					>
+						<img
+							src={logo3}
+							width="100"
+							height="100"
+							className="d-inline-block align-top"
+							alt="logo"
+						/>
+						<span className="ms-2 fs-4 fw-bold">{`<Skill Up>`}</span>{" "}
+					</Navbar.Brand>
+					<Navbar.Toggle aria-controls="basic-navbar-nav" />
+					<Navbar.Collapse id="basic-navbar-nav">
+						<Nav className="mx-auto"></Nav>
+						<Nav className="ms-auto">
+							<Nav.Link href="#CursosDisponibles" as={Link} to={CATALOGUE.path}>
+								<Button variant="light" size="md">
+									Cursos
+								</Button>
+							</Nav.Link>
+
+							<Nav.Link href="#Contact" as={Link} to={CONTACTO.path}>
+								<Button variant="light" size="md">
+									Contacto
+								</Button>
+							</Nav.Link>
+
+							<div className="d-flex ms-3 align-items-center">
+								{/* SignUp == vista registro */}
+								<Nav.Link as={Link} to={LOGIN.path} className="p-0">
+									<Button variant="dark" size="md" className="me-2 p-2">
+										Iniciar Sesión
+									</Button>
+								</Nav.Link>
+							</div>
 						</Nav>
 					</Navbar.Collapse>
 				</Container>
