@@ -12,7 +12,7 @@ export default function UserProfile() {
 	const [previewImage, setPreviewImage] = useState(logoUsuario);
 	const [firstName, setFirstName] = useState("");
 	const [lastName, setLastName] = useState("");
-	const [previewName, setPreviewName] = useState("Linus Benedict");
+	const [previewName, setPreviewName] = useState("");
 	const [email, setEmail] = useState("");
 	const [personalId, setPersonalId] = useState("");
 	const [password, setPassword] = useState("");
