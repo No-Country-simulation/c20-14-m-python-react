@@ -41,7 +41,6 @@ export default function UserProfile() {
 				setGitHub(user?.social_networks_links.github);
 				setDiscord(user?.social_networks_links.discord);
 				setLinkedin(user?.social_networks_links.linkedin);
-				setProfileImage(user?.profile_picture);
 			})
 			.catch(err => console.log(err));
 	}, [user_id, token]);
@@ -113,7 +112,7 @@ export default function UserProfile() {
 								<div className="flex-fill">
 									<img
 										id="profilePic"
-										src={profileImage}
+										src="/perfil.png"
 										alt="Foto de perfil"
 										className="img-thumbnail mb-3 align-self-center"
 										onClick={handleImageClick}
