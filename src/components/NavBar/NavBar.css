@@ -17,12 +17,25 @@
 	height: 140px; /* Ajusta la altura según sea necesario */
 	display: flex;
 	align-items: center; /* Alinea el contenido verticalmente al centro */
+
+  }
+  
+.navbar-collapse {
+    background-color: #f8f9fa; /* Fondo para todo el menú cuando está desplegado en móvil */
+    padding: 1rem; /* Opcional: Espaciado interno */
+	z-index: 1050; 
+    width: 100%;
 }
 
-.navbar-collapse {
-	background-color: #f8f9fa; /* Fondo para todo el menú cuando está desplegado en móvil */
-	padding: 1rem; /* Opcional: Espaciado interno */
-	z-index: 1050;
+.custom-navbar{
+    img{
+        object-fit: contain;
+    }
+    span{
+        width: 90%;
+    }
+}
+
 }
 
 /* Media queries para pantallas medianas y pequeñas */

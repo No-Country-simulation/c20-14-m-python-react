@@ -1,15 +1,13 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-/* import Cards from './assets/components/cards/Cards' */
-import Recomendaciones from "./Recomendaciones.jsx";
-/*import Dashboard from "./assets/components/Dashboard";*/
-import CursosDisp from "./CursosDisp.jsx";
-// import imgBg from "./img/background-code.jpg";
+
+import Recomendaciones from "../Inicio/Recomendaciones.jsx";
 import Favorites from "./Favorites.jsx";
 import { useEffect, useState } from "react";
-import CardsData from "./CardsData.jsx";
-import Contact from "../../../components/Contacto/Contacto.jsx";
-import MisCursos from "./CursosCompletados/MisCursos.jsx";
+import CardsData from "./CardsData";
+import Contact from "../../../components/Contacto/Contacto";
+import MisCursos from "./CursosCompletados/MisCursos";
 import { getAllCourseService } from "./service/getAllCourseService.js";
+
 function MyCourses() {
 	const [cards, setCards] = useState(CardsData);
 
@@ -35,10 +33,11 @@ function MyCourses() {
 	return (
 		<>
 			<MisCursos allCourse={allCourse} />
-			<Favorites cards={cards} toggleFavorite={toggleFavorite} />
 
-			<Recomendaciones cards={cards} toggleFavorite={toggleFavorite} />
-			<CursosDisp cards={cards} toggleFavorite={toggleFavorite} />
+
+			<Favorites cards={cards} toggleFavorite={toggleFavorite} />
+			<Recomendaciones />
+
 			<Contact />
 		</>
 	);

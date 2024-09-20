@@ -17,6 +17,20 @@
 	right: 10px;
 }
 
+.w-21rem{
+	width: 21rem;
+}
+
+.heroText_ppal {	
+	font-weight: 600;
+	font-style: normal;
+	text-align: center;
+	margin: 25px;
+    font-size: 2.5rem;
+}
+
+
+
 @media screen and (max-width: 768px) {
 	.cardContainer {
 		padding: inherit;
