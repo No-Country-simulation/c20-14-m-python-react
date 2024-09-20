@@ -7,7 +7,7 @@ import RouteProtector from "./RouterProtector.jsx";
 import About from "../views/About/About.jsx";
 import Payments from "../views/Payments/Payments.jsx";
 import CourseDetails from "../views/CourseDetails/CourseDetails.jsx";
-import MyCourses from "../views/Students/MyCourses.jsx";
+import MyCourses from "../views/MyCourses/MyCourses.jsx";
 
 export const SIGN_UP = {
 	id: crypto.randomUUID(),

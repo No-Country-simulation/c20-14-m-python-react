@@ -1,6 +1,6 @@
 import { Container, Row, Col, Card, Badge } from "react-bootstrap";
 import CardsData from "./CardsData";
-import "../Students/styles/Recomendaciones.css";
+import "./styles/Recomendaciones.css";
 
 const Recomendaciones = () => {
 	const recommendedCards = CardsData.filter(
