@@ -324,7 +324,7 @@ function NavBar() {
 								className="p-0"
 							>
 								<Button variant="dark" size="md" className="me-2 p-2">
-									{token ? MY_COURSES.name : "Inicial sesión"}
+									{token ? MY_COURSES.name : "Iniciar sesión"}
 								</Button>
 							</Nav.Link>
 						</div>

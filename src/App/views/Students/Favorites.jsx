@@ -17,8 +17,8 @@ const Favorites = ({ cards, toggleFavorite }) => {
 				{favoritCards.map((card, index) => (
 					<Col xs={12} md={6} lg={4} key={index}>
 						<Card className="mb-4">
-							<div className="cardImg imgCard--310x207">
-								<Card.Img variant="top" src={card.image} />
+							<div className="cardImg ">
+								<Card.Img variant="top" src={card.image}  className="imgCard--310x207"/>
 								<Badge className="cardBadge" bg="primary">
 									{card.hours} horas
 								</Badge>
