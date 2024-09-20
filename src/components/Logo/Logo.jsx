@@ -9,6 +9,7 @@ export default function Logo({ width, height }) {
 			as={Link}
 			to={INICIO.to}
 			className="d-flex align-items-center"
+			onClick={() => window.scrollTo(0, 0)}
 		>
 			<img
 				src={logo}
