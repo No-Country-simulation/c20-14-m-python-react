@@ -34,7 +34,6 @@ function MyCourses() {
 		<>
 			<MisCursos allCourse={allCourse} />
 
-
 			<Favorites cards={cards} toggleFavorite={toggleFavorite} />
 			<Recomendaciones />
 
