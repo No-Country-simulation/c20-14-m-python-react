@@ -10,7 +10,7 @@ const CardsData = [
 			"Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui cum nulla minima id officia reiciendis?",
 		cost: "$163.00",
 		hours: 40,
-		favorite: false
+		favorite: true
 	},
 
 	{
