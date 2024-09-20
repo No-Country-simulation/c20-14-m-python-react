@@ -3,7 +3,7 @@ import logo from "./skill.png";
 import { INICIO } from "../../App/router/children.jsx";
 import { Link } from "react-router-dom";
 
-export default function Logo() {
+export default function Logo({ width, height }) {
 	return (
 		<Navbar.Brand
 			as={Link}
@@ -12,8 +12,8 @@ export default function Logo() {
 		>
 			<img
 				src={logo}
-				width="60"
-				height="60"
+				width={width || 60}
+				height={height || 60}
 				className="d-inline-block align-top"
 				alt="logo"
 			/>
