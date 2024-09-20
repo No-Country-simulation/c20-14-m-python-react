@@ -1,6 +1,5 @@
 import { Navbar, Nav, Container } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
-import logo from "./skill.png";
 import "./NavBar.css";
 import { Link, useLocation } from "react-router-dom";
 import {
@@ -12,6 +11,7 @@ import {
 	USER_PROFILE
 } from "../../App/router/children";
 import { useAuth } from "../../auth/useAuth.js";
+import Logo from "../Logo/Logo.jsx";
 
 function NavBar() {
 	//Acerca de Nosotros
@@ -28,20 +28,8 @@ function NavBar() {
 			expand="lg"
 		>
 			<Container>
-				<Navbar.Brand
-					as={Link}
-					to={INICIO.to}
-					className="d-flex align-items-center"
-				>
-					<img
-						src={logo}
-						width="60"
-						height="60"
-						className="d-inline-block align-top"
-						alt="logo"
-					/>
-					<span className="txt_logo ms-2 fs-4 fw-bold">Skillup</span>{" "}
-				</Navbar.Brand>
+				<Logo />
+
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse id="basic-navbar-nav">
 					<Nav className="ms-auto">
