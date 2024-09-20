@@ -19,8 +19,21 @@
     background-color: #f8f9fa; /* Fondo para todo el menú cuando está desplegado en móvil */
     padding: 1rem; /* Opcional: Espaciado interno */
 	z-index: 1050; 
+    width: 100%;
 }
 
+.custom-navbar{
+    img{
+        object-fit: contain;
+    }
+    span{
+        width: 90%;
+    }
+}
+
+.nameSkillUp{
+    width: 85%;
+}
 
 /* Media queries para pantallas medianas y pequeñas */
 @media (max-width: 1200px) {

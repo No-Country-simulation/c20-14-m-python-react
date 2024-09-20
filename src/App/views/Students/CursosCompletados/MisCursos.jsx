@@ -17,32 +17,32 @@ const Cards = ({ allCourse }) => {
 		<Container fluid className="cardContainer" id="MisCursos">
 			<Row>
 				<Col>
-					<h2>Mis Cursos</h2>
+					<h2 className="heroText_ppal">Mis Cursos</h2>
 				</Col>
 			</Row>
-			<Row>
+			<Row className="justify-content-center">
 				{allCourse.map(card => (
 					//  linkea al curso especifico segun id
-					<Link key={card.id} to={COURSE_DETAILS.to + card.id}>
-						<Col xs={12} md={6} lg={4}>
+					<Link
+						className="w-21rem"
+						xs={12}
+						md={6}
+						lg={4}
+						key={card.id}
+						to={COURSE_DETAILS.to + card.id}
+					>
+						<Col>
 							<Card className="mb-4">
 								{/* Imagen del curso */}
 								<div className="cardImg">
 									<Card.Img variant="top" src={card.cover_image} />
 								</div>
 								<Card.Body className="position-relative">
-									{/* Etiqueta de horas */}
-
-									{/* Título del curso */}
 									<Card.Title>{card.title}</Card.Title>
 
-									{/* Texto descriptivo */}
 									<Card.Text>
 										Fecha Inicio: {formatDate(card.date_created)}
 									</Card.Text>
-
-									{/* Costo */}
-									{/* <Card.Text>Costo: {card.cost}</Card.Text> */}
 
 									{/* Barra de progreso */}
 									<ProgressBar

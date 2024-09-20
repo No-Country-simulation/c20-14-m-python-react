@@ -1,5 +1,6 @@
 import { Container, Row, Col, Card, Badge, Button } from "react-bootstrap";
 import { FaRegStar, FaStar } from "react-icons/fa";
+import "../Students/styles/Favorites.css";
 
 const Favorites = ({ cards, toggleFavorite }) => {
 	// Filtrar las tarjetas que están marcadas como favoritas
@@ -9,14 +10,14 @@ const Favorites = ({ cards, toggleFavorite }) => {
 		<Container fluid className="cardContainer" id="Favoritos">
 			<Row>
 				<Col>
-					<h2>Favoritos</h2>
+					<h2 className="heroText_ppal">Favoritos</h2>
 				</Col>
 			</Row>
 			<Row>
 				{favoritCards.map((card, index) => (
 					<Col xs={12} md={6} lg={4} key={index}>
 						<Card className="mb-4">
-							<div className="cardImg">
+							<div className="cardImg imgCard--310x207">
 								<Card.Img variant="top" src={card.image} />
 								<Badge className="cardBadge" bg="primary">
 									{card.hours} horas
@@ -44,7 +45,7 @@ const Favorites = ({ cards, toggleFavorite }) => {
 								<Card.Text>{card.description}</Card.Text>
 								<Card.Text>Costo: {card.cost}</Card.Text>
 
-								<Button variant="primary" className="view-more-btn">
+								<Button variant="dark" className="view-more-btn">
 									Ver más
 								</Button>
 							</Card.Body>

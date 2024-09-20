@@ -37,7 +37,7 @@ function NavBar() {
 							src={logo3}
 							width="100"
 							height="100"
-							className="d-inline-block align-top"
+							className={`d-inline-block align-top obj-cover`}
 							alt="logo"
 						/>
 						<span className="ms-2 fs-4 fw-bold">{`<Skill Up>`}</span>{" "}

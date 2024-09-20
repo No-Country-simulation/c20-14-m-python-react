@@ -37,45 +37,7 @@ export default function CourseDetails() {
 
 	return (
 		<>
-			<Container className="flex-column">
-				<Row>
-					<Col lg={12}>
-						<h1>{course.course.title}</h1>
-					</Col>
-				</Row>
-				<Row>
-					<Col lg={12}>
-						<p>{course.course.description}</p>
-					</Col>
-				</Row>
-				<Row>
-					<Col>
-						<ul>
-							{course.course.modules.map(module => (
-								<li
-									key={module.id}
-									onClick={() =>
-										setCurrentVideoId(extractVideoId(module.video_url))
-									}
-								>
-									{module.title}
-								</li>
-							))}
-						</ul>
-					</Col>
-					<Col>
-						<iframe
-							width="560"
-							height="315"
-							src={`https://www.youtube.com/embed/${currentVideoId}`}
-							title="Video del curso"
-							frameBorder="0"
-							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-							allowFullScreen
-						></iframe>
-					</Col>
-				</Row>
-			</Container>
+			<div>test</div>
 		</>
 	);
 }
