@@ -7,7 +7,7 @@ import {
 	CATALOGUE,
 	INICIO,
 	LOGIN,
-	STUDENTS,
+	MY_COURSES,
 	USER_PROFILE
 } from "../../App/router/children";
 import { useAuth } from "../../auth/useAuth.js";
@@ -53,7 +53,7 @@ function NavBar() {
 							</Button>
 						</Nav.Link>
 
-						{(pathname === STUDENTS.to || pathname === INICIO.to) && (
+						{(pathname === MY_COURSES.to || pathname === INICIO.to) && (
 							<Nav.Link href="#Contact">
 								<Button variant="light" size="md">
 									Contacto
@@ -70,9 +70,9 @@ function NavBar() {
 						)}
 
 						{token && (
-							<Nav.Link as={Link} to={STUDENTS.to}>
+							<Nav.Link as={Link} to={MY_COURSES.to}>
 								<Button variant="light" size="md">
-									{STUDENTS.name}
+									{MY_COURSES.name}
 								</Button>
 							</Nav.Link>
 						)}
