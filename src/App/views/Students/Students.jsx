@@ -5,12 +5,25 @@ import Recomendaciones from "./Recomendaciones";
 import CursosDisp from "./CursosDisp";
 // import imgBg from "./img/background-code.jpg";
 import Favorites from "./Favorites";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CardsData from "./CardsData";
 import Contact from "../../../components/Contacto/Contacto";
 import MisCursos from "./CursosCompletados/MisCursos";
+import { getAllCourseService } from "./service/getAllCourseService.js";
 function Students() {
 	const [cards, setCards] = useState(CardsData);
+
+	const [allCourse, setAllCourse] = useState();
+
+	useEffect(() => {
+		const controller = new AbortController();
+
+		getAllCourseService(controller.signal)
+			.then(data => setAllCourse(data.courses))
+			.catch(err => console.log(err));
+
+		return () => controller.abort();
+	}, []);
 
 	const toggleFavorite = id => {
 		const updatedCards = cards.map(card =>
@@ -21,7 +34,7 @@ function Students() {
 
 	return (
 		<>
-			<MisCursos />
+			<MisCursos allCourse={allCourse} />
 			<Favorites cards={cards} toggleFavorite={toggleFavorite} />
 
 			<Recomendaciones cards={cards} toggleFavorite={toggleFavorite} />
