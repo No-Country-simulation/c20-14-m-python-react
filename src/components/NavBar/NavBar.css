@@ -1,4 +1,8 @@
 /* NavBar.css */
+.txt_logo {
+	color: #0bc9cf;
+}
+
 .container {
 	height: 100px; /* Ajusta el alto del Navbar */
 	display: flex;
@@ -13,56 +17,55 @@
 	height: 140px; /* Ajusta la altura según sea necesario */
 	display: flex;
 	align-items: center; /* Alinea el contenido verticalmente al centro */
-  }
-  
-.navbar-collapse {
-    background-color: #f8f9fa; /* Fondo para todo el menú cuando está desplegado en móvil */
-    padding: 1rem; /* Opcional: Espaciado interno */
-	z-index: 1050; 
 }
 
+.navbar-collapse {
+	background-color: #f8f9fa; /* Fondo para todo el menú cuando está desplegado en móvil */
+	padding: 1rem; /* Opcional: Espaciado interno */
+	z-index: 1050;
+}
 
 /* Media queries para pantallas medianas y pequeñas */
 @media (max-width: 1200px) {
-    .navbar-nav {
-        flex-direction: column; /* Asegura la disposición vertical */
-        align-items: center; /* Centra horizontalmente los elementos */
-        gap: 5px; /* Espacio entre los elementos */
-    }
+	.navbar-nav {
+		flex-direction: column; /* Asegura la disposición vertical */
+		align-items: center; /* Centra horizontalmente los elementos */
+		gap: 5px; /* Espacio entre los elementos */
+	}
 
-    .navbar-nav .nav-link,
-    .navbar-nav .btn {
-        margin-bottom: 0; /* Remove bottom margin for items in mobile view */
-    }
+	.navbar-nav .nav-link,
+	.navbar-nav .btn {
+		margin-bottom: 0; /* Remove bottom margin for items in mobile view */
+	}
 
-    .navbar-brand {
-        display: flex;
-        align-items: center;
-    }
+	.navbar-brand {
+		display: flex;
+		align-items: center;
+	}
 
-    .navbar-text {
-        font-size: 1rem; /* Tamaño más pequeño del texto para pantallas pequeñas */
-        margin-top: 0.5rem; /* Ajusta el margen superior para alinear en móviles */
-    }
+	.navbar-text {
+		font-size: 1rem; /* Tamaño más pequeño del texto para pantallas pequeñas */
+		margin-top: 0.5rem; /* Ajusta el margen superior para alinear en móviles */
+	}
 
-    .navbar-collapse {
-        text-align: center; /* Centra los elementos al expandirse en móviles */
-    }
+	.navbar-collapse {
+		text-align: center; /* Centra los elementos al expandirse en móviles */
+	}
 }
 
 /* Media queries para pantallas más pequeñas */
 @media (max-width: 576px) {
-    .navbar-brand img {
-        width: 80px; /* Redimensiona el logo en pantallas muy pequeñas */
-        height: 80px;
-    }
+	.navbar-brand img {
+		width: 80px; /* Redimensiona el logo en pantallas muy pequeñas */
+		height: 80px;
+	}
 
-    .navbar-text {
-        font-size: 0.9rem; /* Ajusta el tamaño del texto */
-    }
+	.navbar-text {
+		font-size: 0.9rem; /* Ajusta el tamaño del texto */
+	}
 
-    .btn {
-        padding: 0.25rem 0.5rem; /* Ajusta el padding de los botones */
-        font-size: 0.875rem; /* Ajusta el tamaño de fuente de los botones */
-    }
+	.btn {
+		padding: 0.25rem 0.5rem; /* Ajusta el padding de los botones */
+		font-size: 0.875rem; /* Ajusta el tamaño de fuente de los botones */
+	}
 }

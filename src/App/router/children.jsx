@@ -18,7 +18,8 @@ export const SIGN_UP = {
 
 export const STUDENTS = {
 	id: crypto.randomUUID(),
-	path: "/estudiantes",
+	path: "estudiantes",
+	to: "/estudiantes",
 	name: "Estudiantes",
 	element: (
 		<RouteProtector>
@@ -29,22 +30,29 @@ export const STUDENTS = {
 
 export const INICIO = {
 	id: crypto.randomUUID(),
-	path: "/",
+	path: "",
+	to: "/",
 	name: "inicio",
 	element: <Inicio />
 };
 
 export const USER_PROFILE = {
 	id: crypto.randomUUID(),
-	path: "/perfil",
+	path: "perfil",
+	to: "/perfil",
 	name: "Perfil",
-	element: <UserProfile />
+	element: (
+		<RouteProtector>
+			<UserProfile />
+		</RouteProtector>
+	)
 };
 
 export const CATALOGUE = {
 	id: crypto.randomUUID(),
-	path: "/catalogue",
-	name: "catalogue",
+	path: "catalogue",
+	to: "/catalogue",
+	name: "Catálogo",
 	element: <Catalogue />
 };
 

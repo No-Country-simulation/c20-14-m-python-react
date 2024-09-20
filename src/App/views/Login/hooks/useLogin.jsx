@@ -19,7 +19,7 @@ export const useLogin = () => {
 		loginService(controller.signal, credentials)
 			.then(({ token }) => {
 				updateToken(token);
-				navegate(STUDENTS.path);
+				navegate(STUDENTS.to);
 			})
 			.catch(() => setErr(true))
 			.finally(() => setLoading(false));

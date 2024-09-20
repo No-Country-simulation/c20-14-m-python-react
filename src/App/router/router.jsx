@@ -10,7 +10,7 @@ import { ABOUT } from "./children.jsx";
 
 export const router = createBrowserRouter([
 	{
-		path: "/",
+		path: "",
 		element: <App />,
 		errorElement: <NotFound404 />,
 		children: [
