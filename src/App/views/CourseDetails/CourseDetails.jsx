@@ -6,6 +6,7 @@ import { Container, Row, Col } from "react-bootstrap";
 export default function CourseDetails() {
 	const { id } = useParams();
 	const [course, setCourse] = useState();
+	const [currentVideoId, setCurrentVideoId] = useState("");
 
 	useEffect(() => {
 		if (!id) return;
@@ -13,36 +14,68 @@ export default function CourseDetails() {
 		const controller = new AbortController();
 
 		geCourseByIdService(controller.signal, id)
-			.then(data => setCourse(data))
+			.then(data => {
+				setCourse(data);
+				// Establecer el ID del primer video por defecto
+				if (data.course.modules.length > 0) {
+					setCurrentVideoId(extractVideoId(data.course.modules[0].video_url));
+				}
+			})
 			.catch(err => console.log(err));
 
 		return () => controller.abort();
 	}, [id]);
 
+	const extractVideoId = url => {
+		const regex =
+			/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^&\n]{11})/;
+		const matches = url.match(regex);
+		return matches ? matches[1] : null;
+	};
+
 	if (!course) return null;
+
 	return (
 		<>
-			<Container>
+			<Container className="flex-column">
 				<Row>
-					<h1>{course.course.title}</h1>
+					<Col lg={12}>
+						<h1>{course.course.title}</h1>
+					</Col>
 				</Row>
-				<Row>{course.course.description}</Row>
+				<Row>
+					<Col lg={12}>
+						<p>{course.course.description}</p>
+					</Col>
+				</Row>
 				<Row>
 					<Col>
 						<ul>
-							<li></li>
+							{course.course.modules.map(module => (
+								<li
+									key={module.id}
+									onClick={() =>
+										setCurrentVideoId(extractVideoId(module.video_url))
+									}
+								>
+									{module.title}
+								</li>
+							))}
 						</ul>
 					</Col>
 					<Col>
-						<iframe src="" frameborder="0"></iframe>
+						<iframe
+							width="560"
+							height="315"
+							src={`https://www.youtube.com/embed/${currentVideoId}`}
+							title="Video del curso"
+							frameBorder="0"
+							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+							allowFullScreen
+						></iframe>
 					</Col>
 				</Row>
 			</Container>
-
-			<article>
-				<div></div>
-				<div></div>
-			</article>
 		</>
 	);
 }
