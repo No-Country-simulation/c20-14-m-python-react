@@ -1,6 +1,5 @@
 import { Navbar, Nav, Container } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
-import logo3 from "./logo3.png";
 import "./NavBar.css";
 import { Link, useLocation } from "react-router-dom";
 import {
@@ -11,14 +10,15 @@ import {
 	MY_COURSES,
 	USER_PROFILE
 } from "../../App/router/children";
-import { FaUserCircle } from "react-icons/fa";
 import { useAuth } from "../../auth/useAuth.js";
+import Logo from "../Logo/Logo.jsx";
 
 function NavBar() {
 	//Acerca de Nosotros
 	const logout = useAuth(auth => auth.logout);
 	const token = useAuth(auth => auth.token);
 	const { pathname } = useLocation();
+
 	if (pathname === "/about") {
 		return (
 			<Navbar
@@ -269,6 +269,7 @@ function NavBar() {
 			</Navbar>
 		);
 	}
+
 	//inicio
 	return (
 		<Navbar
@@ -278,21 +279,8 @@ function NavBar() {
 			expand="lg"
 		>
 			<Container>
-				<Navbar.Brand
-					as={Link}
-					to={INICIO.path}
-					className="d-flex align-items-center"
-				>
-					<img
-						src={logo3}
-						width="100"
-						height="100"
-						className="d-inline-block align-top"
-						alt="logo"
-					/>
-					<span className="ms-2 fs-4 fw-bold">{`<Skill Up>`}</span>{" "}
-					{/* Texto al lado del logo */}
-				</Navbar.Brand>
+				<Logo />
+
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse id="basic-navbar-nav">
 					<Nav className="ms-auto">
@@ -301,30 +289,56 @@ function NavBar() {
 								Acerca de nosotros
 							</Button>
 						</Nav.Link>
-						<Nav.Link href="#Recomendaciones">
-							<Button variant="light" size="md">
-								Recomendaciones
-							</Button>
-						</Nav.Link>
+
+						{pathname === INICIO.to && (
+							<Nav.Link href="#Recomendaciones">
+								<Button variant="light" size="md">
+									Recomendaciones
+								</Button>
+							</Nav.Link>
+						)}
 
 						<Nav.Link href="#CursosDisponibles" as={Link} to={CATALOGUE.path}>
 							<Button variant="light" size="md">
-								Cursos
+								{CATALOGUE.name}
 							</Button>
 						</Nav.Link>
-						<Nav.Link href="#Contact">
-							<Button variant="light" size="md">
-								Contacto
-							</Button>
-						</Nav.Link>
+
+						{(pathname === MY_COURSES.to || pathname === INICIO.to) && (
+							<Nav.Link href="#Contact">
+								<Button variant="light" size="md">
+									Contacto
+								</Button>
+							</Nav.Link>
+						)}
+
+						{token && (
+							<Nav.Link as={Link} to={USER_PROFILE.to}>
+								<Button variant="light" size="md">
+									{USER_PROFILE.name}
+								</Button>
+							</Nav.Link>
+						)}
+
+						{token && (
+							<Nav.Link as={Link} to={MY_COURSES.to}>
+								<Button variant="light" size="md">
+									{MY_COURSES.name}
+								</Button>
+							</Nav.Link>
+						)}
+
 						<div className="d-flex ms-3 align-items-center">
-							<Nav.Link
-								as={Link}
-								to={token ? MY_COURSES.path : LOGIN.path}
-								className="p-0"
-							>
-								<Button variant="dark" size="md" className="me-2 p-2">
-									{token ? MY_COURSES.name : "Iniciar sesión"}
+
+							<Nav.Link as={Link} to={!token && LOGIN.to} className="p-0">
+								<Button
+									variant="dark"
+									size="md"
+									className="me-2 p-2"
+									onClick={token && logout}
+								>
+									{token ? "Cerrar Sesión" : "Iniciar sesión"}
+
 								</Button>
 							</Nav.Link>
 						</div>

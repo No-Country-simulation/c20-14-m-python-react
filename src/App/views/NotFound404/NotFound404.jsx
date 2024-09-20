@@ -1,7 +1,7 @@
 import { Button, Container } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import logo3 from "../../../components/NavBar/logo3.png";
 import "./NotFound.css";
+import Logo from "../../../components/Logo/Logo.jsx";
 
 const NotFound404 = () => {
 	const navigate = useNavigate();
@@ -21,14 +21,7 @@ const NotFound404 = () => {
 					to="/"
 					className="d-flex align-items-center mb-4 text-decoration-none"
 				>
-					<img
-						src={logo3}
-						width="100"
-						height="100"
-						className="d-inline-block align-top"
-						alt="logo"
-					/>
-					<span className="ms-2 fs-4 fw-bold text-dark">{`<Skill Up!>`}</span>
+					<Logo width={150} height={150} />
 				</Link>
 				<h1
 					className="display-4 fw-bold shake-animation text-black mb-6"

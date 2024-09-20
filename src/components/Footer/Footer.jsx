@@ -1,4 +1,4 @@
-import logo3 from "./logo3.png";
+import Logo from "../Logo/Logo.jsx";
 
 function Footer() {
 	return (
@@ -6,9 +6,7 @@ function Footer() {
 			<footer className="border-top">
 				<div className="d-flex flex-column flex-sm-row justify-content-between align-items-center m-2">
 					<div>
-						<a href="">
-							<img src={logo3} alt="Logo" width="100" height="100" />
-						</a>
+						<Logo />
 					</div>
 					<div className="Links d-flex flex-wrap justify-content-between">
 						<a href="" className="text-decoration-none text-dark p-2">

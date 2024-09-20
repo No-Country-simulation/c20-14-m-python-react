@@ -1,0 +1,49 @@
+.label {
+	display: grid;
+	gap: var(--xs);
+	cursor: text;
+}
+
+.title {
+	font-weight: bold;
+	margin-left: 5px;
+}
+
+.input {
+	width: 100%;
+	border: 1px solid #d9d9d9;
+	border-radius: var(--md);
+	padding: var(--md) var(--lg);
+	min-height: 32px;
+	outline: transparent;
+}
+
+.input:focus {
+	box-shadow: var(--s-sm);
+}
+
+.input::placeholder {
+	color: #959595;
+	font-size: 0.9em;
+}
+
+.primary {
+	background-color: transparent;
+	color: currentColor;
+}
+
+.secondary {
+	color: black;
+}
+
+/* Para Chrome, Safari, Edge y Opera */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+/* Para Firefox */
+input[type="number"] {
+	-moz-appearance: textfield;
+}

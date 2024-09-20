@@ -1,4 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+
 import Recomendaciones from "../Inicio/Recomendaciones.jsx";
 import Favorites from "./Favorites.jsx";
 import { useEffect, useState } from "react";
@@ -9,6 +10,7 @@ import { getAllCourseService } from "./service/getAllCourseService.js";
 
 function MyCourses() {
 	const [cards, setCards] = useState(CardsData);
+
 	const [allCourse, setAllCourse] = useState();
 
 	useEffect(() => {
@@ -32,8 +34,10 @@ function MyCourses() {
 		<>
 			<MisCursos allCourse={allCourse} />
 
+
 			<Favorites cards={cards} toggleFavorite={toggleFavorite} />
 			<Recomendaciones />
+
 			<Contact />
 		</>
 	);

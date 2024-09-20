@@ -19,7 +19,9 @@ export const useLogin = () => {
 		loginService(controller.signal, credentials)
 			.then(({ token }) => {
 				updateToken(token);
-				navegate(MY_COURSES.path);
+
+				navegate(MY_COURSES.to);
+
 			})
 			.catch(() => setErr(true))
 			.finally(() => setLoading(false));
