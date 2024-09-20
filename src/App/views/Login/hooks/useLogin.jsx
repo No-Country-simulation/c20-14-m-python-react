@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { STUDENTS } from "../../../router/children.jsx";
+import { MY_COURSES } from "../../../router/children.jsx";
 import { loginService } from "../service/loginService.js";
 import { useAuth } from "../../../../auth/useAuth.js";
 
@@ -19,7 +19,7 @@ export const useLogin = () => {
 		loginService(controller.signal, credentials)
 			.then(({ token }) => {
 				updateToken(token);
-				navegate(STUDENTS.path);
+				navegate(MY_COURSES.to);
 			})
 			.catch(() => setErr(true))
 			.finally(() => setLoading(false));

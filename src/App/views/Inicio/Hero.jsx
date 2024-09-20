@@ -15,7 +15,7 @@ const Hero = () => {
 					<Col className={css.heroText} xs={12} md={6} lg={4}>
 						<h1 className={css.heroText_ppal}>
 							Encuentra
-							<span className={css.greenText}> cursos y carreras </span>
+							<span className={css.greenText}> cursos </span>
 							de
 							<span className={css.pinkText}> alta especialización </span>
 							con

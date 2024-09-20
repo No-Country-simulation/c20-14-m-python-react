@@ -1,16 +1,16 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 /* import Cards from './assets/components/cards/Cards' */
-import Recomendaciones from "./Recomendaciones";
+import Recomendaciones from "./Recomendaciones.jsx";
 /*import Dashboard from "./assets/components/Dashboard";*/
-import CursosDisp from "./CursosDisp";
+import CursosDisp from "./CursosDisp.jsx";
 // import imgBg from "./img/background-code.jpg";
-import Favorites from "./Favorites";
+import Favorites from "./Favorites.jsx";
 import { useEffect, useState } from "react";
-import CardsData from "./CardsData";
-import Contact from "../../../components/Contacto/Contacto";
-import MisCursos from "./CursosCompletados/MisCursos";
+import CardsData from "./CardsData.jsx";
+import Contact from "../../../components/Contacto/Contacto.jsx";
+import MisCursos from "./CursosCompletados/MisCursos.jsx";
 import { getAllCourseService } from "./service/getAllCourseService.js";
-function Students() {
+function MyCourses() {
 	const [cards, setCards] = useState(CardsData);
 
 	const [allCourse, setAllCourse] = useState();
@@ -44,4 +44,4 @@ function Students() {
 	);
 }
 
-export default Students;
+export default MyCourses;

@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 .greenText {
-	color: #16f8b6;
+	color: #0bc9cf;
 }
 
 .pinkText {
@@ -32,7 +32,7 @@ img.center {
 	margin: 25px 0;
 }
 
-.heroText_ppal {	
+.heroText_ppal {
 	font-weight: 600;
 	font-style: normal;
 	text-align: center;
@@ -65,7 +65,7 @@ img.center {
 .heroGrid .gridElement:nth-child(1) {
 	grid-column: 2/4;
 	grid-row: 1/2;
-	color: #16f8b6;
+	color: #0bc9cf;
 	background-color: #0c1036;
 	text-align: center;
 	display: grid;
