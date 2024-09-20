@@ -25,7 +25,7 @@ const TeamImg = {
 const About = () => {
 	const teamMembers = [
 		{
-			name: "David Dos Santos",
+			name: "David dos Santos",
 			role: "QA Testing",
 			img: TeamImg.David,
 			linkedin: "https://www.linkedin.com/in/david-dos-santos/",
