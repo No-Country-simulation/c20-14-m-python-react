@@ -8,7 +8,7 @@ import {
 	CATALOGUE,
 	INICIO,
 	LOGIN,
-	STUDENTS,
+	MY_COURSES,
 	USER_PROFILE
 } from "../../App/router/children";
 import { FaUserCircle } from "react-icons/fa";
@@ -115,7 +115,7 @@ function NavBar() {
 		);
 	}
 
-	if (pathname === "/estudiantes") {
+	if (pathname === "/mis-cursos") {
 		return (
 			<Navbar
 				className="custom-navbar  border-bottom"
@@ -320,11 +320,11 @@ function NavBar() {
 						<div className="d-flex ms-3 align-items-center">
 							<Nav.Link
 								as={Link}
-								to={token ? STUDENTS.path : LOGIN.path}
+								to={token ? MY_COURSES.path : LOGIN.path}
 								className="p-0"
 							>
 								<Button variant="dark" size="md" className="me-2 p-2">
-									{token ? STUDENTS.name : "Inicial sesión"}
+									{token ? MY_COURSES.name : "Inicial sesión"}
 								</Button>
 							</Nav.Link>
 						</div>
