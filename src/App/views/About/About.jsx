@@ -35,7 +35,7 @@ const About = () => {
 			name: "Edwin Ortiz",
 			role: "Desarrollador Front-end",
 			img: TeamImg.Edwin,
-			linkedin: "https://linkedin.com/in/edwinortiz",
+			linkedin: "https://www.linkedin.com/in/edarcode/",
 			github: "https://github.com/edarcode"
 		},
 		{
