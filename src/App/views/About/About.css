@@ -1,0 +1,93 @@
+.SkillUp {
+    color: #16f8b6;
+    display: flex;
+    margin-left: 0;
+}
+
+.Vision {
+    color: #f926ae;
+    display: flex;
+    margin-left: 0;
+}
+
+.Equipo {
+    color: #a679ff;
+    display: flex;
+    margin-left: 0;
+}
+
+.memberPic {
+    width: 100%; /* Se asegura de que la imagen ocupe todo el ancho disponible */
+    height: auto; /* Mantiene la proporción de la imagen */
+    object-fit: cover; /* Asegura que la imagen se ajuste al contenedor */
+    aspect-ratio: 3/4; /* Proporción de retrato: ancho 3, altura 4 */
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin: 10px;
+}
+
+.social-icons a {
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    opacity: 0.8;
+}
+
+/* Ajuste de fuentes para pantallas pequeñas */
+.card-title {
+    font-size: 1.5rem; /* Ajusta el tamaño del título */
+    text-align: center; /* Centra el texto */
+}
+
+.card-text {
+    font-size: 1rem; /* Ajusta el tamaño del texto de descripción */
+    text-align: center; /* Centra el texto */
+}
+
+.social-icons a {
+    margin-right: 15px;
+}
+
+/* Estilo para pantallas más pequeñas (menos de 580px) */
+@media (max-width: 580px) {
+    .col {
+        flex: 0 0 100%; /* Asegura que la columna ocupe todo el ancho */
+        max-width: 100%; /* Ancho máximo del 100% */
+    }
+
+    .card {
+        margin: 0 auto; /* Centra la tarjeta */
+        float: none;
+    }
+
+    .memberPic {
+        aspect-ratio: 3/4; /* Mantiene la proporción de retrato */
+        height: auto; /* Asegura que la imagen se ajuste sin deformarse */
+        width: 100%; /* Mantiene el ancho de la imagen dentro de la tarjeta */
+    }
+
+    /* Ajustes de texto y tamaño de íconos en pantallas pequeñas */
+    .card-title {
+        font-size: 1.25rem; /* Disminuye el tamaño del título */
+    }
+
+    .card-text {
+        font-size: 0.875rem; /* Ajusta el tamaño del texto de descripción */
+    }
+
+    .social-icons a {
+        margin-right: 8px; /* Reduce el espacio entre íconos */
+    }
+
+    .social-icons a svg {
+        width: 20px; /* Reduce el tamaño de los íconos */
+        height: 20px;
+    }
+}
+
+  
