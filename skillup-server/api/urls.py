@@ -17,6 +17,6 @@ urlpatterns = [
     path('courses/<int:pk>/', CoursesView.as_view(), name='course'),
     path('courses/<int:course_id>/module/<int:module_id>/', ModuleView.as_view(), name='module'),
     path('user/<int:pk>/profile/', ProfileView.as_view(), name='profile'),
-    path('payment/', PaymentView.as_view(), name='payment')
+    path('payments/', PaymentView.as_view(), name='payment')
 
 ]

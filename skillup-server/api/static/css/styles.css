@@ -1,0 +1,45 @@
+body {
+    background-color: #f8f9fa; /* Color de fondo suave */
+    font-family: Arial, sans-serif; /* Tipografía */
+}
+
+.containerPayment {
+    max-width: 500px; /* Ancho máximo */
+    margin: 50px auto; /* Centrar horizontalmente */
+    padding: 20px; /* Espaciado interno */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    background-color: white; /* Fondo blanco */
+}
+
+h2 {
+    color: #343a40; /* Color del texto */
+}
+
+.form-label {
+    font-weight: bold; /* Negrita para etiquetas */
+}
+
+.form-control {
+    border: 1px solid #ced4da; /* Borde gris claro */
+    border-radius: 4px; /* Bordes redondeados */
+    padding: 10px; /* Espaciado interno */
+}
+
+.form-control:focus {
+    border-color: #007bff; /* Color del borde al enfocar */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Sombra al enfocar */
+}
+
+.btn {
+    background-color: #007bff; /* Color de fondo del botón */
+    color: white; /* Color del texto del botón */
+}
+
+.btn:hover {
+    background-color: #0056b3; /* Color de fondo del botón al pasar el ratón */
+}
+
+.text-danger {
+    color: #dc3545; /* Color rojo para mensajes de error */
+}

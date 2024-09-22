@@ -22,6 +22,7 @@ from api.jwt_auth_utils.auth import refresh_token_view
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
+    path('', include('api.urls')),  # Incluye las URLs de tu aplicación 'api'
     path('activate/<uidb64>/<token>', UserActivationView.as_view(), name='activate'),
     path('token-refresh/', refresh_token_view, name='token-refresh'),
 
