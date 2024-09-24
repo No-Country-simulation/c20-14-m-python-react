@@ -14,7 +14,7 @@ const CursosDisp = ({ cards, toggleFavorite }) => {
 	);
 
 	return (
-		<Container fluid className="cardContainer" id="CursosDisponibles">
+		<Container fluid className="cardContainer">
 			<Row>
 				<Col>
 					<h2>Cursos Disponibles</h2>
