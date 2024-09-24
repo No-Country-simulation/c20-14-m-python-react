@@ -1,0 +1,267 @@
+.formStyles{
+	border: 1px solid #1f5489;
+}
+
+.cardContainer {
+	padding: 20px;
+}
+
+.courseRow {
+	margin-bottom: 40px; 	
+	border-radius: 15px;
+	width: 90vw;
+	margin: 0 auto;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+}
+
+.courseSearch {
+	width: 80vw;
+	display: block;
+	margin: 0 auto;
+	padding: 25px;
+}
+
+.cardCol {
+	background-color: #07294bf5;
+	border-radius: 8px;
+	color: white;
+	padding: 5px 30px;
+	width: 90vw;
+	margin: 35px auto;
+
+	.contenth2 {
+		text-align: center;
+		font-weight: 600;
+		margin-top: 25px;
+	}
+	.contenth3 {
+		font-size: 1rem;
+		text-align: center;
+		padding: 0;
+		margin-bottom: 2rem;
+	}
+	.detailh2 {
+		font-weight: 600;
+		text-align: center;
+		padding: 10px;
+		margin: 15px 0;
+	}
+	ul {
+		list-style: none;
+		padding-left: 0;
+		margin-bottom: 25px;
+		li {
+			display: flex;
+			align-items: center;
+			line-height: 1.95;
+			span {
+				margin-right: 50px;
+				&.check {
+					color: #16f8b6;
+					font-size: 25px;
+				}
+			}
+		}
+	}
+}
+
+.courseImage {
+	max-width: 100%;
+	height: auto;
+	border-radius: 8px;
+}
+
+.courseh1 {
+	font-size: 2.5rem;
+	text-align: center;
+	font-weight: 800;
+	font-style: normal;
+}
+
+.courseDescription {
+	margin: 5px 10px;
+	padding: 5px 20px;
+	text-align: center;
+}
+
+.courseTeacher {
+	font-weight: 900;
+}
+
+.btnSale {
+	width: fit-content;
+	margin: 5px 20px;
+	font-size: 1.25rem;
+	font-weight: 600;
+	border: none;
+	border-radius: 15px;
+	padding: 5px 25px;
+	&:hover {
+		color: #fff;
+		border-color: var(--bs-btn-border-color);
+		font-weight: 700;
+		background: #212529;
+	}
+}
+
+.contentParagraph {
+	padding: 25px;
+	text-align: center;
+}
+
+.video {
+	margin: 0.5rem auto 3.5rem auto;
+
+	video {
+		max-width: 100%;
+		height: auto;
+		display: block;
+	}
+}
+
+.largeText {
+	line-height: 1.5;
+}
+
+.listWho {
+	width: 80vw;
+	list-style: none;
+	padding: 0;
+
+	li {
+		text-align: justify;
+		line-height: 2;
+		margin: 25px 0;
+	}
+}
+
+.whoh2 {
+	font-size: 2.3rem;
+	font-weight: 600;
+}
+
+hr {
+	margin: 50px 0 10px 0;
+}
+
+.carousel {
+	position: relative;
+	width: fit-content;
+	height: auto;
+	margin: 0 auto;
+}
+
+.carouselh3 {
+	margin-bottom: 40px;
+}
+
+.carouselSlide {
+	background: #404a72;
+	max-width: 500px;
+	margin: 0 auto;
+	height: 40vh;
+	padding: 15px;
+	color: white;
+	border-radius: 22px;
+}
+
+.slideTitle {
+	font-size: 1.4rem;
+}
+
+.slideText {
+	font-size: 1rem;
+	padding: 5%;
+	text-align: justify;
+}
+
+.slideImage {
+	clip-path: polygon(0 0, 100% 0%, 100% 85%, 80% 86%, 85% 100%, 47% 87%, 0 87%);
+}
+
+/* 
+    BREAKPOINTS MOBILE FIRST
+    Tablet : min-width = 769px
+    Desktop : min-width = 1025px
+*/
+
+@media screen and (min-width: 769px) {
+	.cardCol {
+		width: 60vw;
+		padding: 5px 15px
+	}
+
+	.courseSearch {
+		width: 50vw;
+	}
+
+	.courseh1 {
+		text-align: center;
+	}
+
+	.courseRow {
+		display: flex;
+        justify-content: center;
+        margin-bottom: 80px;
+        width: auto;
+		
+	}
+
+	.courseRowInside {
+		margin: 0 !important;
+		width: 80vw;
+		padding-right: 50px;
+	}
+
+	.courseDescription p:nth-child(1){
+		text-align: justify;
+	}
+
+	.courseTeacher {
+		margin-right: 25px;
+	}
+
+	.video {
+		width: 40vw;
+		video {
+			margin: 0 auto;
+			width: 100%;
+		}
+	}
+
+	.contentParagraph {
+		padding: 0;
+		margin-bottom: 25px;
+	}
+
+	.listWho {
+		width: 50%;		
+		li {
+			line-height: 1.25;
+			margin: 20px 0;
+		}
+	}
+
+	.who {
+		margin-top: 50px;
+	}
+
+	.carouselh3b {
+		margin-top: 25px;
+		padding: 25px 0;
+		color: #f926ae;
+		font-size: 2.3rem;
+		font-weight: 600;
+	}
+	h2 {
+		margin: 0;
+	}
+
+	.btnBox {
+		width: 80vw;
+	}
+	ul{
+		width: 80%;
+		margin: 0 auto 25px auto;
+	}
+}

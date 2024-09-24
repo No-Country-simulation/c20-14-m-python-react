@@ -1,0 +1,13 @@
+@import "./styles/reset.css";
+@import "./styles/scroll.css";
+@import "./styles/scales.css";
+@import "./styles/colors.css";
+@import "./styles/shadow.css";
+@import "./styles/fonts.css";
+@import "./styles/borders.css";
+
+#root {
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+	min-height: 100vh;
+}
