@@ -1,0 +1,12 @@
+.imgCard--310x207 {
+	height: 207px;
+    /* width: 310px; */
+}
+
+.heroText_ppal {	
+	font-weight: 600;
+	font-style: normal;
+	text-align: center;
+	margin: 25px;
+    font-size: 2.5rem;
+}

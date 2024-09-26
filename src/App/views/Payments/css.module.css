@@ -1,0 +1,33 @@
+.payments {
+	display: grid;
+	height: 100%;
+	place-content: center;
+}
+
+.form {
+	width: 320px;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: var(--md);
+	border: 1px solid #d9d9d9;
+	padding: var(--xl);
+	border-radius: var(--md);
+
+	input {
+		min-height: 40px;
+	}
+
+	.card {
+		grid-column: span 2;
+	}
+
+	.cvc {
+		span {
+			min-height: 48px;
+		}
+	}
+	.btn {
+		margin-top: var(--xl);
+		grid-column: 2 / 3;
+	}
+}
