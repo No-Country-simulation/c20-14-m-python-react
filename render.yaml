@@ -10,7 +10,7 @@ services:
     name: skillup
     runtime: python
     buildCommand: "./build.sh"
-    startCommand: "cd skillup-server && python -m gunicorn skillup.asgi:application -k uvicorn.workers.UvicornWorker"
+    startCommand: "cd skillup-server && python -m gunicorn skillup.asgi:application -k uvicorn.workers.UvicornWorker && python ping.py"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
