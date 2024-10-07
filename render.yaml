@@ -1,9 +1,3 @@
-databases:
-  - name: SKILLUP-DATABASE
-    plan: free
-    databaseName: skillup_sgv1
-    user: skillup_sgv1_user
-
 services:
   - type: web
     plan: free
