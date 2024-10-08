@@ -14,7 +14,7 @@ def ping():
             print(f"Error pinging server: {e}")
 
         # Esperar 15 minutos
-        time.sleep(15 * 60)
+        time.sleep(60)
 
 
 if __name__ == "__main__":
